@@ -1,8 +1,8 @@
 <chart>
-id=133671918267715739
-symbol=BTCUSD
+id=133673872514488433
+symbol=XAUUSD
 period=30
-leftpos=7834
+leftpos=4222
 digits=2
 scale=8
 graph=1
@@ -19,9 +19,9 @@ days=0
 descriptions=0
 shift_size=10
 fixed_pos=0
-window_left=0
+window_left=958
 window_top=0
-window_right=958
+window_right=1916
 window_bottom=923
 window_type=1
 background_color=0
@@ -37,7 +37,7 @@ askline_color=255
 stops_color=255
 
 <window>
-height=165
+height=156
 fixed_height=0
 <indicator>
 name=main
@@ -363,7 +363,7 @@ type=27
 object_name=SL
 period_flags=0
 create_time=1722924466
-description=80000
+description=800
 color=0
 font=Arial
 fontsize=10
@@ -388,7 +388,7 @@ type=27
 object_name=TP
 period_flags=0
 create_time=1722924466
-description=200000
+description=2000
 color=0
 font=Arial
 fontsize=10
@@ -653,7 +653,7 @@ type=27
 object_name=移动
 period_flags=0
 create_time=1722924466
-description=16000
+description=160
 color=0
 font=Arial
 fontsize=10
@@ -678,7 +678,7 @@ type=27
 object_name=保本
 period_flags=0
 create_time=1722924466
-description=6000
+description=60
 color=0
 font=Arial
 fontsize=10
@@ -727,7 +727,7 @@ type=23
 object_name=btn009
 period_flags=0
 create_time=1722924466
-description=55852.48
+description=2404.62
 color=16777215
 font=微软雅黑
 fontsize=11
@@ -747,7 +747,7 @@ type=23
 object_name=btn010
 period_flags=0
 create_time=1722924466
-description=55874.28
+description=2404.81
 color=65535
 font=微软雅黑
 fontsize=11
@@ -806,8 +806,8 @@ y_distance=2
 type=21
 object_name=time
 period_flags=0
-create_time=1722925655
-description=              <7:25
+create_time=1722925665
+description=              <2:15
 color=65535
 font=Arial
 fontsize=14
@@ -818,8 +818,8 @@ filling=0
 selectable=1
 hidden=0
 zorder=0
-time_0=1722935100
-value_0=55852.480000
+time_0=1722934800
+value_0=2404.670000
 </object>
 </indicator>
 <indicator>
@@ -874,7 +874,7 @@ show_data=1
 name=Custom Indicator
 <expert>
 name=上帝之手
-flags=851
+flags=339
 window_num=0
 </expert>
 shift_0=0
@@ -949,7 +949,7 @@ show_data=1
 </window>
 
 <window>
-height=58
+height=56
 fixed_height=0
 <indicator>
 name=Custom Indicator
@@ -990,7 +990,7 @@ show_data=1
 </window>
 
 <window>
-height=53
+height=50
 fixed_height=0
 <indicator>
 name=Custom Indicator
@@ -1017,17 +1017,13 @@ draw_2=2
 color_2=32768
 style_2=0
 weight_2=4
-levels_color=5197615
-levels_style=2
-levels_weight=1
-level_0=0.00000000
 period_flags=0
 show_data=1
 </indicator>
 </window>
 
 <window>
-height=5
+height=6
 fixed_height=0
 <indicator>
 name=Custom Indicator
@@ -1088,11 +1084,11 @@ flags=343
 window_num=0
 <inputs>
 手数=0.03
-止损=80000
-止盈=200000
+止损=800
+止盈=2000
 是否启用移动止损=false
-移动=16000
-保本=6000
+移动=160
+保本=60
 手数1=0.1
 手数2=0.2
 手数3=0.3
@@ -1100,9 +1096,9 @@ window_num=0
 手数5=0.5
 手数6=0.6
 滑点=3
-挂单距离=30000
-顺势加仓间隔=10000
-逆势加仓间隔=10000
+挂单距离=300
+顺势加仓间隔=100
+逆势加仓间隔=100
 倍数=2.0
 次数=3
 均价上加点数平仓=10
