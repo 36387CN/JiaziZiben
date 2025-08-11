@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智医汇 - 中西医结合AI问诊平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        #n8n-chat-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        #n8n-chat {
+            width: 100%;
+            max-width: 600px;
+            height: 90vh;
+            max-height: 800px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 999;
+        }
+        
+        .close-chat {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+            z-index: 1001;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36B37E',
+                        accent: '#FF5630',
+                        neutral: '#F5F7FA',
+                        dark: '#253858'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-dark">
+    <!-- 导航栏 -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-primary text-2xl font-bold">智医汇</span>
+                    <span class="ml-2 text-sm text-gray-500 hidden sm:inline-block">中西医结合AI问诊平台</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary transition-colors">首页</a>
+                    <a href="#features" class="text-gray-700 hover:text-primary transition-colors">服务特色</a>
+                    <a href="#process" class="text-gray-700 hover:text-primary transition-colors">问诊流程</a>
+                    <a href="#advantages" class="text-gray-700 hover:text-primary transition-colors">中西结合优势</a>
+                    <a href="#faq" class="text-gray-700 hover:text-primary transition-colors">常见问题</a>
+                </nav>
+                
+                <div class="flex items-center">
+                    <button id="openChatBtn" class="hidden sm:block bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-full transition-colors">
+                        开始问诊
+                    </button>
+                    <button class="md:hidden text-gray-700 focus:outline-none">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-28 pb-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-dark">
+                        中西医结合<br>
+                        <span class="text-primary">AI智能问诊</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600 max-w-lg">
+                        汇聚中西医智慧，通过人工智能技术为您提供精准诊断和个性化健康管理方案，随时随地守护您的健康。
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <button id="heroChatBtn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-medium transition-all shadow-lg hover:shadow-xl">
+                            立即问诊
+                        </button>
+                        <button class="border-2 border-primary text-primary hover:bg-primary/5 px-8 py-3 rounded-full text-lg font-medium transition-all">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                    <div class="mt-10 flex items-center">
+                        <div class="flex -space-x-3">
+                            <img src="https://picsum.photos/id/1001/100" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/1002/100" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/1003/100" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary border-2 border-white flex items-center justify-center text-xs font-bold">
+                                5k+
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span class="ml-2 text-gray-700 font-medium">4.8/5</span>
+                            </div>
+                            <p class="text-sm text-gray-500">来自5000+用户的好评</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="https://picsum.photos/id/237/600/400" alt="AI问诊示意图" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务特色 -->
+    <section id="features" class="section bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">我们的服务特色</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">结合现代人工智能技术与传统医学智慧，为您提供全方位健康服务</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mb-6">
+                        <i class="fa fa-stethoscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">智能问诊</h3>
+                    <p class="text-gray-600">通过AI算法分析您的症状描述，结合海量中西医临床数据，提供初步诊断建议。</p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center text-secondary text-2xl mb-6">
+                        <i class="fa fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">中西结合</h3>
+                    <p class="text-gray-600">融合中医辨证施治与西医精准诊断的优势，提供更全面、个性化的健康解决方案。</p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-6">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7服务</h3>
+                    <p class="text-gray-600">全天候在线服务，无论何时何地，都能为您提供及时的健康咨询和指导。</p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mb-6">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">健康管理</h3>
+                    <p class="text-gray-600">跟踪您的健康数据，提供个性化的饮食、运动建议，帮助您维持最佳健康状态。</p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center text-secondary text-2xl mb-6">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">隐私保护</h3>
+                    <p class="text-gray-600">严格保护您的健康隐私和个人信息，所有数据均采用加密处理，安全可靠。</p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl mb-6">
+                        <i class="fa fa-medkit"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">用药指导</h3>
+                    <p class="text-gray-600">提供中西医结合的用药建议，避免药物相互作用，确保用药安全有效。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 问诊流程 -->
+    <section id="process" class="section bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">简单三步，轻松问诊</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">无需排队等待，在家即可享受专业的中西医结合健康咨询服务</p>
+            </div>
+            
+            <div class="relative">
+                <!-- 连接线 -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-primary/20 transform -translate-x-1/2"></div>
+                
+                <div class="space-y-12 md:space-y-0 relative">
+                    <!-- 步骤1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold mb-3">描述症状</h3>
+                            <p class="text-gray-600">详细描述您的不适症状、持续时间和其他相关信息，帮助AI更准确地判断。</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 font-bold text-xl">1</div>
+                        <div class="md:w-1/2 md:pl-12 md:text-left">
+                            <img src="https://picsum.photos/id/1080/400/250" alt="描述症状" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right order-1 md:order-1 mb-8 md:mb-0">
+                            <img src="https://picsum.photos/id/1079/400/250" alt="AI分析" class="rounded-lg shadow-md ml-auto">
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 font-bold text-xl order-0 md:order-1">2</div>
+                        <div class="md:w-1/2 md:pl-12 md:text-left order-2 md:order-2">
+                            <h3 class="text-2xl font-bold mb-3">AI智能分析</h3>
+                            <p class="text-gray-600">我们的AI系统结合中西医理论和临床经验，对您的症状进行全面分析。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold mb-3">获取健康方案</h3>
+                            <p class="text-gray-600">接收个性化的诊断建议、治疗方案和健康管理指导，包括中西医结合的解决方案。</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center z-10 font-bold text-xl">3</div>
+                        <div class="md:w-1/2 md:pl-12 md:text-left">
+                            <img src="https://picsum.photos/id/1082/400/250" alt="健康方案" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <button id="processChatBtn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-medium transition-all shadow-lg hover:shadow-xl">
+                    开始我的问诊之旅
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 中西结合优势 -->
+    <section id="advantages" class="section bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">中西医结合的独特优势</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">融合两种医学体系的精华，为您提供更全面、更有效的健康解决方案</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://picsum.photos/id/1083/600/400" alt="中西医结合" class="rounded-2xl shadow-xl">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="mr-4 text-primary text-xl mt-1">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">标本兼治</h3>
+                                <p class="text-gray-600">西医快速缓解症状，中医调理根本问题，两者结合实现短期见效与长期康复的统一。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="mr-4 text-primary text-xl mt-1">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">个性化方案</h3>
+                                <p class="text-gray-600">根据个体体质差异，结合中西医理论，制定真正适合您的个性化健康管理方案。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="mr-4 text-primary text-xl mt-1">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">副作用小</h3>
+                                <p class="text-gray-600">在保证疗效的前提下，通过中西医结合减少药物用量，降低副作用风险。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="mr-4 text-primary text-xl mt-1">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">预防为先</h3>
+                                <p class="text-gray-600">融合中医"治未病"理念与现代预防医学，帮助您预防疾病，保持最佳健康状态。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="section bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">常见问题</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">关于我们的AI问诊服务，您可能想了解这些</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex justify-between items-center">
+                        <span>AI问诊能替代线下医生吗？</span>
+                        <i class="fa fa-plus text-primary"></i>
+                    </h3>
+                    <p class="text-gray-600 hidden">我们的AI问诊服务不能完全替代线下医生。它主要作为健康咨询和初步指导的工具，对于复杂疾病或紧急情况，我们会建议您及时就医。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex justify-between items-center">
+                        <span>问诊结果的准确性如何？</span>
+                        <i class="fa fa-plus text-primary"></i>
+                    </h3>
+                    <p class="text-gray-600 hidden">我们的AI系统基于大量中西医临床数据训练，准确率达到行业领先水平。但由于个体差异，问诊结果仅供参考，具体请遵医嘱。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex justify-between items-center">
+                        <span>我的健康数据会被保密吗？</span>
+                        <i class="fa fa-plus text-primary"></i>
+                    </h3>
+                    <p class="text-gray-600 hidden">我们非常重视用户隐私保护，所有健康数据均采用加密处理，并严格遵守相关法律法规，不会向第三方泄露您的个人健康信息。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex justify-between items-center">
+                        <span>如何获取更详细的诊疗建议？</span>
+                        <i class="fa fa-plus text-primary"></i>
+                    </h3>
+                    <p class="text-gray-600 hidden">如果您需要更详细的诊疗建议，可以通过我们的平台预约线下中西医专家会诊，我们会根据您的情况推荐合适的专业医师。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold mb-2 flex justify-between items-center">
+                        <span>服务是否收费？</span>
+                        <i class="fa fa-plus text-primary"></i>
+                    </h3>
+                    <p class="text-gray-600 hidden">基础问诊服务是免费的，对于一些高级健康管理方案或专家会诊服务，我们会收取相应的费用，具体可咨询在线客服。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤 -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-6">开始您的健康管理之旅</h2>
+            <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10">无论您有任何健康疑问，我们的中西医结合AI医生随时为您提供专业咨询</p>
+            <button id="ctaChatBtn" class="bg-white text-primary hover:bg-gray-100 px-10 py-4 rounded-full text-lg font-medium transition-all shadow-lg hover:shadow-xl">
+                立即免费问诊
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">智医汇</h3>
+                    <p class="text-gray-400 mb-6">中西医结合AI问诊平台，用科技守护您的健康</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">服务项目</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI智能问诊</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">健康管理方案</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">中西医结合治疗</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">专家会诊预约</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">关于我们</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">医师团队</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">技术优势</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">合作伙伴</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">联系我们</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-gray-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">北京市海淀区中关村科技园</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">400-123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">contact@zhiyihui.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2023 智医汇 版权所有 | 京ICP备12345678号-1</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 聊天窗口容器 -->
+    <div id="n8n-chat-container">
+        <button class="close-chat" id="closeChat">
+            <i class="fa fa-times"></i>
+        </button>
+        <div id="n8n-chat"></div>
+    </div>
+    <div class="chat-toggle" id="chatToggle">
+        <i class="fa fa-comments"></i>
+    </div>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        // 聊天窗口控制
+        const chatContainer = document.getElementById('n8n-chat-container');
+        const chatContent = document.getElementById('n8n-chat');
+        const chatToggle = document.getElementById('chatToggle');
+        const closeChatBtn = document.getElementById('closeChat');
+        const chatButtons = [
+            document.getElementById('openChatBtn'),
+            document.getElementById('heroChatBtn'),
+            document.getElementById('processChatBtn'),
+            document.getElementById('ctaChatBtn')
+        ];
+
+        function toggleChat() {
+            // 显示或隐藏聊天容器
+            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+            
+            // 当显示聊天窗口时，调整高度以适应屏幕
+            if (chatContainer.style.display === 'flex') {
+                adjustChatHeight();
+                // 防止背景滚动
+                document.body.style.overflow = 'hidden';
+            } else {
+                // 恢复背景滚动
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // 调整聊天窗口高度以适应屏幕
+        function adjustChatHeight() {
+            const windowHeight = window.innerHeight;
+            // 聊天窗口高度为屏幕高度的90%，但不超过800px
+            const chatHeight = Math.min(windowHeight * 0.9, 800);
+            chatContent.style.height = `${chatHeight}px`;
+        }
+        
+        // 监听窗口大小变化，调整聊天窗口高度
+        window.addEventListener('resize', () => {
+            if (chatContainer.style.display === 'flex') {
+                adjustChatHeight();
+            }
+        });
+
+        chatToggle.addEventListener('click', toggleChat);
+        closeChatBtn.addEventListener('click', toggleChat);
+        chatButtons.forEach(btn => {
+            if (btn) btn.addEventListener('click', toggleChat);
+        });
+
+        // FAQ 折叠面板
+        const faqHeaders = document.querySelectorAll('#faq .bg-white h3');
+        faqHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-plus');
+                icon.classList.toggle('fa-minus');
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // 初始化聊天
+        (async function () {
+            const authentication = 'none';
+            let metadata;
+            if (authentication === 'n8nUserAuth') {
+                try {
+                    const response = await fetch('/rest/login', {
+                            method: 'GET',
+                            headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+                    });
+
+                    if (response.status !== 200) {
+                        throw new Error('Not logged in');
+                    }
+
+                    const responseData = await response.json();
+                    metadata = {
+                        user: {
+                            id: responseData.data.id,
+                            firstName: responseData.data.firstName,
+                            lastName: responseData.data.lastName,
+                            email: responseData.data.email,
+                        },
+                    };
+                } catch (error) {
+                    window.location.href = '/signin?redirect=' + window.location.href;
+                    return;
+                }
+            }
+
+            createChat({
+                mode: 'fullscreen',
+                webhookUrl: 'https://36387cn-n8n.hf.space/webhook/5ada0943-acaf-476c-9454-8703e26b6fed/chat',
+                showWelcomeScreen: false,
+                loadPreviousSession: false,
+                metadata: metadata,
+                webhookConfig: {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Instance-Id': 'fa509f088384815abeb9f3eff477fa05ca4f2275bfa69e40df61a89998f074ec',
+                    }
+                },
+                allowFileUploads: false,
+                allowedFilesMimeTypes: '',
+                i18n: {
+                    en: {"subtitle":"请描述您的症状，我会结合中西医知识为您提供健康建议。","title":"您好！我是智能健康助手 👋"},
+                },
+                initialMessages: ["您好！我是智能健康助手 👋","我结合了中西医的专业知识，可以为您提供健康咨询和建议。请描述您的症状或健康问题，我会尽力为您解答。"],
+                enableStreaming: false,
+            });
+        })();
+    </script>
+</body>
+</html>
