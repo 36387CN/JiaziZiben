@@ -1,0 +1,76 @@
+
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Chat</title>
+			<link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+			<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+			<style>
+				html,
+				body,
+				#n8n-chat {
+					width: 100%;
+					height: 100%;
+				}
+			</style>
+			<style></style>
+		</head>
+		<body>
+			<script type="module">
+				import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+				(async function () {
+					const authentication = 'none';
+					let metadata;
+					if (authentication === 'n8nUserAuth') {
+						try {
+							const response = await fetch('/rest/login', {
+									method: 'GET',
+									headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+							});
+
+							if (response.status !== 200) {
+								throw new Error('Not logged in');
+							}
+
+							const responseData = await response.json();
+							metadata = {
+								user: {
+									id: responseData.data.id,
+									firstName: responseData.data.firstName,
+									lastName: responseData.data.lastName,
+									email: responseData.data.email,
+								},
+							};
+						} catch (error) {
+							window.location.href = '/signin?redirect=' + window.location.href;
+							return;
+						}
+					}
+
+					createChat({
+						mode: 'fullscreen',
+						webhookUrl: 'https://36387cn-n8n.hf.space/webhook/5ada0943-acaf-476c-9454-8703e26b6fed/chat',
+						showWelcomeScreen: false,
+						loadPreviousSession: false,
+						metadata: metadata,
+						webhookConfig: {
+							headers: {
+								'Content-Type': 'application/json',
+								'X-Instance-Id': 'fa509f088384815abeb9f3eff477fa05ca4f2275bfa69e40df61a89998f074ec',
+							}
+						},
+						allowFileUploads: false,
+						allowedFilesMimeTypes: '',
+						i18n: {
+							en: {"subtitle":"Start a chat. We're here to help you 24/7.","title":"Hi there! 👋"},
+						},
+						initialMessages: ["Hi there! 👋","My name is Nathan. How can I assist you today?"],
+						enableStreaming: false,
+					});
+				})();
+			</script>
+		</body>
+	</html>
