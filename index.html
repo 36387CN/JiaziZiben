@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>简易外汇交易系统 - 100%能赚到钱的交易系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <script>
@@ -44,6 +48,81 @@
             }
         }
     </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        #n8n-chat-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        #n8n-chat {
+            width: 100%;
+            max-width: 600px;
+            height: 90vh;
+            max-height: 800px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 999;
+        }
+        
+        .close-chat {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+            z-index: 1001;
+        }
+    </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
     <!-- 导航栏 -->
@@ -53,14 +132,21 @@
             
             <!-- 桌面导航 -->
             <div class="hidden md:flex space-x-8">
-                <a target="_blank" href="https://36387cn-n8n.hf.space/webhook/e41cc244-3750-4f26-b15e-667378e5fd12/chat" class="text-white hover:text-secondary transition-colors">问行情</a>
                 <a href="#core" class="text-white hover:text-secondary transition-colors">系统核心</a>
                 <a href="#advantages" class="text-white hover:text-secondary transition-colors">核心优势</a>
                 <a href="#cooperation" class="text-white hover:text-secondary transition-colors">合作模式</a>
                 <a href="#cases" class="text-white hover:text-secondary transition-colors">实战案例</a>
                 <a href="#contact" class="text-white hover:text-secondary transition-colors">联系我们</a>
             </div>
-            
+<div class="flex items-center">
+    <button id="openChatBtn" class="hidden sm:block bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full transition-colors duration-300">
+        问Ai分析师
+    </button>
+    <button class="md:hidden text-gray-700 focus:outline-none hover:text-red-600 transition-colors duration-300">
+        <i class="fa fa-bars text-xl"></i>
+    </button>
+</div>        
+
             <!-- 移动端菜单按钮 -->
             <button id="menuBtn" class="md:hidden text-white text-2xl">
                 <i class="fa fa-bars"></i>
@@ -70,7 +156,6 @@
         <!-- 移动端导航菜单 -->
         <div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 invisible">
             <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a target="_blank" href="https://36387cn-n8n.hf.space/webhook/e41cc244-3750-4f26-b15e-667378e5fd12/chat" class="text-white hover:text-secondary transition-colors">问行情</a>
                 <a href="#core" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">系统核心</a>
                 <a href="#advantages" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">核心优势</a>
                 <a href="#cooperation" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">合作模式</a>
@@ -626,7 +711,7 @@
                             <div class="ml-5">
                                 <div class="font-bold text-gray-800">招聘信息</div>
                                 <div class="text-gray-600">诚聘投资理财顾问</div>
-                                <a href="https://mp.weixin.qq.com/s/fZeqkJVqJeZjup2LiSuA8w" class="text-sm text-primary mt-1 inline-block hover:underline">点击查看详情</a>
+                                <a target="_blank" href="https://mp.weixin.qq.com/s/fZeqkJVqJeZjup2LiSuA8w" class="text-sm text-primary mt-1 inline-block hover:underline">点击查看详情</a>
                             </div>
                         </div>
                         
@@ -684,7 +769,7 @@
     </footer>
 
     <!-- 返回顶部按钮 -->
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 invisible">
+    <button id="backToTop" class="fixed bottom-28 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 invisible">
         <i class="fa fa-arrow-up"></i>
     </button>
 
@@ -799,6 +884,135 @@
                 }
             }
         });
+    </script>
+    <!-- 聊天窗口容器 -->
+    <div id="n8n-chat-container">
+        <button class="close-chat" id="closeChat">
+            <i class="fa fa-times"></i>
+        </button>
+        <div id="n8n-chat"></div>
+    </div>
+    <div class="chat-toggle" id="chatToggle">
+        <i class="fa fa-comments"></i>
+    </div>
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        // 聊天窗口控制
+        const chatContainer = document.getElementById('n8n-chat-container');
+        const chatContent = document.getElementById('n8n-chat');
+        const chatToggle = document.getElementById('chatToggle');
+        const closeChatBtn = document.getElementById('closeChat');
+        const chatButtons = [
+            document.getElementById('openChatBtn'),
+            document.getElementById('heroChatBtn'),
+            document.getElementById('processChatBtn'),
+            document.getElementById('ctaChatBtn')
+        ];
+
+        function toggleChat() {
+            // 显示或隐藏聊天容器
+            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+            
+            // 当显示聊天窗口时，调整高度以适应屏幕
+            if (chatContainer.style.display === 'flex') {
+                adjustChatHeight();
+                // 防止背景滚动
+                document.body.style.overflow = 'hidden';
+            } else {
+                // 恢复背景滚动
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // 调整聊天窗口高度以适应屏幕
+        function adjustChatHeight() {
+            const windowHeight = window.innerHeight;
+            // 聊天窗口高度为屏幕高度的90%，但不超过800px
+            const chatHeight = Math.min(windowHeight * 0.9, 800);
+            chatContent.style.height = `${chatHeight}px`;
+        }
+        
+        // 监听窗口大小变化，调整聊天窗口高度
+        window.addEventListener('resize', () => {
+            if (chatContainer.style.display === 'flex') {
+                adjustChatHeight();
+            }
+        });
+
+        chatToggle.addEventListener('click', toggleChat);
+        closeChatBtn.addEventListener('click', toggleChat);
+        chatButtons.forEach(btn => {
+            if (btn) btn.addEventListener('click', toggleChat);
+        });
+
+        // FAQ 折叠面板
+        const faqHeaders = document.querySelectorAll('#faq .bg-white h3');
+        faqHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-plus');
+                icon.classList.toggle('fa-minus');
+            });
+        });
+
+
+
+        // 初始化聊天
+        (async function () {
+            const authentication = 'none';
+            let metadata;
+            if (authentication === 'n8nUserAuth') {
+                try {
+                    const response = await fetch('/rest/login', {
+                            method: 'GET',
+                            headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+                    });
+
+                    if (response.status !== 200) {
+                        throw new Error('Not logged in');
+                    }
+
+                    const responseData = await response.json();
+                    metadata = {
+                        user: {
+                            id: responseData.data.id,
+                            firstName: responseData.data.firstName,
+                            lastName: responseData.data.lastName,
+                            email: responseData.data.email,
+                        },
+                    };
+                } catch (error) {
+                    window.location.href = '/signin?redirect=' + window.location.href;
+                    return;
+                }
+            }
+
+            createChat({
+                mode: 'fullscreen',
+                webhookUrl: 'https://36387cn-n8n.hf.space/webhook/e41cc244-3750-4f26-b15e-667378e5fd12/chat',
+                showWelcomeScreen: false,
+                loadPreviousSession: false,
+                metadata: metadata,
+                webhookConfig: {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Instance-Id': 'fa509f088384815abeb9f3eff477fa05ca4f2275bfa69e40df61a89998f074ec',
+                    }
+                },
+                allowFileUploads: false,
+                allowedFilesMimeTypes: '',
+                i18n: {
+                    en: {"subtitle":"请描述您要分析的股票、外汇、期货和虚拟货币。","title":"您好！我是Ai金融分析师 👋"},
+                },
+                initialMessages: ["您好！我是Ai金融分析师  👋","请描述您要分析的股票、外汇、期货和虚拟货币，我会尽力为您解答。"],
+                enableStreaming: false,
+            });
+        })();
     </script>
 </body>
 </html>
