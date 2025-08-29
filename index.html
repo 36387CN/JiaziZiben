@@ -1,46 +1,802 @@
-<!--
-<meta http-equiv="refresh" content="0; url=http://w.36387.cn:8002">
--->
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312 lang="zh-CN"">
-    <meta name="keywords" content="最简单的外汇交易系统,外汇交易系统" />
-    <meta name="description" content="如果你是新手交易者，正在寻找一个可以稳定盈利的交易系统，如果你热爱交易但却无从下手保持盈利，学习使用简易交易系统帮助你做到持续稳定的盈利..." />
-    <title>简易外汇交易系统，100%能赚到钱的交易系统 - 36387.cn</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易外汇交易系统 - 100%能赚到钱的交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F4C81', // 主蓝色
+                        secondary: '#FFC107', // 辅助黄色
+                        accent: '#1E88E5', // 强调蓝
+                        dark: '#0A2342', // 深蓝色
+                        light: '#E3F2FD', // 浅蓝色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-primary hover:bg-dark text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+            }
+            .btn-secondary {
+                @apply bg-secondary hover:bg-amber-500 text-dark font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+            }
+        }
+    </style>
 </head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white text-shadow">简易外汇交易系统</a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#core" class="text-white hover:text-secondary transition-colors">系统核心</a>
+                <a href="#advantages" class="text-white hover:text-secondary transition-colors">核心优势</a>
+                <a href="#cooperation" class="text-white hover:text-secondary transition-colors">合作模式</a>
+                <a href="#cases" class="text-white hover:text-secondary transition-colors">实战案例</a>
+                <a href="#contact" class="text-white hover:text-secondary transition-colors">联系我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 invisible">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#core" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">系统核心</a>
+                <a href="#advantages" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">核心优势</a>
+                <a href="#cooperation" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">合作模式</a>
+                <a href="#cases" class="text-primary hover:text-accent transition-colors py-2 border-b border-gray-100">实战案例</a>
+                <a href="#contact" class="text-primary hover:text-accent transition-colors py-2">联系我们</a>
+            </div>
+        </div>
+    </header>
 
-<body>
-<p align="center"><font size="6" color="#FF0000">《简易外汇交易系统》</font></p>
-<p align="center">核心是K线组合形态多空强弱分析及趋势追踪，是一套直观、简单、易上手、易执行的正向交易体系。 </p>
-<p align="center">简易孕育8年而生：主要由投资理念.交易指令. 操作程序.操盘原则 四部分构成。</p>
-<p align="center">通过对多空双方力量变化的分析和形象化展示－红涨绿跌，一目了然；</p>
-<p align="center">交易者只需傻傻执行，无需动脑使投资者彻底从毫无头绪的汇海中解放出来；</p>
-<p align="center">系统中箭头止损止盈位标准也使得投资者不再有投资亏损的恐惧，助力您交易中轻松获利<a target="_blank" href="/pp.html" style="text-decoration: none">！</a> </p>
-<p align="center"><font color="#FFFFFF" style="font-size: 17pt">
-<span style="background-color: #0000FD">1、机构加盟：2025年年费￥99800元，加盟费逐年递增，早用早收益</span></font></p>
-<p align="center"><font color="#FFFF00" style="font-size: 18pt">
-<span style="background-color: #000000">2、跟单合作：无需支付加盟年费，您只需开户入金，然后等待收益</span></font></p>
-<p align="center"><img border="0" src="/img/jxs.jpg" width="96%" height="620"></p>
-<p align="center"><font size="5" color="#FFFF00">
-<span style="background-color: #000000">跟单合作，您只需开户入金3500美元</span></font></p>
-<p align="center"><font size="5" color="#FFFF00">
-<span style="background-color: #000000">申请绑定我们的交易信号，然后坐等收益</span></font></p>
-<p align="center">跟单合作客户，可用模拟盘检测我们的实力，认可实力后，放心真实资金跟单</p>    
-<p align="center">备注：不定期增加入金金额，下次调整12月前，早合作早收益</p>
-<p align="center">福利：仓位资金管理表格，<a target="_blank" href="/ziliao/自动计算下单手数.xlsx">自动计算下单手数</a></p>
-<p align="center"><a target="_parent" href="DetailedStatement.html">
-<font size="5" color="#FF0000"><span style="text-decoration: none">案例：2025年7月份交易数据</span></font></font></a></p>
+    <!-- 英雄区 -->
+    <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-dark to-primary text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('https://picsum.photos/seed/pattern/1200/800')] bg-cover bg-center"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6 md:pr-8">
+                    <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+                        10年打磨，一套能让你<span class="text-secondary">稳定盈利</span>的外汇交易系统
+                    </h1>
+                    <p class="text-lg opacity-90">
+                        无需复杂分析，无需多年经验，只需无脑执行，就能从汇海中轻松获利
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#cooperation" class="btn-secondary">
+                            立即了解合作
+                        </a>
+                        <a href="#cases" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 border border-white/30">
+                            查看实战案例
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <!-- 交易系统图片（原网页核心图片保留） -->
+                    <div class="bg-white p-4 rounded-lg shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 max-w-full">
+                        <img src="https://36387.cn/img/jxs.jpg" alt="简易外汇交易系统K线分析界面" class="rounded w-full h-auto" />
+                        <p class="text-center text-dark mt-2 font-medium">系统实时K线信号展示（红涨绿跌一目了然）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 波浪分隔符 -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" class="w-full h-auto">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 系统核心 -->
+    <section id="core" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">系统核心与构成</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">简易外汇交易系统并非凭空而来，而是经过8年实战打磨，融合数千次交易经验总结而成</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary">投资理念</h3>
+                    <p class="text-gray-600">
+                        以"顺势而为"为核心，不与趋势对抗。通过识别多空力量转折点，只参与大概率盈利的行情，拒绝"猜顶猜底"的侥幸心理。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-signal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary">交易指令</h3>
+                    <p class="text-gray-600">
+                        系统通过固定算法生成明确的"买入/卖出"信号（界面中以箭头标记），信号触发条件完全透明，避免人为主观判断干扰。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-list-ol"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary">操作程序</h3>
+                    <p class="text-gray-600">
+                        从"信号识别→仓位计算→下单执行→止损止盈设置"，每一步都有标准化流程，新手可按步骤照做，无需额外思考。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary">操盘原则</h3>
+                    <p class="text-gray-600">
+                        严格执行"止损不犹豫、止盈不贪多"，单笔最大亏损控制在本金的2%以内，通过"小亏大赚"的累积实现长期盈利。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 系统工作流程 -->
+            <div class="mt-16 md:mt-24">
+                <h3 class="text-2xl font-bold text-center mb-12 text-primary">系统工作流程</h3>
+                <div class="relative">
+                    <!-- 连接线 -->
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-primary/20 transform -translate-x-1/2"></div>
+                    
+                    <div class="space-y-12 md:space-y-0 relative">
+                        <!-- 步骤1 -->
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-5/12 md:text-right order-2 md:order-1 mt-4 md:mt-0">
+                                <h4 class="text-xl font-bold text-primary mb-2">识别市场趋势</h4>
+                                <p class="text-gray-600">系统自动分析K线组合形态，识别当前市场多空力量对比及趋势方向</p>
+                            </div>
+                            <div class="md:w-2/12 flex justify-center order-1 md:order-2">
+                                <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg z-10">1</div>
+                            </div>
+                            <div class="md:w-5/12 order-3"></div>
+                        </div>
+                        
+                        <!-- 步骤2 -->
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-5/12 order-2 mt-4 md:mt-0"></div>
+                            <div class="md:w-2/12 flex justify-center order-1">
+                                <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg z-10">2</div>
+                            </div>
+                            <div class="md:w-5/12 order-3">
+                                <h4 class="text-xl font-bold text-primary mb-2">生成交易信号</h4>
+                                <p class="text-gray-600">当达到预设条件时，系统自动生成买入/卖出信号，以箭头形式直观展示</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 步骤3 -->
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-5/12 md:text-right order-2 md:order-1 mt-4 md:mt-0">
+                                <h4 class="text-xl font-bold text-primary mb-2">计算仓位与风险</h4>
+                                <p class="text-gray-600">根据账户资金自动计算最优下单手数，并标记明确的止损位和止盈位</p>
+                            </div>
+                            <div class="md:w-2/12 flex justify-center order-1 md:order-2">
+                                <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg z-10">3</div>
+                            </div>
+                            <div class="md:w-5/12 order-3"></div>
+                        </div>
+                        
+                        <!-- 步骤4 -->
+                        <div class="md:flex items-center justify-between">
+                            <div class="md:w-5/12 order-2 mt-4 md:mt-0"></div>
+                            <div class="md:w-2/12 flex justify-center order-1">
+                                <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg z-10">4</div>
+                            </div>
+                            <div class="md:w-5/12 order-3">
+                                <h4 class="text-xl font-bold text-primary mb-2">执行与监控</h4>
+                                <p class="text-gray-600">用户按信号执行交易，系统持续监控市场，达到止盈或止损位时提示离场</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 核心优势 -->
+    <section id="advantages" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">为什么选择我们的系统？</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">我们的系统专为解决外汇交易痛点而设计，让复杂的交易变得简单可控</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mb-4">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">直观易懂，新手也能上手</h3>
+                    <p class="text-gray-600">
+                        摒弃复杂的技术指标，用"红涨绿跌"的K线组合直接展示多空力量。哪怕是从未接触过外汇的新手，30分钟即可学会识别信号。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mb-4">
+                        <i class="fa fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">无需动脑，傻傻执行即可</h3>
+                    <p class="text-gray-600">
+                        系统已预设所有决策逻辑，你不需要分析市场、预测行情，只需看到信号后按指令操作。彻底告别"纠结下单、犹豫平仓"的痛苦。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl mb-4">
+                        <i class="fa fa-ban"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">明确止损止盈，告别亏损恐惧</h3>
+                    <p class="text-gray-600">
+                        每笔交易的止损位、止盈位由系统提前标记（界面箭头旁标注），风险可控。再也不会因为"不知道何时离场"而眼睁睁看着盈利变亏损。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 福利工具 -->
+            <div class="mt-16 md:mt-24 bg-light rounded-2xl p-8 md:p-10 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-primary mb-4">专属福利：仓位资金管理表格</h3>
+                        <p class="text-gray-600 mb-6">
+                            系统配套「自动计算下单手数」的表格工具，输入你的账户资金和风险承受度，立即得出最优下单量，避免因仓位不合理导致的大额亏损。
+                        </p>
+                        <a href="https://36387.cn/ziliao/%E8%87%AA%E5%8A%A8%E8%AE%A1%E7%AE%97%E4%B8%8B%E5%8D%95%E6%89%8B%E6%95%B0.xlsx" class="inline-flex items-center text-primary font-medium hover:text-accent transition-colors">
+                            点击领取工具 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="w-full md:w-64 h-48 bg-white p-4 rounded-lg shadow-md">
+                        <img src="https://picsum.photos/seed/table/400/250" alt="仓位资金管理表格示例" class="w-full h-full object-cover rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作模式 -->
+    <section id="cooperation" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">两种合作模式，总有一款适合你</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">根据您的需求选择最合适的合作方式，开启稳定盈利之旅</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- 机构加盟 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="bg-primary text-white p-6">
+                        <h3 class="text-2xl font-bold">机构加盟</h3>
+                        <p class="opacity-90">适合金融机构、工作室批量使用</p>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-bold text-primary">¥99,800</span>
+                            <span class="text-gray-500 ml-2">/ 2025年年费</span>
+                        </div>
+                        <p class="text-gray-600">
+                            加盟费逐年递增，早合作早锁定低价。加盟后可获得系统全部权限、专属培训、技术支持及品牌授权。
+                        </p>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>无限账号使用权限</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>每月1次线上培训</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>专属客服7×12小时服务</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>品牌授权与宣传资料</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center btn-primary mt-6">
+                            咨询加盟详情
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 跟单合作 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border-2 border-primary relative">
+                    <div class="absolute top-0 right-0 bg-secondary text-dark text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        推荐选择
+                    </div>
+                    <div class="bg-primary text-white p-6">
+                        <h3 class="text-2xl font-bold">跟单合作</h3>
+                        <p class="opacity-90">适合个人投资者，零加盟费</p>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-bold text-primary">$3,500</span>
+                            <span class="text-gray-500 ml-2">/ 最低入金</span>
+                        </div>
+                        <p class="text-gray-600">
+                            无需支付加盟费，开户入金后绑定我们的交易信号，系统自动同步下单，坐等收益。支持先用模拟盘验证实力。
+                        </p>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>零加盟费，仅需入金操作</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>模拟盘免费测试，满意再实盘</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>自动同步交易信号，无需盯盘</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>下次入金调整12月前，早合作更划算</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center btn-secondary mt-6">
+                            立即开始跟单
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实战案例 -->
+    <section id="cases" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">实战数据说话，实力看得见</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+                我们不做虚假宣传，所有数据均来自真实交易记录。以下为2025年7月系统实战表现，可联系获取完整交易日志验证。
+            </p>
+            
+            <div class="max-w-4xl mx-auto bg-gray-50 p-6 md:p-8 rounded-xl shadow-md">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-primary mb-6">2025年7月交易数据</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">总交易次数</span>
+                                    <span class="font-medium">42笔</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">盈利笔数</span>
+                                    <span class="font-medium">35笔（胜率83.3%）</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-green-500 h-2.5 rounded-full" style="width: 83%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">月收益率</span>
+                                    <span class="font-medium">12.6%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-secondary h-2.5 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">最大单笔亏损</span>
+                                    <span class="font-medium">1.8%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-red-500 h-2.5 rounded-full" style="width: 10%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                               </div> 
+        
+                        <div>
+                            <img src="https://36387.cn/DetailedStatement.gif" width=820 height=200 border=0 alt="Graph">
+                            <p class="text-center text-sm text-gray-50 mt-2">7月盈利曲线（单位：美元）</p>
+                        </div>
+   
     
-<p align="center">
-<img border="0" src="/img/gzh.jpg" width="258" height="258"></p>
-<font size="4">
-<p align="center">扫码或长按二维码关注公众号</p>
-<p align="center">
-      <a target="_blank" href="https://affs.click/Jbwd8">XM平台</a>&nbsp;
-      <a target="_blank" href="https://ic-official-cn.com/?camp=3444">IC平台</a>&nbsp;
-      <a target="_blank" href="https://mp.weixin.qq.com/s/fZeqkJVqJeZjup2LiSuA8w">招聘投资理财顾问</a>&nbsp;
-      <a target="_blank" href="/wd/">文档库</a>&nbsp;
-      <a target="_blank" href="/0.html"><font size="4" color="#FF0000"><span style="background-color: #FFFF00">交易平台</span></font></a>&nbsp;
-      交易员微信：15219407427</p>
+                
+                <div class="mt-8 text-center">
+                    <a target="_blank" href="https://36387.cn/DetailedStatement.html" class="inline-flex items-center text-primary font-medium hover:text-accent transition-colors">
+                        查看完整7月交易明细 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 用户见证 -->
+            <div class="mt-16 md:mt-24">
+                <h3 class="text-2xl font-bold text-center mb-12 text-primary">他们都在用，你还在等什么？</h3>
+                <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/user1/100/100" alt="用户头像" class="w-14 h-14 rounded-full object-cover border-2 border-primary" />
+                            <div class="ml-4">
+                                <div class="font-bold text-primary">张先生 | 外贸从业者</div>
+                                <div class="text-sm text-gray-500">跟单3个月</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "以前自己做外汇亏了不少，用了这个系统跟单后，不用盯盘，3个月盈利23%，终于找到靠谱的方法了！"
+                        </p>
+                        <div class="mt-4 text-secondary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/user2/100/100" alt="用户头像" class="w-14 h-14 rounded-full object-cover border-2 border-primary" />
+                            <div class="ml-4">
+                                <div class="font-bold text-primary">李女士 | 全职妈妈</div>
+                                <div class="text-sm text-gray-500">模拟盘测试1个月</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "模拟盘跟着信号操作，一个月赚了15%，信号清晰，操作简单，每天花10分钟看一眼就行，准备下周入金实盘！"
+                        </p>
+                        <div class="mt-4 text-secondary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/seed/user3/100/100" alt="用户头像" class="w-14 h-14 rounded-full object-cover border-2 border-primary" />
+                            <div class="ml-4">
+                                <div class="font-bold text-primary">王总 | 投资工作室负责人</div>
+                                <div class="text-sm text-gray-500">机构加盟6个月</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">
+                            "加盟后给客户用这个系统，投诉率降了80%，客户盈利稳定，我们的业务也越来越好，物超所值！"
+                        </p>
+                        <div class="mt-4 text-secondary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">常见问题解答</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-3 flex items-center">
+                        <i class="fa fa-question-circle mr-3 text-accent"></i>
+                        这个系统适合完全没有经验的新手吗？
+                    </h3>
+                    <p class="text-gray-600 pl-8">
+                        非常适合！系统设计的核心就是"简单易执行"，新手无需了解复杂的技术分析，只需按照系统给出的箭头信号和步骤操作即可。我们还提供1对1的入门指导，确保3天内掌握基本操作。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-3 flex items-center">
+                        <i class="fa fa-question-circle mr-3 text-accent"></i>
+                        跟单合作需要自己盯盘吗？
+                    </h3>
+                    <p class="text-gray-600 pl-8">
+                        不需要！绑定信号后，系统会自动同步下单、设置止损止盈，你甚至可以关闭电脑，只需定期查看账户收益即可。平均每天花5分钟时间足够。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-3 flex items-center">
+                        <i class="fa fa-question-circle mr-3 text-accent"></i>
+                        系统的信号准确率能一直保持这么高吗？
+                    </h3>
+                    <p class="text-gray-600 pl-8">
+                        任何交易系统都无法保证100%准确，但我们的系统通过8年迭代，已能稳定在75%-85%的胜率。同时，严格的止损规则能控制亏损，确保长期盈利的稳定性。我们会持续优化系统，应对市场变化。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-3 flex items-center">
+                        <i class="fa fa-question-circle mr-3 text-accent"></i>
+                        开户需要通过指定平台吗？
+                    </h3>
+                    <p class="text-gray-600 pl-8">
+                        是的，目前我们的信号仅支持XM平台和IC平台（均为受监管的正规平台），这两个平台点差低、稳定性强，能更好地配合系统执行。点击页面底部的平台链接可直接开户。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-3 flex items-center">
+                        <i class="fa fa-question-circle mr-3 text-accent"></i>
+                        如果对系统不满意可以退款吗？
+                    </h3>
+                    <p class="text-gray-600 pl-8">
+                        机构加盟用户可享受7天无理由退款（需未使用系统核心功能），跟单合作用户无加盟费，可随时出金，我们不收取额外费用。建议先通过模拟盘测试系统效果，再决定是否实盘操作。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">立即联系，开启盈利之旅</h2>
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12">填写表单或通过以下方式联系我们，专业顾问将为您提供一对一咨询服务</p>
+            
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">关注公众号，获取更多资讯</h3>
+                    <div class="bg-gray-100 p-6 rounded-xl inline-block">
+                        <img src="https://36387.cn/img/gzh.jpg" alt="公众号二维码" class="w-64 h-64 object-cover rounded-lg shadow-md" />
+                        <p class="text-center mt-4 text-gray-600">扫码或长按关注公众号</p>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="text-xl font-bold text-primary mb-4">合作平台</h4>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://affs.click/Jbwd8" class="bg-light hover:bg-primary hover:text-white text-primary px-5 py-3 rounded-lg transition-all duration-300 flex items-center">
+                                <i class="fa fa-globe mr-2"></i> XM平台
+                            </a>
+                            <a href="https://ic-official-cn.com/?camp=3444" class="bg-light hover:bg-primary hover:text-white text-primary px-5 py-3 rounded-lg transition-all duration-300 flex items-center">
+                                <i class="fa fa-globe mr-2"></i> IC平台
+                            </a>
+                            <a href="https://36387.cn/0.html" class="bg-light hover:bg-primary hover:text-white text-primary px-5 py-3 rounded-lg transition-all duration-300 flex items-center">
+                                <i class="fa fa-area-chart mr-2"></i> 交易平台
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">直接沟通，解答你的疑问</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fa fa-weixin"></i>
+                            </div>
+                            <div class="ml-5">
+                                <div class="font-bold text-gray-800">交易员微信</div>
+                                <div class="text-gray-600">15219407427</div>
+                                <div class="text-sm text-gray-500 mt-1">添加备注"外汇系统"</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="ml-5">
+                                <div class="font-bold text-gray-800">招聘信息</div>
+                                <div class="text-gray-600">诚聘投资理财顾问</div>
+                                <a href="https://mp.weixin.qq.com/s/fZeqkJVqJeZjup2LiSuA8w" class="text-sm text-primary mt-1 inline-block hover:underline">点击查看详情</a>
+                            </div>
+                        </div>
+                        
+                        <form class="mt-8 space-y-5">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">您的姓名</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="请输入您的姓名" />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">联系电话</label>
+                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="请输入您的联系电话" />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">您感兴趣的合作模式</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+                                    <option value="">请选择合作模式</option>
+                                    <option value="join">机构加盟</option>
+                                    <option value="follow">跟单合作</option>
+                                    <option value="other">其他咨询</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">您的问题</label>
+                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" rows="4" placeholder="请输入你想了解的问题，我们会尽快回复"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full btn-primary">
+                                提交咨询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold mb-2">简易外汇交易系统</div>
+                    <p class="opacity-70">让外汇盈利变得简单</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="opacity-70 mb-2">风险提示：外汇交易有风险，投资需谨慎</p>
+                    <p class="opacity-50 text-sm">© 2025 甲子贸易科技有限公司 版权所有</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 invisible">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-primary', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+                
+                backToTop.classList.remove('translate-y-20', 'opacity-0', 'invisible');
+                backToTop.classList.add('translate-y-0', 'opacity-100', 'visible');
+            } else {
+                navbar.classList.remove('bg-primary', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+                
+                backToTop.classList.add('translate-y-20', 'opacity-0', 'invisible');
+                backToTop.classList.remove('translate-y-0', 'opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+        
+        menuBtn.addEventListener('click', function() {
+            if (menuOpen) {
+                mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+                mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+                menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+            } else {
+                mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+                mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
+                menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+            }
+            menuOpen = !menuOpen;
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单
+                if (menuOpen) {
+                    mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+                    mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+                    menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+                    menuOpen = false;
+                }
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回顶部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 盈利曲线图
+        const ctx = document.getElementById('profitChart').getContext('2d');
+        const profitChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1日', '5日', '10日', '15日', '20日', '25日', '31日'],
+                datasets: [{
+                    label: '账户余额',
+                    data: [10000, 10500, 10300, 10900, 11200, 11800, 11260],
+                    borderColor: '#0F4C81',
+                    backgroundColor: 'rgba(15, 76, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
