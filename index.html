@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -961,58 +962,112 @@
         });
 
 
+// 初始化聊天
+(async function () {
+    const authentication = 'none';
+    let metadata;
+    if (authentication === 'n8nUserAuth') {
+        try {
+            const response = await fetch('/rest/login', {
+                    method: 'GET',
+                    headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+            });
 
-        // 初始化聊天
-        (async function () {
-            const authentication = 'none';
-            let metadata;
-            if (authentication === 'n8nUserAuth') {
-                try {
-                    const response = await fetch('/rest/login', {
-                            method: 'GET',
-                            headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
-                    });
-
-                    if (response.status !== 200) {
-                        throw new Error('Not logged in');
-                    }
-
-                    const responseData = await response.json();
-                    metadata = {
-                        user: {
-                            id: responseData.data.id,
-                            firstName: responseData.data.firstName,
-                            lastName: responseData.data.lastName,
-                            email: responseData.data.email,
-                        },
-                    };
-                } catch (error) {
-                    window.location.href = '/signin?redirect=' + window.location.href;
-                    return;
-                }
+            if (response.status !== 200) {
+                throw new Error('Not logged in');
             }
 
-            createChat({
-                mode: 'fullscreen',
-                webhookUrl: 'https://36387cn-n8n.hf.space/webhook/e41cc244-3750-4f26-b15e-667378e5fd12/chat',
-                showWelcomeScreen: false,
-                loadPreviousSession: false,
-                metadata: metadata,
-                webhookConfig: {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Instance-Id': 'fa509f088384815abeb9f3eff477fa05ca4f2275bfa69e40df61a89998f074ec',
-                    }
+            const responseData = await response.json();
+            metadata = {
+                user: {
+                    id: responseData.data.id,
+                    firstName: responseData.data.firstName,
+                    lastName: responseData.data.lastName,
+                    email: responseData.data.email,
                 },
-                allowFileUploads: false,
-                allowedFilesMimeTypes: '',
-                i18n: {
-                    en: {"subtitle":"请描述您要分析的股票、外汇、期货和虚拟货币。","title":"Ai金融分析师 👋"},
-                },
-                initialMessages: ["您好！我是Ai金融分析师  👋","请描述您要分析的股票、外汇、期货和虚拟货币，我会尽力为您解答，所有回答仅供参考，投资需谨慎。"],
-                enableStreaming: false,
+            };
+        } catch (error) {
+            window.location.href = '/signin?redirect=' + window.location.href;
+            return;
+        }
+    }
+
+    // 自定义消息渲染函数，确保HTML被正确解析
+    function renderRichContentMessage(message) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = message;
+        // 为链接添加样式
+        tempDiv.querySelectorAll('a').forEach(link => {
+            link.style.color = '#2563eb';
+            link.style.textDecoration = 'underline';
+            link.style.cursor = 'pointer';
+        });
+        // 为图片添加样式和替代文本
+        tempDiv.querySelectorAll('img').forEach(img => {
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+            img.style.margin = '10px 0';
+            if (!img.alt) img.alt = '相关金融图表';
+        });
+        return tempDiv;
+    }
+
+    createChat({
+        mode: 'fullscreen',
+        webhookUrl: 'https://36387cn-n8n.hf.space/webhook/e41cc244-3750-4f26-b15e-667378e5fd12/chat',
+        showWelcomeScreen: false,
+        loadPreviousSession: false,
+        metadata: metadata,
+        webhookConfig: {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Instance-Id': 'fa509f088384815abeb9f3eff477fa05ca4f2275bfa69e40df61a89998f074ec',
+            }
+        },
+        allowFileUploads: false,
+        allowedFilesMimeTypes: '',
+        i18n: {
+            en: {
+                "subtitle": "请描述您要分析的股票、外汇、期货和虚拟货币。",
+                "title": "Ai金融分析师 👋"
+            },
+        },
+        initialMessages: [
+            // 图片
+            '<img src="https://36387.cn/img/jxs.jpg" alt="金融市场趋势图表" />',
+            // 第一个超链接
+            '<a target="_blank" href="https://shiyu-coder.github.io/Kronos-demo/">比特币未来24小时行情预测</a>',
+            // 第二个超链接
+             //'<a target="_blank" href="https://example.com/stock-market-trends">今日股市趋势分析</a>'
+        ],
+        enableStreaming: false,
+        // 使用自定义渲染函数处理富内容
+        messageRenderer: renderRichContentMessage,
+        // 允许HTML内容
+        allowHtml: true
+    });
+
+    // 确保内容正确渲染的备选方案
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            // 处理所有消息中的HTML内容
+            document.querySelectorAll('.chat-message').forEach(function(el) {
+                // 处理图片
+                if (el.textContent.includes('金融市场趋势图表') && !el.querySelector('img')) {
+                    el.innerHTML = '<img src="https://36387.cn/img/jxs.jpg" alt="金融市场趋势图表" style="max-width:100%; height:auto;" />';
+                }
+                // 处理链接
+                if (el.textContent.includes('比特币未来24小时行情预测') && !el.querySelector('a')) {
+                    el.innerHTML = '<a target="_blank" href="https://shiyu-coder.github.io/Kronos-demo/" style="color: #2563eb; text-decoration: underline;">比特币未来24小时行情预测</a>';
+                }
+                if (el.textContent.includes('今日股市趋势分析') && !el.querySelector('a')) {
+                    el.innerHTML = '<a target="_blank" href="https://example.com/stock-market-trends" style="color: #2563eb; text-decoration: underline;">今日股市趋势分析</a>';
+                }
             });
-        })();
+        }, 1000);
+    });
+})();
+
     </script>
 </body>
 </html>
