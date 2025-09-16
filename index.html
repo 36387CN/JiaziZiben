@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalLink | 专业投融资服务平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3460',
+                        secondary: '#1A73E8',
+                        accent: '#E94560',
+                        neutral: '#F5F5F7',
+                        dark: '#16213E'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-lift {
+                @apply hover:-translate-y-1 transition-all duration-300;
+            }
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-800 antialiased">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <span class="text-primary text-2xl font-bold">Global<span class="text-secondary">Link</span></span>
+                    </a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-primary font-medium transition-colors">服务内容</a>
+                    <a href="#features" class="text-gray-700 hover:text-primary font-medium transition-colors">业务特色</a>
+                    <a href="#team" class="text-gray-700 hover:text-primary font-medium transition-colors">专业团队</a>
+                    <a href="#cases" class="text-gray-700 hover:text-primary font-medium transition-colors">成功案例</a>
+                    <a href="#trust" class="text-gray-700 hover:text-primary font-medium transition-colors">信任保障</a>
+                    <a href="#contact" class="text-white bg-primary hover:bg-primary/90 px-5 py-2 rounded-full font-medium transition-colors">联系我们</a>
+                </nav>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                        <i class="fa fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#services" class="block text-gray-700 hover:text-primary font-medium py-2">服务内容</a>
+                <a href="#features" class="block text-gray-700 hover:text-primary font-medium py-2">业务特色</a>
+                <a href="#team" class="block text-gray-700 hover:text-primary font-medium py-2">专业团队</a>
+                <a href="#cases" class="block text-gray-700 hover:text-primary font-medium py-2">成功案例</a>
+                <a href="#trust" class="block text-gray-700 hover:text-primary font-medium py-2">信任保障</a>
+                <a href="#contact" class="block text-white bg-primary hover:bg-primary/90 px-5 py-2 rounded-full font-medium text-center">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-br from-primary to-dark text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('https://picsum.photos/id/180/1920/1080')] bg-cover bg-center"></div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight mb-6 text-shadow">
+                    连接全球资本<br>助力企业成长
+                </h1>
+                <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-gray-200 mb-10 leading-relaxed">
+                    专业投融资服务，打通资金供需壁垒，
+                    为企业与投资者搭建安全、高效的合作桥梁
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                        立即咨询
+                    </a>
+                    <a href="#services" class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold text-lg transition-all">
+                        了解服务
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 波浪装饰 -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+            <svg preserveAspectRatio="none" width="100%" height="50" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#ffffff" opacity=".75"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="#ffffff" opacity=".5"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 数据概览 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2 counter" data-target="12">0</div>
+                    <p class="text-gray-600 font-medium">行业经验（年）</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2 counter" data-target="850">0</div>
+                    <p class="text-gray-600 font-medium">成功案例</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2 counter" data-target="35">0</div>
+                    <p class="text-gray-600 font-medium">覆盖国家/地区</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2 counter" data-target="280">0</div>
+                    <p class="text-gray-600 font-medium">合作机构</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务内容 -->
+    <section id="services" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-4">我们的专业服务</h2>
+                <p class="text-gray-600 text-lg">多年行业经验积累，提供全方位投融资解决方案，满足不同客户的多样化需求</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-handshake-o text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">居间介绍服务</h3>
+                    <p class="text-gray-600 mb-4">基于庞大的资源网络，精准匹配资金供需双方，提供股权、债权等多元化投融资信息，搭建高效沟通桥梁。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>精准匹配投资偏好与融资需求</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>提供专业的对接沟通支持</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>保障信息传递的准确性与及时性</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 服务卡片 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-search text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">尽职调查服务</h3>
+                    <p class="text-gray-600 mb-4">专业团队深入调查目标企业的经营状况、财务数据、市场风险等关键信息，提供客观全面的尽职调查报告。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>财务真实性核查与分析</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>法律合规性审查</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>市场与行业风险评估</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 服务卡片 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-file-text-o text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">方案设计服务</h3>
+                    <p class="text-gray-600 mb-4">根据客户具体情况，量身定制最优投融资方案，包括资金规模、利率、期限及还款方式等核心要素。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>个性化融资结构设计</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>投资组合优化建议</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>成本与风险平衡方案</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 服务卡片 4 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">并购重组服务</h3>
+                    <p class="text-gray-600 mb-4">为企业提供并购标的寻找、投资分析、需求匹配等专业服务，助力企业实现资源整合与战略扩张。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>并购标的筛选与评估</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>交易结构设计与谈判支持</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>并购后的整合方案建议</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 服务卡片 5 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-building-o text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">改制与上市培育</h3>
+                    <p class="text-gray-600 mb-4">协助企业进行规范化改制，提供上市辅导服务，帮助企业逐步具备上市条件，实现资本运作升级。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>现代企业制度建立指导</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>上市流程辅导与规划</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>合规化运营体系建设</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 服务卡片 6 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">跨境投融资服务</h3>
+                    <p class="text-gray-600 mb-4">依托全球化网络，为企业提供跨境投资与融资解决方案，帮助企业拓展国际市场，获取全球资本。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>跨境投资机会对接</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>国际资本引入服务</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>跨境交易合规指导</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务特色 -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-4">我们的业务特色</h2>
+                <p class="text-gray-600 text-lg">专注于提供差异化服务，打造核心竞争力，为客户创造独特价值</p>
+            </div>
+            
+            <!-- 跨境投融资特色 -->
+            <div class="bg-neutral rounded-2xl overflow-hidden mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <span class="text-secondary font-semibold mb-3">全球视野</span>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">跨境投融资服务</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            我们拥有覆盖全球35个国家和地区的资本网络，深谙国际投融资规则与文化差异，
+                            为企业提供全方位跨境资本解决方案。无论是"引进来"还是"走出去"，我们都能
+                            为您架起跨越国界的资本桥梁。
+                        </p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-check text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">国际资本对接</h4>
+                                    <p class="text-gray-600">与全球知名投资机构建立长期合作，为国内企业引入海外资本</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-check text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">海外投资机会</h4>
+                                    <p class="text-gray-600">为投资者筛选优质海外项目，提供本地化投资分析与支持</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-check text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">跨境合规指导</h4>
+                                    <p class="text-gray-600">熟悉各国法律法规与政策，提供专业合规建议，降低跨境交易风险</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-medium transition-colors w-fit">
+                            了解更多跨境服务
+                        </a>
+                    </div>
+                    <div class="bg-gray-100 h-64 lg:h-auto">
+                        <img src="https://picsum.photos/id/28/800/600" alt="全球资本流动示意图，展示跨境投融资网络" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 其他特色 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-neutral rounded-xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bullseye text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">精准匹配系统</h3>
+                    <p class="text-gray-600">
+                        基于AI智能算法与行业经验，构建精准匹配模型，
+                        分析投资方风险偏好与融资方需求特征，提高对接成功率。
+                    </p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">全流程风险管控</h3>
+                    <p class="text-gray-600">
+                        建立覆盖项目筛选、尽职调查、交易执行到投后管理的全流程
+                        风险管控体系，为投融资双方提供全方位风险保障。
+                    </p>
+                </div>
+                
+                <div class="bg-neutral rounded-xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">行业专家团队</h3>
+                    <p class="text-gray-600">
+                        汇聚金融、法律、税务等多领域专家，拥有丰富行业经验，
+                        提供专业咨询与解决方案，满足客户多元化需求。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业团队 -->
+    <section id="team" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-4">专业团队</h2>
+                <p class="text-gray-600 text-lg">我们的团队由资深金融专家、法律顾问和行业分析师组成，拥有丰富的实战经验</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 团队成员 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1005/400/500" alt="张明 - 首席执行官，拥有15年投融资行业经验" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">张明</h3>
+                        <p class="text-secondary mb-3">首席执行官</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            前国际投行副总裁，15年投融资行业经验，主导完成超过200亿元跨境融资项目。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队成员 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1000/400/500" alt="李娜 - 跨境业务总监，精通国际投融资规则" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">李娜</h3>
+                        <p class="text-secondary mb-3">跨境业务总监</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            拥有海外留学背景，精通国际投融资规则，曾帮助30多家企业成功引入海外资本。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队成员 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1012/400/500" alt="王强 - 风控总监，前资深律师" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">王强</h3>
+                        <p class="text-secondary mb-3">风控总监</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            前资深律师，10年金融法律经验，主导设计了公司全流程风险管控体系。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队成员 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1027/400/500" alt="陈静 - 行业研究主管，多领域产业分析经验" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">陈静</h3>
+                        <p class="text-secondary mb-3">行业研究主管</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            经济学博士，拥有多领域产业分析经验，擅长发掘高潜力投资项目与行业趋势。
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成功案例 -->
+    <section id="cases" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-4">成功案例</h2>
+                <p class="text-gray-600 text-lg">我们已帮助众多企业与投资者实现成功对接，创造了显著价值</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- 案例 1 -->
+                <div class="bg-neutral rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 h-48 md:h-auto">
+                            <img src="https://picsum.photos/id/20/400/500" alt="新能源企业A轮融资案例" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <span class="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full mb-3">跨境融资</span>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">某新能源企业5000万美元A轮融资</h3>
+                            <p class="text-gray-600 mb-4">
+                                帮助国内领先的新能源技术公司完成由美国知名风投领投的A轮融资，
+                                资金主要用于海外市场拓展与新技术研发，目前企业估值已增长300%。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">新能源</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">A轮</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">跨境</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例 2 -->
+                <div class="bg-neutral rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover-lift">
+                    <div class="grid grid-cols-1 md:grid-cols-3">
+                        <div class="md:col-span-1 h-48 md:h-auto">
+                            <img src="https://picsum.photos/id/160/400/500" alt="跨境并购案例" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:col-span-2 p-6">
+                            <span class="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full mb-3">跨境并购</span>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">某制造业企业收购德国同行企业</h3>
+                            <p class="text-gray-600 mb-4">
+                                协助国内制造业龙头企业完成对德国某细分领域隐形冠军的全资收购，
+                                获得核心技术与欧洲市场渠道，提升了企业全球竞争力。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">制造业</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">跨境并购</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded">技术获取</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 数据图表 -->
+            <div class="bg-neutral rounded-xl p-6 lg:p-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">我们的业绩表现</h3>
+                <div class="h-80">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 信任保障 -->
+    <section id="trust" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4">信任保障体系</h2>
+                <p class="text-gray-300 text-lg">我们始终将合规、透明、诚信作为核心价值观，建立全方位信任保障体系</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/15 transition-all hover-lift">
+                    <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-gavel text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">严格合规经营</h3>
+                    <p class="text-gray-300 mb-4">
+                        经地方金融监督管理局备案，严格遵守《证券法》等相关法律法规，
+                        接受中国证监会派出机构监督，杜绝任何违法违规行为。
+                    </p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>持牌经营，合规备案</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>严格遵守监管要求</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>定期接受合规审查</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/15 transition-all hover-lift">
+                    <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-eye text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">信息透明公开</h3>
+                    <p class="text-gray-300 mb-4">
+                        建立完善的信息披露机制，向投融资双方全面、准确、及时地披露
+                        相关信息，消除信息不对称，让每一笔交易都在阳光下进行。
+                    </p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>全面披露项目信息</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>透明化服务收费标准</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>双向信息同步机制</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover:bg-white/15 transition-all hover-lift">
+                    <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">全程风险管控</h3>
+                    <p class="text-gray-300 mb-4">
+                        建立从项目筛选到投后管理的全流程风险管控体系，
+                        运用专业能力识别和规避风险，保障投融资双方的合法权益。
+                    </p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>严格的项目审核机制</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>专业的风险评估模型</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check mt-1 mr-2"></i>
+                            <span>持续的投后风险管理</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 合作伙伴
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold text-center mb-10">合作伙伴</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴1</p>
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴2</p>
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴3</p>
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴4</p>
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴5</p>
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
+                        <i class="fa fa-building text-4xl"></i>
+                        <p class="mt-2 text-sm text-center">合作伙伴6</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-primary mb-6">联系我们</h2>
+                        <p class="text-gray-600 text-lg mb-8">
+                            无论您是需要融资的企业，还是寻找投资机会的投资者，
+                            我们都将为您提供专业的服务与支持，欢迎随时联系我们。
+                        </p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-map-marker text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">办公地址</h4>
+                                    <p class="text-gray-600">北京市朝阳区建国门外大街甲6号SK大厦28层</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-phone text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">联系微信</h4>
+                                    <p class="text-gray-600">15219407427</p>
+                                    <!-- <p class="text-gray-600">010-88887777</p> -->
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-envelope text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">电子邮箱</h4>
+                                    <p class="text-gray-600">lizhenfang@36387.cn</p>
+                                    <!-- <p class="text-gray-600">service@globallink.com</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-white rounded-xl p-8 shadow-lg">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">发送咨询</h3>
+                            <form id="contact-form">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                        <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的姓名">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+                                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的联系电话">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的电子邮箱">
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="service" class="block text-gray-700 font-medium mb-2">咨询服务类型</label>
+                                    <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+                                        <option value="">请选择服务类型</option>
+                                        <option value="domestic-financing">国内融资</option>
+                                        <option value="cross-border-financing">跨境融资</option>
+                                        <option value="investment">投资需求</option>
+                                        <option value="merger">并购重组</option>
+                                        <option value="other">其他服务</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">咨询内容</label>
+                                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请详细描述您的需求或问题"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                                    提交咨询
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="#" class="inline-block mb-6">
+                        <span class="text-2xl font-bold">Global<span class="text-secondary">Link</span></span>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        专业的投融资服务平台，连接全球资本与优质项目，
+                        助力企业成长，实现资本增值。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">服务项目</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">居间介绍服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">尽职调查服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">方案设计服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">并购重组服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">改制与上市培育</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">跨境投融资服务</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">关于我们</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">专业团队</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">成功案例</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">新闻动态</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">加入我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">法律信息</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">服务条款</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">合规声明</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">风险提示</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                        &copy; 2023 GlobalLink 投融资服务平台. 保留所有权利.
+                    </p>
+                    <p class="text-gray-500 text-sm">
+                        京ICP备12345678号-1 | 京金融办备案第987654号
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+                
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+                
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // 返回顶部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 数字计数动画
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(() => {
+                            counter.innerText = Math.ceil(count + increment);
+                        }, 1);
+                    } else {
+                        counter.innerText = target;
+                        observer.unobserve(counter);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // 业绩图表
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                datasets: [
+                    {
+                        label: '完成项目数',
+                        data: [45, 89, 120, 185, 230, 280],
+                        borderColor: '#0F3460',
+                        backgroundColor: 'rgba(15, 52, 96, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: '融资金额(亿元)',
+                        data: [25, 58, 92, 156, 210, 285],
+                        borderColor: '#1A73E8',
+                        backgroundColor: 'rgba(26, 115, 232, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // 表单提交处理
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 这里可以添加表单验证和提交逻辑
+                alert('感谢您的咨询，我们将尽快与您联系！');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
