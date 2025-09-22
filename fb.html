@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Forex Scalper Trading System</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        a:hover {
+            color: #004499;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #003366;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-icon {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #004499;
+            color: white;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #003366;
+        }
+        .navbar-menu a {
+            margin-left: 30px;
+            font-weight: 500;
+        }
+
+        /* Hero区域 */
+        .hero {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .hero-highlight {
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* 核心优势 - 调整为2行2列 */
+        .features-grid {
+            display: grid;
+            /* 关键调整：每行固定2列，列宽自适应 */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px; /* 限制最大宽度，避免卡片过宽 */
+            margin: 0 auto; /* 居中显示 */
+        }
+        .feature-title {
+            font-size: 1.4rem;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        /* 交易步骤 */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        .step-card {
+            position: relative;
+            padding-left: 20px;
+        }
+        .step-number {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            background-color: #0066cc;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .step-title {
+            font-size: 1.3rem;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+        .signal-rule {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #0066cc;
+            background-color: #f0f7ff;
+        }
+        .sell-signal {
+            border-left-color: #cc3300;
+        }
+        .no-trade-signal {
+            border-left-color: #666;
+        }
+
+        /* 实战图表 - 添加图片样式 */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .chart-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .chart-img {
+            width: 100%;
+            height: 180px; /* 固定高度，保持统一 */
+            object-fit: cover; /* 保持图片比例，避免拉伸 */
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        .chart-name {
+            font-weight: 500;
+            color: #003366;
+        }
+
+        /* 产品包含内容 */
+        .what-you-get {
+            background-color: white;
+        }
+        .get-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .get-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        .get-list li::before {
+            content: "✓";
+            color: #0066cc;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 价格区域 */
+        .pricing {
+            background-color: #f0f7ff;
+            text-align: center;
+        }
+        .price-card {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .price-old {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .price-new {
+            font-size: 3rem;
+            color: #003366;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .price-note {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #003366;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .copyright {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式适配：小屏幕下核心优势改为1列 */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr; /* 手机/平板端1行1列 */
+            }
+            .navbar-menu {
+                display: none; /* 小屏幕隐藏导航菜单（可按需添加汉堡菜单） */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="navbar-logo">Fibonacci Forex Scalper</div>
+            <div class="navbar-menu">
+                <a href="#features">Features / 核心优势</a>
+                <a href="#how-to-trade">How To Trade / 交易步骤</a>
+                <a href="#charts">Charts / 实战图表</a>
+                <a href="#pricing">Pricing / 价格</a>
+                <a href="#contact">Contact / 联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-highlight">
+                11 Consecutive Profitable Months – Averaging 750+ Pips Per Month! / 连续11个月盈利——平均每月750+点！
+            </div>
+<img data-recalc-dims="1" fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-944" src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/AUDNZDM1-fibonacci-scalper1.png?resize=1000%2C530&#038;ssl=1" alt="" width="1000" height="530" />
+            <h1 class="hero-title">Rapid Fibonacci Forex Scalper <br> 快速斐波那契外汇剥头皮策略</h1>
+            <p class="hero-subtitle">
+                Are you looking for a rock-solid Fibonacci trading system that can generate profits in any currency market? <br> 
+                您是否在寻找一个可靠的斐波那契交易系统，能在任何货币市场中稳定盈利？
+            </p>
+            <p class="hero-subtitle">
+                Our advanced, real-time tested algorithm provides clear signals – even for beginners! <br>  
+                我们研发的先进算法经实时测试，提供清晰信号——纯新手也能轻松上手！
+            </p>
+            <a href="#pricing" class="btn">Get Started Now / 立即开始</a>
+        </div>
+    </section>
+
+    <!-- 核心优势 - 2行2列布局 -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Core Advantages / 核心优势</h2>
+            <div class="features-grid">
+                <!-- 高性能 -->
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3 class="feature-title">High Performance / 高性能</h3>
+                    <p>Our reliable Forex system aims to produce consistently strong results. / 可靠的外汇系统，旨在持续产生强劲盈利表现。</p>
+                </div>
+                <!-- 完全机械式交易 -->
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3 class="feature-title">Fully Mechanical Trading / 完全机械式交易</h3>
+                    <p>Automatic trade detection with precise buy/sell signals – zero guesswork. / 自动检测交易，提供精准买卖信号——无需任何猜测。</p>
+                </div>
+                <!-- 易于遵循 -->
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3 class="feature-title">Easy to Follow – Anywhere / 易于遵循——随时随地</h3>
+                    <p>Quick MT4 installation + visual/audio/email notifications + full after-sales support. / MT4快速安装 + 视觉/音频/邮件通知 + 全面售后支持。</p>
+                </div>
+                <!-- 绝对不重绘 -->
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3 class="feature-title">Absolutely No Repaint! / 绝对不重绘！</h3>
+                    <p>No cheating signals – signals won’t repaint when MT4 restarts. / 无欺诈信号——关闭并重启MT4后，信号不会重新绘制。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交易步骤 -->
+    <section id="how-to-trade" class="section what-you-get">
+        <div class="container">
+            <h2 class="section-title">How To Trade / 如何交易</h2>
+<p style="text-align: center;"><img data-recalc-dims="1" decoding="async" class="aligncenter size-full wp-image-965" src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM5-fibonacci-scalper1-1.png?resize=1000%2C530&#038;ssl=1" alt="" width="1000" height="530" /></p>
+            <p class="section-subtitle">Simple rules for buying, selling, and taking profits – even for beginners. / 简单的买卖与盈利规则——新手也能掌握。</p>
+            
+            <div class="steps-grid">
+                <!-- 步骤1：买卖规则 -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Buying & Selling Rules / 买卖规则</h3>
+                    
+                    <div class="signal-rule">
+                        <strong>Buy Signal / 买入信号：</strong><br>
+                        "Analysis" window shows "Buy Only" + Blue dot arrow on chart (ignore sell signals). / 
+                        “分析”窗口显示“仅买入” + 图表出现蓝色买入点箭头（忽略卖出信号）。
+                    </div>
+                    
+                    <div class="signal-rule sell-signal">
+                        <strong>Sell Signal / 卖出信号：</strong><br>
+                        "Analysis" window shows "Sell Only" + Red dot arrow on chart (ignore buy signals). / 
+                        “分析”窗口显示“仅卖出” + 图表出现红色卖出点箭头（忽略买入信号）。
+                    </div>
+                    
+                    <div class="signal-rule no-trade-signal">
+                        <strong>No Trade / 不交易：</strong><br>
+                        "Analysis" window shows "No Trade" – avoid new signals (no clear trend). / 
+                        “分析”窗口显示“不交易”——避免新信号（无明确趋势）。
+                    </div>
+                </div>
+
+                <!-- 步骤2：获利平仓 -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Taking Profit / 获利平仓</h3>
+                    <p>Close open trades when an opposite signal appears: / 当图表出现相反信号时，平仓现有交易：</p>
+                    <ul class="get-list">
+                        <li>For a <strong>Buy Trade / 买入交易</strong>: Close when a Red dot arrow appears. / 出现红色点箭头时平仓。</li>
+                        <li>For a <strong>Sell Trade / 卖出交易</strong>: Close when a Blue dot arrow appears. / 出现蓝色点箭头时平仓。</li>
+                    </ul>
+                    <p style="margin-top: 20px;">
+                        <strong>Time Frames / 时间周期：</strong><br>
+                        Works on 1-minute (M1) to Monthly charts. Use M1/M5 for scalping. / 
+                        适用于1分钟（M1）至月线周期，剥头皮交易推荐M1/M5。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实战图表 - 添加真实图片 -->
+    <section id="charts" class="section">
+        <div class="container">
+            <h2 class="section-title">Trading Charts In Action / 实战图表展示</h2>
+            <p class="section-subtitle">See how easy it is to profit with our system on different pairs and time frames. / 查看系统在不同货币对与周期下的盈利表现。</p>
+            
+            <div class="charts-grid">
+                <!-- 欧元/美元 5分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM5-fibonacci-scalper1.png"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM5-fibonacci-scalper1.png?resize=1000%2C530&#038;ssl=1"  alt="EUR/USD M5 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">EUR/USD M5 / 欧元/美元 5分钟</h4>
+                </div>
+                <!-- 澳元/新西兰元 1分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/AUDNZDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/AUDNZDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="AUD/NZD M1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">AUD/NZD M1 / 澳元/新西兰元 1分钟</h4>
+                </div>
+                <!-- 澳元/美元 1分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/AUDUSDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/AUDUSDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="AUD/USD M1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">AUD/USD M1 / 澳元/美元 1分钟</h4>
+                </div>
+                <!-- 欧元/美元 1分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="EUR/USD M1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">EUR/USD M1 / 欧元/美元 1分钟</h4>
+                </div>
+                <!-- 英镑/新西兰元 1分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPNZDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPNZDM1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="GBP/NZD M1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">GBP/NZD M1 / 英镑/新西兰元 1分钟</h4>
+                </div>
+                <!-- 美元/瑞郎 5分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/USDCHFM5-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/USDCHFM5-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="USD/CHF M5 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">USD/CHF M5 / 美元/瑞郎 5分钟</h4>
+                </div>
+                <!-- 英镑/美元 5分钟 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPUSDM5-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPUSDM5-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="GBP/USD M5 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">GBP/USD M5 / 英镑/美元 5分钟</h4>
+                </div>
+                <!-- 欧元/美元 1小时 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDH1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDH1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="EUR/USD H1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">EUR/USD H1 / 欧元/美元 1小时</h4>
+                </div>
+                <!-- 欧元/加元 1小时 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURCADH1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURCADH1-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="EUR/CAD H1 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">EUR/CAD H1 / 欧元/加元 1小时</h4>
+                </div>
+                <!-- 欧元/日元 4小时 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPJPYH4-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GBPJPYH4-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="EUR/JPY H4 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">EUR/JPY H4 / 欧元/日元 4小时</h4>
+                </div>
+                <!-- 英镑/日元 4小时 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM5-fibonacci-scalper1.png"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/EURUSDM5-fibonacci-scalper1.png?resize=1000%2C530&#038;ssl=1"  alt="GBP/JPY H4 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">GBP/JPY H4 / 英镑/日元 4小时</h4>
+                </div>
+                <!-- 黄金 4小时 -->
+                <div class="card chart-card">
+<a  target="_blank" href="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GOLDH4-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"><img src="https://i0.wp.com/www.holographictraders.com/wp-content/uploads/2019/01/GOLDH4-fibonacci-scalper1.png?resize=1000%2C530&ssl=1"  alt="Gold H4 Trading Chart" class="chart-img" ></a>
+                    <h4 class="chart-name">Gold H4 / 黄金 4小时</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品包含内容 -->
+    <section class="section what-you-get">
+        <div class="container">
+            <h2 class="section-title">What You’ll Get / 您将获得</h2>
+            <ul class="get-list">
+                <li>Rapid Fibonacci Scalper System for Metatrader 4 (2 indicators, template, manual) / 适用于MT4的快速斐波那契系统（2个指标、模板、手册）</li>
+                <li>Works on all currency pairs and any trading instrument / 适用于所有货币对及其他交易品种</li>
+                <li>Popup, email, and push alerts / 弹窗、邮件及推送警报</li>
+                <li>Use on unlimited MT4 accounts and devices / 可在无限个MT4账户及设备上使用</li>
+                <li>Professional customer support & free lifetime upgrades / 专业客户支持 + 终身免费升级</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 价格区域 -->
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <h2 class="section-title">Limited Time Offer / 限时优惠</h2>
+            <div class="card price-card">
+                <div class="price-old">Regular Price / 常规价格: $97.00</div>
+                <div class="price-new">$37</div>
+                <p class="price-note">Instant download after payment / 付款后立即下载</p>
+                <a href="#" class="btn">Buy Now / 立即购买</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Contact Us / 联系我们</a>
+                <a href="#">Terms and Conditions / 条款与条件</a>
+                <a href="#">Privacy Policy / 隐私政策</a>
+            </div>
+            <div class="copyright">Copyright © 2025 Holographictraders.com</div>
+        </div>
+    </footer>
+</body>
+</html>
