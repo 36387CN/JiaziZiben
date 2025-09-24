@@ -1037,7 +1037,7 @@
         },
         initialMessages: [
             // 图片
-            '<img src="https://36387.cn/img/jxs.jpg" alt="金融市场趋势图表" />',
+            '<img src="/img/fb/2.webp" alt="金融市场趋势图表" />',
             // 第一个超链接
             '<a target="_blank" href="https://shiyu-coder.github.io/Kronos-demo/">比特币未来24小时行情预测</a>',
             // 第二个超链接
@@ -1057,7 +1057,7 @@
             document.querySelectorAll('.chat-message').forEach(function(el) {
                 // 处理图片
                 if (el.textContent.includes('金融市场趋势图表') && !el.querySelector('img')) {
-                    el.innerHTML = '<img src="https://36387.cn/img/jxs.jpg" alt="金融市场趋势图表" style="max-width:100%; height:auto;" />';
+                    el.innerHTML = '<img src="/img/fb/2.webp" alt="金融市场趋势图表" style="max-width:100%; height:auto;" />';
                 }
                 // 处理链接
                 if (el.textContent.includes('比特币未来24小时行情预测') && !el.querySelector('a')) {
