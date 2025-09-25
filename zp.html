@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资理财顾问 - 加入我们的专业团队</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af', // 深蓝主色调，传达专业和信任感
+                        secondary: '#3b82f6', // 中蓝辅助色
+                        accent: '#f97316', // 橙色强调色，用于突出CTA和重要信息
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .nav-link {
+                @apply relative text-gray-100 hover:text-white transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
+            }
+            .btn-primary {
+                @apply bg-accent hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5;
+            }
+            .section-padding {
+                @apply py-16 md:py-24;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-primary/95 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fa fa-line-chart text-2xl text-accent mr-2"></i>
+                    <span class="text-xl font-bold text-white">财富管家</span>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link">公司简介</a>
+                    <a href="#responsibilities" class="nav-link">岗位职责</a>
+                    <a href="#requirements" class="nav-link">任职要求</a>
+                    <a href="#benefits" class="nav-link">我们提供</a>
+                    <a href="#contact" class="nav-link">联系我们</a>
+                </nav>
+          <div class="flex items-center">
+              <a target="_blank" href="/"  class="hidden sm:block bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full transition-colors duration-300">返回首页</a></div>          
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-primary/95 backdrop-blur-md">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#about" class="block text-gray-100 hover:text-white py-2">公司简介</a>
+                <a href="#responsibilities" class="block text-gray-100 hover:text-white py-2">岗位职责</a>
+                <a href="#requirements" class="block text-gray-100 hover:text-white py-2">任职要求</a>
+                <a href="#benefits" class="block text-gray-100 hover:text-white py-2">我们提供</a>
+                <a href="#contact" class="block text-gray-100 hover:text-white py-2">联系我们</a>
+<a href="/" class="block text-white bg-primary hover:bg-primary/90 px-5 py-2 rounded-full font-medium text-center">返回首页</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6 text-shadow animate-fade-in">
+                    寻找优秀的<span class="text-accent">投资理财顾问</span>
+                </h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-100 mb-8 max-w-2xl mx-auto">
+                    加入我们的专业团队，与我们一起为客户创造财富价值，实现职业理想
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="btn-primary text-center">
+                        <i class="fa fa-paper-plane mr-2"></i>立即申请
+                    </a>
+                    <a href="#benefits" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 text-center">
+                        <i class="fa fa-percent mr-2"></i>了解薪酬福利
+                    </a>
+                </div>
+                
+                <!-- 职位基本信息 -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                        <i class="fa fa-map-marker text-accent text-xl mb-3"></i>
+                        <h3 class="font-medium">工作地点</h3>
+                        <p class="text-gray-100">不限</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                        <i class="fa fa-users text-accent text-xl mb-3"></i>
+                        <h3 class="font-medium">招聘人数</h3>
+                        <p class="text-gray-100">10人</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                        <i class="fa fa-briefcase text-accent text-xl mb-3"></i>
+                        <h3 class="font-medium">职位类型</h3>
+                        <p class="text-gray-100">全职 / 兼职（可选）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">关于我们</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-gray-600">我们是一家充满活力的互联网财富管理平台，致力于为客户提供专业的资产配置方案</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold text-primary mb-4">专业的财富管理伙伴</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        作为新兴互联网财富管理平台，我们专注于为高净值个人、中小企业主及大众投资者提供专业的资产配置、理财规划及财富增值服务。
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        依托【简易外汇交易系统】，我们的平台已成功帮助超万名客户实现财富目标。现因市场拓展需求，诚邀热爱金融销售、渴望高薪的人才加入我们的团队！
+                    </p>
+                    <a href="http://36387.cn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-secondary font-medium hover:text-primary transition-colors">
+                        访问我们的官网 <i class="fa fa-external-link ml-2"></i>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://picsum.photos/id/180/600/400" alt="专业的金融团队讨论投资策略" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 岗位职责 -->
+    <section id="responsibilities" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">岗位职责</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-gray-600">我们期待您能承担以下工作内容，共同为客户创造价值</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-handshake-o text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">客户开发与维护</h3>
+                    <p class="text-gray-600">
+                        通过线上线下多渠道（如银行转介、社群运营、活动邀约等）挖掘潜在客户，建立并维护长期信任关系，满足客户理财需求。
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">团队协作</h3>
+                    <p class="text-gray-600">
+                        积极参与公司组织的业务培训、经验分享会，协助团队完成客户服务工作，共同达成整体业绩目标。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 任职要求 -->
+    <section id="requirements" class="section-padding bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">任职要求</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-gray-600">我们希望您具备以下条件，与团队共同成长</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-50 p-8 rounded-xl mb-8">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fa fa-graduation-cap mr-3 text-accent"></i>基础条件
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>学历要求：中专及以上学历，金融、经济、市场营销等相关专业优先考虑</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fa fa-briefcase mr-3 text-accent"></i>经验要求
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>有1年以上金融销售经验（如银行、证券、保险、三方理财机构等领域），具备客户资源者优先录用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>无相关经验但学习能力强、目标感清晰、渴望通过努力获得高薪者，公司可提供系统的岗前培训</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我们提供的福利 -->
+    <section id="benefits" class="section-padding bg-gradient-to-br from-gray-900 to-primary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">我们提供</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-gray-300">加入我们，您将获得有竞争力的薪酬和完善的福利体系</p>
+            </div>
+            
+            <!-- 收入潜力 -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center">
+                    <i class="fa fa-money text-accent mr-2"></i>投资理财顾问收入潜力
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 card-hover">
+                        <div class="text-4xl font-bold text-accent mb-2">¥20,000</div>
+                        <div class="text-lg mb-4">机构加盟客户提成 / 单</div>
+                        <p class="text-gray-300">每成功开发一个机构加盟客户，即可获得丰厚提成</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 card-hover">
+                        <div class="text-4xl font-bold text-accent mb-2">20%</div>
+                        <div class="text-lg mb-4">跟单合作客户收益分成</div>
+                        <p class="text-gray-300">无需个人操作交易，长期享有客户利润的20%分成，收入潜力可观</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 成长体系 -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center">
+                    <i class="fa fa-line-chart text-accent mr-2"></i>成长体系
+                </h3>
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 mb-8">
+                    <h4 class="text-xl font-semibold mb-4">新人"带教制"培训</h4>
+                    <p class="text-gray-300 mb-4">覆盖产品知识、销售技巧、合规风控全流程，助力快速上手</p>
+                </div>
+                
+                <h4 class="text-xl font-semibold mb-6 text-center">清晰的晋升通道</h4>
+                <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+                    <div class="bg-accent text-white px-6 py-3 rounded-lg font-semibold text-center">
+                        业务员
+                    </div>
+                    <i class="fa fa-arrow-right text-accent text-xl"></i>
+                    <div class="bg-white/10 px-6 py-3 rounded-lg font-semibold text-center border border-white/20">
+                        团队主管
+                    </div>
+                    <i class="fa fa-arrow-right text-accent text-xl"></i>
+                    <div class="bg-white/10 px-6 py-3 rounded-lg font-semibold text-center border border-white/20">
+                        区域经理
+                    </div>
+                    <i class="fa fa-arrow-right text-accent text-xl"></i>
+                    <div class="bg-white/10 px-6 py-3 rounded-lg font-semibold text-center border border-white/20">
+                        合伙人
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 福利保障 -->
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-8 text-center">
+                    <i class="fa fa-gift text-accent mr-2"></i>福利保障
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 card-hover">
+                        <i class="fa fa-calendar-check-o text-2xl text-accent mb-4"></i>
+                        <h4 class="text-lg font-semibold mb-2">法定福利</h4>
+                        <p class="text-gray-300">带薪年假、社会保险（根据岗位类型缴纳）</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 card-hover">
+                        <i class="fa fa-plane text-2xl text-accent mb-4"></i>
+                        <h4 class="text-lg font-semibold mb-2">额外福利</h4>
+                        <p class="text-gray-300">节日礼品、业绩达标旅游奖励、年度体检</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 card-hover">
+                        <i class="fa fa-comments text-2xl text-accent mb-4"></i>
+                        <h4 class="text-lg font-semibold mb-2">工作氛围</h4>
+                        <p class="text-gray-300">年轻化团队，定期邀请行业大咖开展分享会</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我们</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+                <p class="text-gray-600">若您对该职位感兴趣，欢迎通过以下方式咨询或投递简历</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-2xl shadow-lg overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12 bg-primary text-white">
+                        <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2 flex items-center">
+                                    <i class="fa fa-globe mr-3 text-accent"></i>官方网站
+                                </h4>
+                                <a href="http://36387.cn" target="_blank" rel="noopener noreferrer" class="text-blue-100 hover:text-white underline transition-colors">
+                                    http://36387.cn
+                                </a>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2 flex items-center">
+                                    <i class="fa fa-envelope mr-3 text-accent"></i>简历投递
+                                </h4>
+                                <p>请通过官方网站"联系我们"板块获取最新联系方式</p>
+                                <p class="mt-2 text-accent font-medium">简历请注明：应聘投资理财顾问+姓名</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-lg font-semibold mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl font-bold text-dark mb-6">快速咨询</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的姓名">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您的联系电话">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">留言</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="请输入您想咨询的内容"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">
+                                <i class="fa fa-paper-plane mr-2"></i>发送咨询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-gray-400 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <i class="fa fa-line-chart text-2xl text-accent mr-2"></i>
+                    <span class="text-xl font-bold text-white">甲子资本</span>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>© 2025 甲子资本. 保留所有权利</p>
+                    <p class="mt-2">依托【简易外汇交易系统】提供服务</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 表单提交处理
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // 这里可以添加表单验证和提交逻辑
+                alert('咨询已发送，我们会尽快与您联系！');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
+    
