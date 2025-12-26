@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTCUSD交易信号跟单项目介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #1d2129;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部区域 */
+        .header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #fff;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header-tagline {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 主内容区 */
+        .content {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* 问候语 */
+        .greeting {
+            font-size: 18px;
+            color: #1a365d;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        
+        /* 标题样式 */
+        h2 {
+            color: #1a365d;
+            margin: 0 0 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2:before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: #3182ce;
+            border-radius: 2px;
+        }
+        
+        /* 文本与列表 */
+        p {
+            margin-bottom: 16px;
+            color: #4e5969;
+        }
+        
+        .highlight {
+            color: #e53e3e;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .list-container {
+            margin: 20px 0;
+        }
+        
+        .step-list, .advantage-list, .pain-point-list {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        
+        .step-list li, .advantage-list li, .pain-point-list li {
+            margin-bottom: 12px;
+            color: #4e5969;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .step-list li:before, 
+        .advantage-list li:before, 
+        .pain-point-list li:before {
+            content: "✓";
+            color: #38a169;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+        
+        /* 关键信息区块 */
+        .key-point {
+            background-color: #ebf8ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #3182ce;
+        }
+        
+        .key-point p strong {
+            color: #1a365d;
+            font-size: 16px;
+        }
+        
+        .收益案例 {
+            background-color: #f0fff4;
+            border: 1px solid #c6f6d5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .收益案例 p {
+            color: #22543d;
+            font-weight: 500;
+        }
+        
+        /* 联系信息 */
+        .contact-info {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 12px;
+            color: #1a365d;
+            font-weight: 500;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 15px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BTCUSD交易信号跟单项目介绍</h1>
+            <div class="header-tagline">专业交易信号加持 · 资金安全可控 · 稳定高收益回报</div>
+        </div>
+        <img 
+            src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f4c9e1c43aeb4327a9b105d774ed1791.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251225220308F6E0AB03D3166FCB35E4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1767276189&x-signature=YZe1bvTlbKgTssAJuHZPPZDf7EE%3D" width=100% height=500
+            alt="BTCUSD M1交易信号图表" 
+            title="BTCUSD 1分钟周期交易信号（红绿点为开平仓信号，红蓝线为趋势指标）"
+            class="signal-img"
+        >
+        <div class="content">
+            <div class="card">
+                <p class="greeting">尊敬的投资人：</p>
+                <p>您好！我们专注于BTCUSD加密货币交易领域，推出【固定交易信号+个人账户跟单】合作项目，核心目标是让您无需专业交易经验，仅凭个人BTCUSD交易账户即可轻松享受稳定高收益——<span class="highlight">历史实盘验证年化收益率高达20%</span>，资金全程存放于您的个人账户，安全可控，零资金挪用风险。</p>
+                <p>无需您研究市场行情、制定交易策略，更无需占用大量时间盯盘，仅需授权我们的跟单系统对接您的账户，即可自动同步专业交易员的优质交易信号，坐享盈利分成。这是一份为您量身定制的低风险、高回报投资机会，诚邀您深入了解。</p>
+            </div>
+            
+            <div class="card">
+                <h2>一、项目背景：精准解决投资人核心痛点</h2>
+                <p>当前BTCUSD交易市场规模持续扩大，日均交易量超千亿美金，是全球最活跃的加密货币交易对之一，蕴含丰厚盈利机会。但多数投资人面临三大核心痛点：</p>
+                <ul class="pain-point-list">
+                    <li>专业门槛高：缺乏加密货币交易知识、技术指标分析能力，自主交易胜率低，亏损风险大；</li>
+                    <li>时间精力有限：无法24小时跟踪市场动态，错过最佳交易时机；</li>
+                    <li>资金安全担忧：担心参与项目时资金被挪用、归集，资产控制权旁落。</li>
+                </ul>
+                <p>针对以上痛点，我们打磨出成熟的交易信号跟单模式：您的资金始终在自己的交易账户内，仅用于跟单交易；专业交易信号为您铺路，自动化跟单为您省时，让投资盈利更轻松、更安心。</p>
+            </div>
+            
+            <div class="card">
+                <h2>二、项目核心模式：简单三步，坐享分成</h2>
+                <p>我们的合作模式极简透明，全程仅需三步即可开启盈利：</p>
+                <ul class="step-list">
+                    <li>第一步：您准备个人BTCUSD交易账户（支持币安、Coinbase等主流交易所，账户归属权100%属于您）；</li>
+                    <li>第二步：授权我们的跟单系统对接账户（授权范围仅含【接收信号+自动交易】，无任何资金划转权限）；</li>
+                    <li>第三步：系统自动同步交易信号执行操作，交易完成后，您与专业交易员按约定比例分成盈利。</li>
+                </ul>
+                
+                <div class="key-point">
+                    <p><strong>核心亮点：</strong></p>
+                </div>
+                <ul class="advantage-list">
+                    <li>交易信号优质稳定：由我们的核心交易团队结合量化模型与多年实战经验生成，经过12个月实盘验证，年化收益率可达200%，最大回撤控制在10%以内，风险可控；</li>
+                    <li>资金绝对安全：您的资金全程存放于个人交易账户，我们不触碰、不归集任何资金，账户控制权、支配权始终在您手中，资金仅用于跟单交易，不流向任何非交易用途；</li>
+                    <li>操作零门槛：无需学习交易知识，无需手动操作，系统全自动化执行，您可实时查看交易明细、资产变动，全程透明可追溯。</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>三、收益优势：高年化+灵活分成，盈利清晰可见</h2>
+                <p>1. 核心收益：跟单交易盈利分成</p>
+                <p>您与我们的专业交易员按比例共享跟单盈利，分成规则极具吸引力：</p>
+                <ul class="advantage-list">
+                    <li>默认分成：您获65%，本机构获35%；</li>
+                    <li>大额资金优惠：若您单次投入跟单资金超100万美元，分成比例升级为您获70%，本机构获30%，投入越多，收益占比越高。</li>
+                </ul>
+                
+                <p>2. 收益案例参考（按年化20%测算）：</p>
+                <div class="收益案例">
+                    <p>若您投入10万美元跟单，一年后理论盈利2万美元，按默认分成比例，您可获得1.3万美元纯收益，收益率13%；若投入100万美元（享受大额优惠），一年理论盈利20万美元，您可获得14万美元纯收益，收益率14%。</p>
+                </div>
+                
+                <p>3. 结算方式灵活：按月结算，每月结束后5个工作日内，我们会统计您的当月盈利明细，双方确认无误后，您仅需将交易员分成支付至指定账户即可，流程简单高效。</p>
+            </div>
+            
+            <div class="card">
+                <h2>四、我们的服务与保障：全程护航您的投资</h2>
+                <ul class="advantage-list">
+                    <li>信号与系统保障：我们承诺持续优化交易信号质量，若信号准确率连续3个月低于【1】%，将第一时间向您说明原因并整改；跟单系统采用端到端加密技术，保障您的账户信息与交易数据安全，杜绝未授权操作；</li>
+                    <li>全天候咨询服务：配备专业服务团队，提供24小时在线咨询，及时解答您关于信号、交易、账户的各类疑问；</li>
+                    <li>透明化跟踪：为您提供专属后台，可实时查看交易信号历史表现、当前跟单进度、资产变动明细，每一笔交易都清晰可查，让您投资更放心；</li>
+                    <li>风险应对支持：若遇极端市场行情，我们将第一时间暂停信号输出并协助您止损，最大程度降低损失。</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>五、合作流程与期限：简单高效，灵活可控</h2>
+                <p>1. 合作流程：</p>
+                <ul class="step-list">
+                    <li>初步沟通：您确认合作意向，我们提供详细的交易信号实盘业绩报告；</li>
+                    <li>签订协议：双方签订正式合作协议，明确权利义务与分成规则；</li>
+                    <li>账户授权：您完成跟单系统授权对接，自主存入跟单资金；</li>
+                    <li>开启跟单：系统自动同步信号执行交易，按月结算盈利分成。</li>
+                </ul>
+                
+                <p>2. 合作期限：</p>
+                <p>默认合作期限为【1】年，期限届满前30日，若您无书面终止意向，协议自动续期。您也可在协议期限内随时终止跟单授权（需提前10个工作日书面通知），灵活可控。</p>
+            </div>
+            
+            <div class="card">
+                <h2>六、核心团队：专业背书，值得信赖</h2>
+                <p>我们的核心团队由多名深耕BTCUSD交易领域的资深人士组成，平均从业经验超【10】年：</p>
+                <ul class="advantage-list">
+                    <li>交易总监：曾主导多套量化交易策略研发，历史操盘累计资金规模超【1000】万美元，近3年实盘交易年化收益率稳定在18%以上，是固定交易信号体系的核心构建者；</li>
+                    <li>技术总监：拥有【10】年金融科技研发经验，主导开发多套加密货币跟单系统，精通数据加密与API对接技术，保障系统稳定安全；</li>
+                    <li>服务团队：均具备丰富的投资人服务经验，可提供全方位的跟单支持与咨询服务。</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>七、合作诚意邀请：共享高收益，共赢未来</h2>
+                <p>这是一次「专业能力+个人资金」的优势互补合作：我们用成熟的交易信号与技术系统为您铺路，您用自有资金享受高收益回报，资金安全可控，盈利清晰可见。</p>
+                <p>当前加密货币市场正值发展机遇期，BTCUSD交易的盈利潜力巨大。我们诚邀您把握此次低门槛、高回报的投资机会，与我们携手共赢。</p>
+                <p>若您想了解更多细节（如查看完整实盘业绩报告、获取详细合作协议样本），欢迎随时与我们联系！</p>
+                
+                <div class="contact-info">
+                    <p>联系人：【甲子】</p>
+                    <p>联系方式：【15219407427】</p>
+                    <p>项目方/交易员团队全称：【甲子外汇】</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
