@@ -29,6 +29,10 @@
         .language-switch {
             text-align: right;
             margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .language-btn {
@@ -36,7 +40,6 @@
             color: white;
             border: none;
             padding: 8px 15px;
-            margin-left: 10px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -220,37 +223,42 @@
         }
 
         /* 语言内容显示控制 */
-        .lang-zh {
-            display: block;
-        }
-
-        .lang-en {
+        .lang-zh, .lang-en, .lang-ru, .lang-ko, .lang-hi {
             display: none;
         }
 
-        body.en .lang-zh {
-            display: none;
-        }
-
-        body.en .lang-en {
-            display: block;
-        }
+        body.zh .lang-zh { display: block; }
+        body.en .lang-en { display: block; }
+        body.ru .lang-ru { display: block; }
+        body.ko .lang-ko { display: block; }
+        body.hi .lang-hi { display: block; }
     </style>
 </head>
-<body>
+<body class="zh">
     <div class="container">
         <!-- 语言切换按钮 -->
         <div class="language-switch">
             <button class="language-btn active" data-lang="zh">中文</button>
             <button class="language-btn" data-lang="en">English</button>
+            <button class="language-btn" data-lang="ru">Русский</button>
+            <button class="language-btn" data-lang="ko">한국어</button>
+            <button class="language-btn" data-lang="hi">हिंदी</button>
         </div>
 
         <div class="header">
             <h1 class="lang-zh">BTCUSD交易信号跟单项目介绍</h1>
             <h1 class="lang-en">BTCUSD Trading Signal Copy Project Introduction</h1>
+            <h1 class="lang-ru">Презентация проекта копирования торговых сигналов BTCUSD</h1>
+            <h1 class="lang-ko">BTCUSD 트레이딩 신호 카피 프로젝트 소개</h1>
+            <h1 class="lang-hi">BTCUSD ट्रेडिंग सिग्नल कॉपी प्रोजेक्ट परिचय</h1>
+            
             <div class="header-tagline lang-zh">专业交易信号加持 · 资金安全可控 · 稳定高收益回报</div>
             <div class="header-tagline lang-en">Professional Trading Signals · Secure Fund Control · Stable High Returns</div>
+            <div class="header-tagline lang-ru">Профессиональные торговые сигналы · Безопасный контроль за средствами · Стабильные высокие доходы</div>
+            <div class="header-tagline lang-ko">전문 트레이딩 신호 지원 · 자금 안전 관리 · 안정적인 높은 수익</div>
+            <div class="header-tagline lang-hi">प्रोफेशनल ट्रेडिंग सिग्नल · फंड सुरक्षा नियंत्रण · स्थिर उच्च रिटर्न</div>
         </div>
+        
         <img 
             src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f4c9e1c43aeb4327a9b105d774ed1791.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251225220308F6E0AB03D3166FCB35E4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1767276189&x-signature=YZe1bvTlbKgTssAJuHZPPZDf7EE%3D" 
             width="100%" 
@@ -259,155 +267,348 @@
             title="BTCUSD 1分钟周期交易信号（红绿点为开平仓信号，红蓝线为趋势指标）"
             class="signal-img"
         >
+        
         <div class="content">
             <div class="card">
                 <p class="greeting lang-zh">尊敬的投资人：</p>
                 <p class="greeting lang-en">Dear Investors:</p>
+                <p class="greeting lang-ru">Уважаемые инвесторы:</p>
+                <p class="greeting lang-ko">존경하는 투자자 여러분:</p>
+                <p class="greeting lang-hi">आदरणीय निवेशकों:</p>
+                
                 <p class="lang-zh">您好！我们专注于BTCUSD加密货币交易领域，推出【固定交易信号+个人账户跟单】合作项目，核心目标是让您无需专业交易经验，仅凭个人BTCUSD交易账户即可轻松享受稳定高收益——<span class="highlight">历史实盘验证年化收益率高达20%</span>，资金全程存放于您的个人账户，安全可控，零资金挪用风险。</p>
                 <p class="lang-en">Greetings! We specialize in the BTCUSD cryptocurrency trading field and launch the [Fixed Trading Signals + Personal Account Copy Trading] cooperation project. Our core goal is to allow you to easily enjoy stable high returns with just a personal BTCUSD trading account, without the need for professional trading experience — <span class="highlight">historical live trading verified annualized return rate up to 20%</span>. Funds are kept in your personal account throughout the process, secure and controllable, with zero risk of fund misappropriation.</p>
+                <p class="lang-ru">Здравствуйте! Мы специализируемся на торговле криптовалютами пары BTCUSD и предлагаем проект сотрудничества «Фиксированные торговые сигналы + копирование торговли с личным аккаунтом». Наша основная цель — позволить вам轻松获得 стабильные высокие доходы с помощью личного торгового аккаунта BTCUSD без профессионального опыта торговли — <span class="highlight">исторически подтвержденная годовая доходность可达20%</span>. Средства остаются на вашем личном аккаунте на протяжении всего процесса, безопасны и контролируемы, риск хищения средств отсутствует.</p>
+                <p class="lang-ko">안녕하세요! 저희는 BTCUSD 암호화폐 거래 분야에 전념하고 있으며, 【고정 트레이딩 신호+개인 계정 카피 트레이딩】 협력 프로젝트를 출시합니다. 핵심 목표는 전문 거래 경험이 없어도 개인 BTCUSD 거래 계정만으로 안정적인 높은 수익을 쉽게 누리실 수 있도록 하는 것입니다. <span class="highlight">과거 실거래로 검증된 연간 수익률은 최고 20%에 달합니다</span>. 자금은 항상 개인 계정에 보관되며, 안전하고 관리가 가능하며 자금挪用 위험이 전혀 없습니다.</p>
+                <p class="lang-hi">नमस्ते! हम BTCUSD क्रिप्टोकरेंसी ट्रेडिंग क्षेत्र में काम करते हैं और [फिक्स्ड ट्रेडिंग सिग्नल + पर्सनल अकाउंट कॉपी ट्रेडिंग] सहयोग परियोजना लॉन्च कर रहे हैं। हमारा मुख्य लक्ष्य यह है कि आपको प्रोफेशनल ट्रेडिंग अनुभव की आवश्यकता नहीं है, केवल अपने व्यक्तिगत BTCUSD ट्रेडिंग अकाउंट से ही आप स्थिर उच्च रिटर्न प्राप्त कर सकते हैं - <span class="highlight">ऐतिहासिक लाइव ट्रेडिंग से सत्यापित वार्षिक रिटर्न दर 20% तक है</span>। फंड पूरी प्रक्रिया में आपके व्यक्तिगत अकाउंट में रहते हैं, सुरक्षित और नियंत्रण में, फंड क挪用 का कोई जोखिम नहीं है।</p>
+                
                 <p class="lang-zh">无需您研究市场行情、制定交易策略，更无需占用大量时间盯盘，仅需授权我们的跟单系统对接您的账户，即可自动同步专业交易员的优质交易信号，坐享盈利分成。这是一份为您量身定制的低风险、高回报投资机会，诚邀您深入了解。</p>
                 <p class="lang-en">There's no need for you to research market conditions, formulate trading strategies, or spend a lot of time monitoring the market. Simply authorize our copy trading system to connect to your account, and it will automatically synchronize high-quality trading signals from professional traders, allowing you to enjoy profit sharing. This is a low-risk, high-return investment opportunity tailored for you, and we sincerely invite you to learn more.</p>
+                <p class="lang-ru">Нет необходимости изучать рыночные условия, разрабатывать торговые стратегии или тратить много времени на мониторинг рынка. Просто авторизуйте нашу систему копирования торговли для подключения к вашему аккаунту, и она автоматически синхронизируется с высококачественными торговыми сигналами профессиональных трейдеров, позволяя вам получать долю прибыли. Это низкорисковая инвестиционная возможность с высокими доходами, адаптированная специально для вас. Серьезно приглашаем вас познакомиться с ней подробнее.</p>
+                <p class="lang-ko">시장 상황을 연구하거나 거래 전략을 수립할 필요가 없으며, 많은 시간을 시장 모니터링에 투자할 필요도 없습니다. 단순히 저희 카피 트레이딩 시스템에 계정을 연결하도록 권한을 부여하시면 전문 트레이더의 우수한 트레이딩 신호를 자동으로 동기화하여 수익 분배를 누리실 수 있습니다. 이는 귀하를 위해 맞춤 제작된 저위험, 고수익 투자 기회이며, 자세히 알아보시기를 진심으로 권장합니다.</p>
+                <p class="lang-hi">आपको बाजार की स्थिति का अध्ययन करने, ट्रेडिंग रणनीतियां बनाने या बाजार की निगरानी के लिए大量时间 खर्च करने की आवश्यकता नहीं है। केवल हमारे कॉपी ट्रेडिंग सिस्टम को अपने अकाउंट से जोड़ने का अधिकार दें, यह स्वचालित रूप से प्रोफेशनल ट्रेडरों के उच्च गुणवत्ता वाले ट्रेडिंग सिग्नलों को सिंक्रनाइज़ करेगा, जिससे आप लाभ साझाकरण का आनंद ले सकते हैं। यह आपके लिए तैयार की गई एक कम जोखिम वाली, उच्च रिटर्न वाली निवेश机会 है, हम आपको इसके बारे में अधिक जानने के लिए诚邀 करते हैं।</p>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">一、项目背景：精准解决投资人核心痛点</h2>
                 <h2 class="lang-en">I. Project Background: Precisely Solving Core Pain Points of Investors</h2>
+                <h2 class="lang-ru">I. Контекст проекта: Точное решение основных проблем инвесторов</h2>
+                <h2 class="lang-ko">1. 프로젝트 배경: 투자자의 핵심 고충 정확히 해결</h2>
+                <h2 class="lang-hi">1. परियोजना पृष्ठभूमि: निवेशकों की मुख्य समस्याओं को सटीक रूप से हल करना</h2>
+                
                 <p class="lang-zh">当前BTCUSD交易市场规模持续扩大，日均交易量超千亿美金，是全球最活跃的加密货币交易对之一，蕴含丰厚盈利机会。但多数投资人面临三大核心痛点：</p>
                 <p class="lang-en">The current BTCUSD trading market continues to expand, with a daily trading volume exceeding 100 billion US dollars. It is one of the most active cryptocurrency trading pairs globally, containing abundant profit opportunities. However, most investors face three core pain points:</p>
+                <p class="lang-ru">Текущий объем рынка торговли BTCUSD продолжает расти, суточный объем торгов превышает 100 миллиардов долларов. Это одна из самых активных криптовалютных пар в мире, которая содержит обширные возможности для получения прибыли. Однако большинство инвесторов сталкиваются с тремя основными проблемами:</p>
+                <p class="lang-ko">현재 BTCUSD 거래 시장 규모는 계속 확대되고 있으며, 일평균 거래량은 1000억 달러를 초과하여 전 세계에서 가장 활발한 암호화폐 거래 쌍 중 하나이며, 풍부한 수익机会를 담고 있습니다. 그러나 대부분의 투자자는 세 가지 핵심 고충에 직면해 있습니다:</p>
+                <p class="lang-hi">वर्तमान में BTCUSD ट्रेडिंग बाजार का आकार लगातार बढ़ रहा है, दैनिक ट्रेडिंग वॉल्यूम 100 बिलियन डॉलर से अधिक है। यह विश्व में सबसे सक्रिय क्रिप्टोकरेंसी ट्रेडिंग पेयरों में से एक है, जिसमें प्रचुर मात्रा में लाभ के अवसर हैं। लेकिन अधिकांश निवेशक तीन मुख्य समस्याओं का सामना करते हैं:</p>
+                
                 <ul class="pain-point-list">
                     <li class="lang-zh">专业门槛高：缺乏加密货币交易知识、技术指标分析能力，自主交易胜率低，亏损风险大；</li>
                     <li class="lang-en">High professional threshold: Lack of cryptocurrency trading knowledge and technical indicator analysis capabilities, resulting in low winning rate in independent trading and high risk of losses;</li>
+                    <li class="lang-ru">Высокий профессиональный порог: Отсутствие знаний о торговле криптовалютами и способностей анализа технических индикаторов, низкий процент успешных самостоятельных торгов, высокий риск убытков;</li>
+                    <li class="lang-ko">전문성 기준이 높음: 암호화폐 거래 지식, 기술 지표 분석 능력이 부족하여 자체 거래 승률이 낮고, 손실 위험이 큼;</li>
+                    <li class="lang-hi">उच्च प्रोफेशनल दहलीज: क्रिप्टोकरेंसी ट्रेडिंग ज्ञान, तकनीकी संकेत विश्लेषण क्षमता की कमी, स्वतंत्र ट्रेडिंग में जीत की दर कम, नुकसान का जोखिम अधिक;</li>
+                    
                     <li class="lang-zh">时间精力有限：无法24小时跟踪市场动态，错过最佳交易时机；</li>
                     <li class="lang-en">Limited time and energy: Unable to track market dynamics 24/7, missing the best trading opportunities;</li>
+                    <li class="lang-ru">Ограниченное время и энергия: Невозможность отслеживания рыночных динамик 24/7, пропуск лучших торговых возможностей;</li>
+                    <li class="lang-ko">시간과 에너지가 제한적: 24시간 시장 동향을 추적할 수 없어 최적의 거래时机를 놓침;</li>
+                    <li class="lang-hi">सीमित समय और ऊर्जा: 24/7 बाजार की गतिशीलता को ट्रैक करने में असमर्थ,最佳交易时机 को खो देना;</li>
+                    
                     <li class="lang-zh">资金安全担忧：担心参与项目时资金被挪用、归集，资产控制权旁落。</li>
                     <li class="lang-en">Concerns about fund security: Worry about fund misappropriation and pooling when participating in the project, leading to loss of asset control.</li>
+                    <li class="lang-ru">Обеспечение безопасности средств: Опасение хищения и объединения средств при участии в проекте, потери контроля над активами.</li>
+                    <li class="lang-ko">자금 안전 걱정: 프로젝트에 참여할 때 자금이挪用되거나 집중될 우려가 있으며, 자산 통제권이 떨어짐.</li>
+                    <li class="lang-hi">फंड सुरक्षा के बारे में चिंता: परियोजना में भाग लेने पर फंड क挪用、归集 होने की चिंता, संपत्ति नियंत्रण का नुकसान।</li>
                 </ul>
+                
                 <p class="lang-zh">针对以上痛点，我们打磨出成熟的交易信号跟单模式：您的资金始终在自己的交易账户内，仅用于跟单交易；专业交易信号为您铺路，自动化跟单为您省时，让投资盈利更轻松、更安心。</p>
                 <p class="lang-en">To address the above pain points, we have developed a mature trading signal copy mode: Your funds remain in your own trading account and are only used for copy trading; professional trading signals pave the way for you, and automated copy trading saves you time, making investment profits easier and more secure.</p>
+                <p class="lang-ru">Для решения вышеуказанных проблем мы разработали зрелый режим копирования торговых сигналов: Ваши средства остаются на вашем собственном торговом аккаунте и используются только для копирования торговли; профессиональные торговые сигналы прокладывают путь для вас, а автоматизированное копирование экономит ваше время, делая получение инвестиционной прибыли легче и более безопасным.</p>
+                <p class="lang-ko">위와 같은 고충을 해결하기 위해 저희는 성숙한 트레이딩 신호 카피 모드를 개발했습니다: 귀하의 자금은 항상 자신의 거래 계정에 있으며, 오직 카피 트레이딩에만 사용됩니다. 전문 트레이딩 신호는 귀하의 길을 열어주고, 자동화된 카피 트레이딩은 시간을 절약하여 투자 수익을 더 쉽고 안심하게 만듭니다.</p>
+                <p class="lang-hi">उपरोक्त समस्याओं को संबोधित करने के लिए, हमने एक परिपक्व ट्रेडिंग सिग्नल कॉपी मोड विकसित किया है: आपका फंड हमेशा आपके अपने ट्रेडिंग अकाउंट में रहता है, केवल कॉपी ट्रेडिंग के लिए उपयोग किया जाता है; प्रोफेशनल ट्रेडिंग सिग्नल आपके लिए रास्ता बनाते हैं, स्वचालित कॉपी ट्रेडिंग आपका समय बचाता है, जिससे निवेश लाभ अधिक आसान और सुरक्षित होता है।</p>
             </div>
             
+            <!-- 其他卡片内容按照相同模式添加了俄语、韩语和印地语翻译 -->
             <div class="card">
                 <h2 class="lang-zh">二、项目核心模式：简单三步，坐享分成</h2>
                 <h2 class="lang-en">II. Core Project Mode: Simple Three Steps to Enjoy Profit Sharing</h2>
+                <h2 class="lang-ru">II. Основной режим проекта: Простые три шага для получения доли прибыли</h2>
+                <h2 class="lang-ko">2. 프로젝트 핵심 모드: 간단한 세 단계, 수익 분배 누리기</h2>
+                <h2 class="lang-hi">2. परियोजना का मुख्य मोड: सरल तीन चरण, लाभ साझाकरण का आनंद लें</h2>
+                
                 <p class="lang-zh">我们的合作模式极简透明，全程仅需三步即可开启盈利：</p>
                 <p class="lang-en">Our cooperation model is extremely simple and transparent, requiring only three steps to start making profits:</p>
+                <p class="lang-ru">Наша модель сотрудничества чрезвычайно проста и прозрачна, для начала получения прибыли требуется всего три шага:</p>
+                <p class="lang-ko">저희 협력 모델은 매우 간단하고 투명하며, 전과정 단 세 단계만으로 수익을 시작할 수 있습니다:</p>
+                <p class="lang-hi">हमारा सहयोग मॉडल अत्यंत सरल और पारदर्शी है, लाभ शुरू करने के लिए केवल तीन चरणों की आवश्यकता है:</p>
+                
                 <ul class="step-list">
                     <li class="lang-zh">第一步：您准备个人BTCUSD交易账户（支持币安、Coinbase等主流交易所，账户归属权100%属于您）；</li>
                     <li class="lang-en">Step 1: Prepare your personal BTCUSD trading account (supports mainstream exchanges such as Binance and Coinbase, with 100% ownership belonging to you);</li>
+                    <li class="lang-ru">Шаг 1: Подготовьте личный торговый аккаунт BTCUSD (поддерживает популярные биржи, такие как Binance, Coinbase и т.д., 100% владение аккаунтом принадлежит вам);</li>
+                    <li class="lang-ko">1단계: 개인 BTCUSD 거래 계정을 준비하십시오 (바이낸스, 코인베이스 등 주요 거래소를 지원하며, 계정 소유권은 100% 귀하에게 있습니다);</li>
+                    <li class="lang-hi">चरण 1: अपना व्यक्तिगत BTCUSD ट्रेडिंग अकाउंट तैयार करें (बाइनेंस, कॉइनबेस जैसे मुख्य एक्सचेंज का समर्थन करता है, अकाउंट का स्वामित्व 100% आपका है);</li>
+                    
                     <li class="lang-zh">第二步：授权我们的跟单系统对接账户（授权范围仅含【接收信号+自动交易】，无任何资金划转权限）；</li>
                     <li class="lang-en">Step 2: Authorize our copy trading system to connect to your account (authorization scope only includes [receiving signals + automatic trading], no fund transfer authority);</li>
+                    <li class="lang-ru">Шаг 2: Авторизуйте нашу систему копирования торговли для подключения к вашему аккаунту (область авторизации включает только «Получение сигналов + Автоматическая торговля», без каких-либо полномочий на перевод средств);</li>
+                    <li class="lang-ko">2단계: 저희 카피 트레이딩 시스템에 계정 연결을 권한 부여하십시오 (권한 범위는 【신호 수신+자동 거래】만 포함하며, 자금 이체 권한은 없습니다);</li>
+                    <li class="lang-hi">चरण 2: हमारे कॉपी ट्रेडिंग सिस्टम को अपने अकाउंट से जोड़ने का अधिकार दें (अधिकार का दायरा केवल [सिग्नल प्राप्त करना + स्वचालित ट्रेडिंग] शामिल है, कोई फंड ट्रांसफर अधिकार नहीं);</li>
+                    
                     <li class="lang-zh">第三步：系统自动同步交易信号执行操作，交易完成后，您与专业交易员按约定比例分成盈利。</li>
                     <li class="lang-en">Step 3: The system automatically synchronizes trading signals to execute operations. After the transaction is completed, you and the professional trader share profits according to the agreed ratio.</li>
+                    <li class="lang-ru">Шаг 3: Система автоматически синхронизирует торговые сигналы для выполнения операций, после завершения торговли вы и профессиональный трейдер делите прибыль в соответствии с согласованным соотношением.</li>
+                    <li class="lang-ko">3단계: 시스템이 자동으로 트레이딩 신호를 동기화하여 작업을 실행하며, 거래 완료 후 귀하와 전문 트레이더는 약정된 비율에 따라 수익을 분배합니다.</li>
+                    <li class="lang-hi">चरण 3: सिस्टम स्वचालित रूप से ट्रेडिंग सिग्नलों को सिंक्रनाइज़ करके ऑपरेशन चलाता है, ट्रांज़ैक्शन पूरा होने के बाद, आप और प्रोफेशनल ट्रेडर सहमत अनुपात के अनुसार लाभ साझा करते हैं।</li>
                 </ul>
                 
                 <div class="key-point">
                     <p class="lang-zh"><strong>核心亮点：</strong></p>
                     <p class="lang-en"><strong>Core Highlights:</strong></p>
+                    <p class="lang-ru"><strong>Основные преимущества:</strong></p>
+                    <p class="lang-ko"><strong>핵심 강점:</strong></p>
+                    <p class="lang-hi"><strong>मुख्य विशेषताएं:</strong></p>
                 </div>
+                
                 <ul class="advantage-list">
                     <li class="lang-zh">交易信号优质稳定：由我们的核心交易团队结合量化模型与多年实战经验生成，经过12个月实盘验证，年化收益率可达200%，最大回撤控制在10%以内，风险可控；</li>
                     <li class="lang-en">High-quality and stable trading signals: Generated by our core trading team combining quantitative models and years of practical experience. Verified by 12 months of live trading, the annualized return rate can reach 200%, with maximum drawdown controlled within 10%, making risks manageable;</li>
+                    <li class="lang-ru">Высококачественные и стабильные торговые сигналы: Генерируются нашим основным торговым командой с использованием квантитативных моделей и многолетнего практического опыта. Проверенные 12-месячной торговлей на живом рынке, годовая доходность может достигать 200%, максимальная просадка контролируется в пределах 10%, риски управляемые;</li>
+                    <li class="lang-ko">트레이딩 신호의 우수성과 안정성: 저희 핵심 트레이딩 팀이 정량 모델과多年实战 경험을 결합하여 생성하였으며, 12개월 실거래로 검증되었습니다. 연간 수익률은 200%에 달할 수 있으며, 최대回撤은 10% 이내로 제어되어 위험이 관리 가능합니다;</li>
+                    <li class="lang-hi">उच्च गुणवत्ता और स्थिर ट्रेडिंग सिग्नल: हमारी कोर ट्रेडिंग टीम द्वारा मात्रात्मक मॉडल और多年实战 अनुभव को जोड़कर बनाए गए हैं। 12 महीने के लाइव ट्रेडिंग से सत्यापित, वार्षिक रिटर्न दर 200% तक पहुंच सकती है, अधिकतम ड्रॉडाउन 10% के भीतर नियंत्रित, जोखिम प्रबंधन योग्य;</li>
+                    
                     <li class="lang-zh">资金绝对安全：您的资金全程存放于个人交易账户，我们不触碰、不归集任何资金，账户控制权、支配权始终在您手中，资金仅用于跟单交易，不流向任何非交易用途；</li>
                     <li class="lang-en">Absolute fund security: Your funds are kept in your personal trading account throughout the process. We do not touch or pool any funds. Account control and dominance are always in your hands. Funds are only used for copy trading and do not flow to any non-trading purposes;</li>
+                    <li class="lang-ru">Абсолютная безопасность средств: Ваши средства остаются на личном торговом аккаунте на протяжении всего процесса. Мы не касаемся и не объединяем какие-либо средства. Контроль и распоряжение аккаунтом остаются у вас, средства используются только для копирования торговли и не направляются на любые неторговые цели;</li>
+                    <li class="lang-ko">자금의 절대적인 안전: 귀하의 자금은 전과정 개인 거래 계정에 보관되며, 저희는 어떠한 자금도 만지거나 집중하지 않습니다. 계정 통제권, 지배권은 항상 귀하手中에 있으며, 자금은 오직 카피 트레이딩에만 사용되고, 어떠한 비거래 용도로도 흐르지 않습니다;</li>
+                    <li class="lang-hi">पूर्ण फंड सुरक्षा: आपका फंड पूरी प्रक्रिया में व्यक्तिगत ट्रेडिंग अकाउंट में रखा जाता है। हम किसी भी फंड को नहीं छूते हैं, न ही एकत्रित करते हैं। अकाउंट नियंत्रण और प्रभुत्व हमेशा आपके हाथों में रहता है, फंड केवल कॉपी ट्रेडिंग के लिए उपयोग किया जाता है, किसी भी गैर-ट्रेडिंग उद्देश्य के लिए नहीं जाता;</li>
+                    
                     <li class="lang-zh">操作零门槛：无需学习交易知识，无需手动操作，系统全自动化执行，您可实时查看交易明细、资产变动，全程透明可追溯。</li>
                     <li class="lang-en">Zero operation threshold: No need to learn trading knowledge or manual operation. The system is fully automated. You can check transaction details and asset changes in real-time, with the entire process being transparent and traceable.</li>
+                    <li class="lang-ru">Нулевой порог в использовании: Нет необходимости изучать торговые знания или выполнять ручные операции. Система полностью автоматизирована. Вы можете в реальном времени проверять детали торгов и изменения активов, весь процесс прозрачен и отслеживаем;</li>
+                    <li class="lang-ko">操作零门槛: 거래 지식을 배울 필요가 없고, 수동操作도 필요하지 않습니다. 시스템이 완전 자동화되어 실행되며, 귀하는 거래明细, 자산 변동을 실시간으로 확인할 수 있으며, 전과정 투명하고 추적 가능합니다.</li>
+                    <li class="lang-hi">शून्य ऑपरेशन दहलीज: ट्रेडिंग ज्ञान सीखने की आवश्यकता नहीं, मैनुअल ऑपरेशन की आवश्यकता नहीं। सिस्टम पूरी तरह से स्वचालित रूप से चलता है, आप ट्रांज़ैक्शन विवरण, संपत्ति परिवर्तनों को रीयल-टाइम में देख सकते हैं, पूरी प्रक्रिया पारदर्शी और ट्रेसेबल है।</li>
                 </ul>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">三、收益优势：高年化+灵活分成，盈利清晰可见</h2>
                 <h2 class="lang-en">III. Profit Advantages: High Annualized Returns + Flexible Profit Sharing, Profits Clearly Visible</h2>
+                <h2 class="lang-ru">III. Преимущества доходов: Высокая годовая доходность + Гибкое разделение прибыли, прибыль ясно видна</h2>
+                <h2 class="lang-ko">3. 수익 장점: 높은 연간 수익률+유연한 수익 분배, 수익 명확하게 확인 가능</h2>
+                <h2 class="lang-hi">3. लाभ लाभ: उच्च वार्षिक + लचीला लाभ साझाकरण, लाभ स्पष्ट रूप से दिखाई देता है</h2>
+                
                 <p class="lang-zh">1. 核心收益：跟单交易盈利分成</p>
                 <p class="lang-en">1. Core Income: Profit sharing from copy trading</p>
+                <p class="lang-ru">1. Основной доход: Доля прибыли от копирования торговли</p>
+                <p class="lang-ko">1. 핵심 수익: 카피 트레이딩 수익 분배</p>
+                <p class="lang-hi">1. कोर आय: कॉपी ट्रेडिंग से लाभ साझाकरण</p>
+                
                 <p class="lang-zh">您与我们的专业交易员按比例共享跟单盈利，分成规则极具吸引力：</p>
                 <p class="lang-en">You and our professional traders share copy trading profits in proportion, with extremely attractive profit-sharing rules:</p>
+                <p class="lang-ru">Вы и наши профессиональные трейдеры делите прибыль от копирования торговли пропорционально, правила разделения очень привлекательны:</p>
+                <p class="lang-ko">귀하와 저희 전문 트레이더는 비율에 따라 카피 트레이딩 수익을 공유하며, 분배 규칙은 매우 매력적입니다:</p>
+                <p class="lang-hi">आप और हमारे प्रोफेशनल ट्रेडर कॉपी ट्रेडिंग लाभ को अनुपात में साझा करते हैं, लाभ साझाकरण नियम अत्यंत आकर्षक हैं:</p>
+                
                 <ul class="advantage-list">
                     <li class="lang-zh">默认分成：您获65%，本机构获35%；</li>
                     <li class="lang-en">Default sharing: You get 65%, our institution gets 35%;</li>
+                    <li class="lang-ru">Стандартное разделение: Вы получаете 65%, наше учреждение получает 35%;</li>
+                    <li class="lang-ko">기본 분배: 귀하는 65%를 받고, 본 기관은 35%를 받습니다;</li>
+                    <li class="lang-hi">डिफ़ॉल्ट साझाकरण: आपको 65% मिलता है, हमारी संस्था को 35% मिलता है;</li>
+                    
                     <li class="lang-zh">大额资金优惠：若您单次投入跟单资金超100万美元，分成比例升级为您获70%，本机构获30%，投入越多，收益占比越高。</li>
                     <li class="lang-en">Large capital discount: If you invest more than 1 million US dollars in a single copy trading, the sharing ratio is upgraded to 70% for you and 30% for our institution. The more you invest, the higher your profit share.</li>
+                    <li class="lang-ru">Скидка на крупные средства: Если вы вносите более 1 миллиона долларов за один раз на копирование торговли, соотношение разделения повышается до 70% для вас и 30% для нашего учреждения. Чем больше вы вкладываете, тем выше доля вашей прибыли.</li>
+                    <li class="lang-ko">대규모 자금 할인: 단일 카피 트레이딩에 100만 달러 이상 투자하시면 분배 비율이 업그레이드되어 귀하는 70%를, 본 기관은 30%를 받습니다. 투자할수록 수익 비율이 높아집니다.</li>
+                    <li class="lang-hi">बड़े पूंजी छूट: यदि आप एकल कॉपी ट्रेडिंग में 1 मिलियन अमेरिकी डॉलर से अधिक निवेश करते हैं, तो साझाकरण अनुपात अपग्रेड हो जाता है कि आपको 70% और हमारी संस्था को 30% मिलता है, जितना अधिक निवेश, उतना अधिक लाभ का हिस्सा。</li>
                 </ul>
                 
                 <p class="lang-zh">2. 收益案例参考（按年化20%测算）：</p>
                 <p class="lang-en">2. Profit case reference (calculated at 20% annualized):</p>
+                <p class="lang-ru">2. Пример прибыли (расчет при годовой доходности 20%):</p>
+                <p class="lang-ko">2. 수익 사례 참고 (연간 20%로 계산):</p>
+                <p class="lang-hi">2. लाभ मामले संदर्भ (20% वार्षिक के अनुसार गणना):</p>
+                
                 <div class="收益案例">
                     <p class="lang-zh">若您投入10万美元跟单，一年后理论盈利2万美元，按默认分成比例，您可获得1.3万美元纯收益，收益率13%；若投入100万美元（享受大额优惠），一年理论盈利20万美元，您可获得14万美元纯收益，收益率14%。</p>
                     <p class="lang-en">If you invest 100,000 US dollars in copy trading, the theoretical profit after one year is 20,000 US dollars. According to the default sharing ratio, you can get a net profit of 13,000 US dollars, with a yield of 13%; if you invest 1 million US dollars (enjoying large capital discount), the theoretical profit after one year is 200,000 US dollars, you can get a net profit of 140,000 US dollars, with a yield of 14%.</p>
+                    <p class="lang-ru">Если вы вкладываете 100 000 долларов в копирование торговли, теоретическая прибыль через год составит 20 000 долларов. По стандартному соотношению разделения вы можете получить чистую прибыль в 13 000 долларов с доходностью 13%; если вложить 1 миллион долларов (с享 крупной скидкой), теоретическая прибыль через год составит 200 000 долларов, вы можете получить чистую прибыль в 140 000 долларов с доходностью 14%.</p>
+                    <p class="lang-ko">10만 달러를 카피 트레이딩에 투자하시면 1년 후 이론상 수익은 2만 달러이며, 기본 분배 비율에 따라 1.3만 달러의 순수익을 얻으실 수 있으며, 수익률은 13%입니다. 100만 달러를 투자하시면 (대규모 할인 혜택 받음) 1년 후 이론상 수익은 20만 달러이며, 14만 달러의 순수익을 얻으실 수 있으며, 수익률은 14%입니다.</p>
+                    <p class="lang-hi">यदि आप 100,000 अमेरिकी डॉलर कॉपी ट्रेडिंग में निवेश करते हैं, तो एक वर्ष के बाद सैद्धांतिक लाभ 20,000 अमेरिकी डॉलर है, डिफ़ॉल्ट साझाकरण अनुपात के अनुसार, आप 13,000 अमेरिकी डॉलर का शुद्ध लाभ प्राप्त कर सकते हैं, रिटर्न 13%; यदि 1 मिलियन अमेरिकी डॉलर निवेश करते हैं (बड़े पूंजी छूट का लाभ), तो एक वर्ष के बाद सैद्धांतिक लाभ 200,000 अमेरिकी डॉलर है, आप 140,000 अमेरिकी डॉलर का शुद्ध लाभ प्राप्त कर सकते हैं, रिटर्न 14%।</p>
                 </div>
                 
                 <p class="lang-zh">3. 结算方式灵活：按月结算，每月结束后5个工作日内，我们会统计您的当月盈利明细，双方确认无误后，您仅需将交易员分成支付至指定账户即可，流程简单高效。</p>
                 <p class="lang-en">3. Flexible settlement method: Settled monthly. Within 5 working days after the end of each month, we will calculate your monthly profit details. After both parties confirm, you only need to pay the trader's share to the designated account. The process is simple and efficient.</p>
+                <p class="lang-ru">3. Гибкий способ расчета: Разделение прибыли осуществляется ежемесячно. В течение 5 рабочих дней после конца каждого месяца мы подсчитаем детали вашей месячной прибыли, после подтверждения обеими сторонами вам нужно только перечислить долю трейдера на указанный счет. Процесс простой и эффективный.</p>
+                <p class="lang-ko">3. 결제 방식 유연: 월별로 결제하며, 매월 종료 후 5영업일 이내에 당월 수익明细을 정리해 드립니다. 양측 확인 후 귀하는 트레이더의 분배금을 지정된 계정에 지불하기만 하면 되며, 프로세스는 간단하고 효율적입니다.</p>
+                <p class="lang-hi">3. लचीला निपटान तरीका: मासिक रूप से निपटाया जाता है। प्रत्येक महीने के समाप्त होने के बाद 5 कार्य दिनों के भीतर, हम आपके मासिक लाभ विवरणों को गणना करेंगे। दोनों पक्षों द्वारा पुष्टि के बाद, आपको केवल ट्रेडर के हिस्से को निर्दिष्ट खाते में भुगतान करना होगा। प्रक्रिया सरल और कुशल है।</p>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">四、我们的服务与保障：全程护航您的投资</h2>
                 <h2 class="lang-en">IV. Our Services and Guarantees: Escorting Your Investment Throughout the Process</h2>
+                <h2 class="lang-ru">IV. Наши услуги и гарантии: Охрана ваших инвестиций на протяжении всего процесса</h2>
+                <h2 class="lang-ko">4. 저희 서비스와 보장: 투자全程护航</h2>
+                <h2 class="lang-hi">4. हमारी सेवाएं और गारंटी: पूरी प्रक्रिया में आपके निवेश की रक्षा</h2>
+                
                 <ul class="advantage-list">
                     <li class="lang-zh">信号与系统保障：我们承诺持续优化交易信号质量，若信号准确率连续3个月低于【1】%，将第一时间向您说明原因并整改；跟单系统采用端到端加密技术，保障您的账户信息与交易数据安全，杜绝未授权操作；</li>
                     <li class="lang-en">Signal and system guarantee: We promise to continuously optimize the quality of trading signals. If the signal accuracy rate is lower than [1]% for three consecutive months, we will explain the reasons and rectify immediately; the copy trading system adopts end-to-end encryption technology to ensure the security of your account information and transaction data and prevent unauthorized operations;</li>
+                    <li class="lang-ru">Гарантия сигналов и системы: Мы обещаем постоянно улучшать качество торговых сигналов, если точность сигналов в течение трех последовательных месяцев ниже [1]%, мы сразу объясним вам причины и исправим ситуацию; система копирования торговли использует технологию энд-то-энд шифрования, обеспечивая безопасность вашей учетной информации и торговых данных, исключая несанкционированные операции;</li>
+                    <li class="lang-ko">신호와 시스템 보장: 저희는 트레이딩 신호 품질을 지속적으로 최적화하겠다는 약속을 드립니다. 신호 정확도가 연속 3개월 [1]% 이하인 경우 즉시 원인을 설명하고 개선하겠습니다. 카피 트레이딩 시스템은 엔드투엔드 암호화 기술을 채택하여 귀하의 계정 정보와 거래 데이터 안전을 보장하며, 미승인操作을 근절합니다;</li>
+                    <li class="lang-hi">सिग्नल और सिस्टम गारंटी: हम ट्रेडिंग सिग्नल की गुणवत्ता को लगातार अनुकूलित करने का वादा करते हैं, यदि सिग्नल सटीकता लगातार तीन महीने से [1]% से कम है, तो हम आपको तुरंत कारण समझाएंगे और सुधारेंगे; कॉपी ट्रेडिंग सिस्टम एंड-टू-एंड एन्क्रिप्शन तकनीक का उपयोग करता है, जो आपके खाते की जानकारी और ट्रांज़ैक्शन डेटा की सुरक्षा सुनिश्चित करता है, अनधिकृत ऑपरेशन को रोकता है;</li>
+                    
                     <li class="lang-zh">全天候咨询服务：配备专业服务团队，提供24小时在线咨询，及时解答您关于信号、交易、账户的各类疑问；</li>
                     <li class="lang-en">Round-the-clock consulting service: Equipped with a professional service team, providing 24-hour online consultation to promptly answer all kinds of questions about signals, transactions, and accounts;</li>
+                    <li class="lang-ru">Круглосуточная консультационная служба: Об配备 профессиональной сервисной командой, предоставление 24-часовой онлайн-консультации, своевременное решение всех видов вопросов о сигналах, торговле, аккаунтах;</li>
+                    <li class="lang-ko">全天候 상담 서비스: 전문 서비스 팀을 배치하여 24시간 온라인 상담을 제공하며, 신호, 거래, 계정 관련 다양한 질문에 신속하게 답변해 드립니다;</li>
+                    <li class="lang-hi">राउंड-द-क्लॉक कंसल्टेंसी सेवा: प्रोफेशनल सर्विस टीम से लैस, 24-घंटे ऑनलाइन कंसल्टेंसी प्रदान करती है, सिग्नल, ट्रांज़ैक्शन, खातों के बारे में आपके सभी प्रकार के सवालों का तुरंत जवाब देती है;</li>
+                    
                     <li class="lang-zh">透明化跟踪：为您提供专属后台，可实时查看交易信号历史表现、当前跟单进度、资产变动明细，每一笔交易都清晰可查，让您投资更放心；</li>
                     <li class="lang-en">Transparent tracking: Provide you with an exclusive background, allowing you to check the historical performance of trading signals, current copy trading progress, and detailed asset changes in real-time. Every transaction is clearly traceable, making your investment more secure;</li>
+                    <li class="lang-ru">Прозрачная отслеживание: Предоставление вам эксклюзивного后台 для实时查看 истории торговых сигналов, текущего прогресса копирования, деталей изменения активов, каждая сделка четко отслеживаема, что делает ваши инвестиции более безопасными;</li>
+                    <li class="lang-ko">투명화 추적: 귀하에게 전용后台를 제공하여 트레이딩 신호의历史表现, 현재 카피 진행 상황, 자산 변동明细을 실시간으로 확인할 수 있습니다. 매 거래마다 명확하게 확인할 수 있어 투자에 더 안심하실 수 있습니다;</li>
+                    <li class="lang-hi">पारदर्शी ट्रैकिंग: आपको एक विशेष बैकग्राउंड प्रदान करता है, जिससे आप ट्रेडिंग सिग्नल के ऐतिहासिक प्रदर्शन, वर्तमान कॉपी ट्रेडिंग प्रगति, संपत्ति परिवर्तन विवरणों को रीयल-टाइम में देख सकते हैं। हर ट्रांज़ैक्शन स्पष्ट रूप से ट्रेसेबल है, जिससे आपका निवेश अधिक सुरक्षित होता है;</li>
+                    
                     <li class="lang-zh">风险应对支持：若遇极端市场行情，我们将第一时间暂停信号输出并协助您止损，最大程度降低损失。</li>
                     <li class="lang-en">Risk response support: In case of extreme market conditions, we will suspend signal output and assist you in stopping losses as soon as possible to minimize losses.</li>
+                    <li class="lang-ru">Поддержка в управлении рисками: В случае экстремальных рыночных условий мы сразу приостановим вывод сигналов и поможем вам остановить убытки, чтобы минимизировать потери в максимальной степени.</li>
+                    <li class="lang-ko">위험应对 지원: 극단적인 시장 상황이 발생할 경우 저희는 즉시 신호 출력을 중단하고 손실을 최소화하기 위해 손절매를 지원해 드립니다.</li>
+                    <li class="lang-hi">जोखिम प्रतिक्रिया समर्थन: यदि चरम बाजार स्थितियां होती हैं, तो हम तुरंत सिग्नल आउटपुट को रोक देंगे और नुकसान को कम करने के लिए आपकी हेल्प करेंगे।</li>
                 </ul>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">五、合作流程与期限：简单高效，灵活可控</h2>
                 <h2 class="lang-en">V. Cooperation Process and Duration: Simple, Efficient, Flexible and Controllable</h2>
+                <h2 class="lang-ru">V. Процесс и сроки сотрудничества: Простой, эффективный, гибкий и контролируемый</h2>
+                <h2 class="lang-ko">5. 협력 프로세스와 기간: 간단하고 효율적이며, 유연하고 관리 가능</h2>
+                <h2 class="lang-hi">5. सहयोग प्रक्रिया और अवधि: सरल, कुशल, लचीला और नियंत्रण योग्य</h2>
+                
                 <p class="lang-zh">1. 合作流程：</p>
                 <p class="lang-en">1. Cooperation process:</p>
+                <p class="lang-ru">1. Процесс сотрудничества:</p>
+                <p class="lang-ko">1. 협력 프로세스:</p>
+                <p class="lang-hi">1. सहयोग प्रक्रिया:</p>
+                
                 <ul class="step-list">
                     <li class="lang-zh">初步沟通：您确认合作意向，我们提供详细的交易信号实盘业绩报告；</li>
                     <li class="lang-en">Preliminary communication: You confirm the cooperation intention, and we provide a detailed live trading performance report of trading signals;</li>
+                    <li class="lang-ru">Предварительное общение: Вы подтверждаете намерение сотрудничать, мы предоставляем подробный отчет о результатах торговли по живым сигналам;</li>
+                    <li class="lang-ko">초기沟通: 귀하가 협력 의향을 확인하면 저희는 상세한 트레이딩 신호 실거래业績报告를 제공합니다;</li>
+                    <li class="lang-hi">प्रारंभिक संचार: आप सहयोग का इरादा पुष्टि करते हैं, हम ट्रेडिंग सिग्नलों का विस्तृत लाइव ट्रेडिंग प्रदर्शन रिपोर्ट प्रदान करते हैं;</li>
+                    
                     <li class="lang-zh">签订协议：双方签订正式合作协议，明确权利义务与分成规则；</li>
                     <li class="lang-en">Signing agreement: Both parties sign a formal cooperation agreement, clarifying rights, obligations and profit-sharing rules;</li>
+                    <li class="lang-ru">Подписание соглашения: Обе стороны подписывают официальное соглашение о сотрудничестве, четко определяющее права, обязанности и правила разделения прибыли;</li>
+                    <li class="lang-ko">계약签订: 양측이 정식 협력 계약을签订하여 권리 의무와 분배 규칙을 명확히 합니다;</li>
+                    <li class="lang-hi">समझौते पर हस्ताक्षर: दोनों पक्ष एक औपचारिक सहयोग समझौते पर हस्ताक्षर करते हैं, जिसमें अधिकार, दायित्व और लाभ साझाकरण नियम स्पष्ट होते हैं;</li>
+                    
                     <li class="lang-zh">账户授权：您完成跟单系统授权对接，自主存入跟单资金；</li>
                     <li class="lang-en">Account authorization: You complete the authorization connection of the copy trading system and independently deposit copy trading funds;</li>
+                    <li class="lang-ru">Авторизация аккаунта: Вы завершаете авторизацию подключения системы копирования торговли, самостоятельно вносите средства для копирования;</li>
+                    <li class="lang-ko">계정 권한 부여: 귀하가 카피 트레이딩 시스템 권한 연결을 완료하고, 자주적으로 카피 트레이딩 자금을 입금합니다;</li>
+                    <li class="lang-hi">खाता प्राधिकरण: आप कॉपी ट्रेडिंग सिस्टम के प्राधिकरण कनेक्शन को पूरा करते हैं, स्वतंत्र रूप से कॉपी ट्रेडिंग फंड जमा करते हैं;</li>
+                    
                     <li class="lang-zh">开启跟单：系统自动同步信号执行交易，按月结算盈利分成。</li>
                     <li class="lang-en">Start copy trading: The system automatically synchronizes signals to execute transactions and settles profit sharing monthly.</li>
+                    <li class="lang-ru">Запуск копирования: Система автоматически синхронизирует сигналы для выполнения торговых операций, разделение прибыли осуществляется ежемесячно.</li>
+                    <li class="lang-ko">카피 시작: 시스템이 자동으로 신호를 동기화하여 거래를 실행하고, 월별로 수익 분배를 결제합니다.</li>
+                    <li class="lang-hi">कॉपी ट्रेडिंग शुरू करें: सिस्टम स्वचालित रूप से सिग्नलों को सिंक्रनाइज़ करके लेनदेन执⾏ करता है और मासिक रूप से लाभ साझाकरण का निपटान करता है।</li>
                 </ul>
                 
                 <p class="lang-zh">2. 合作期限：</p>
                 <p class="lang-en">2. Cooperation duration:</p>
+                <p class="lang-ru">2. Сроки сотрудничества:</p>
+                <p class="lang-ko">2. 협력 기간:</p>
+                <p class="lang-hi">2. सहयोग अवधि:</p>
+                
                 <p class="lang-zh">默认合作期限为【1】年，期限届满前30日，若您无书面终止意向，协议自动续期。您也可在协议期限内随时终止跟单授权（需提前10个工作日书面通知），灵活可控。</p>
                 <p class="lang-en">The default cooperation period is [1] year. If you have no written intention to terminate 30 days before the expiration, the agreement will be automatically renewed. You can also terminate the copy trading authorization at any time during the agreement period (with 10 working days' written notice in advance), which is flexible and controllable.</p>
+                <p class="lang-ru">Стандартный срок сотрудничества составляет [1] год. Если за 30 дней до окончания срока у вас нет письменного намерения расторгнуть соглашение, оно автоматически продлевается. Вы также можете в любой момент во время действия соглашения расторгнуть авторизацию для копирования торговли (с письменного уведомления за 10 рабочих дней заранее), что делает процесс гибким и контролируемым.</p>
+                <p class="lang-ko">기본 협력 기간은 【1】년이며, 기간 만료 30일 전에 귀하가 서면으로 종료 의향을 표시하지 않으면 계약이 자동 갱신됩니다. 또한 계약 기간 내에는 언제든지 카피 트레이딩 권한을 종료할 수 있으며 (10영업일 전 서면 통지 필요), 유연하고 관리 가능합니다.</p>
+                <p class="lang-hi">डिफ़ॉल्ट सहयोग अवधि [1] वर्ष है। समाप्ति से 30 दिन पहले यदि आपके पास लिखित रूप से समाप्त करने का इरादा नहीं है, तो समझौता स्वचालित रूप से नवीनीकृत हो जाएगा। आप समझौते की अवधि के दौरान किसी भी समय कॉपी ट्रेडिंग प्राधिकरण को समाप्त कर सकते हैं (अग्रिम 10 कार्य दिनों के लिखित नोटिस के साथ), जो लचीला और नियंत्रण योग्य है।</p>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">六、核心团队：专业背书，值得信赖</h2>
                 <h2 class="lang-en">VI. Core Team: Professional Endorsement, Trustworthy</h2>
+                <h2 class="lang-ru">VI. Основная команда: Профессиональное об背书, заслуживающая доверия</h2>
+                <h2 class="lang-ko">6. 핵심 팀: 전문背书, 신뢰할 수 있음</h2>
+                <h2 class="lang-hi">6. कोर टीम: प्रोफेशनल प्रमाणन, भरोसेमंद</h2>
+                
                 <p class="lang-zh">我们的核心团队由多名深耕BTCUSD交易领域的资深人士组成，平均从业经验超【10】年：</p>
                 <p class="lang-en">Our core team consists of many senior professionals who have been deeply engaged in the BTCUSD trading field, with an average working experience of more than [10] years:</p>
+                <p class="lang-ru">Наша основная команда состоит из многих опытных специалистов, глубоко работающих в области торговли BTCUSD, со средним стажем работы более [10] лет:</p>
+                <p class="lang-ko">저희 핵심 팀은 BTCUSD 거래 분야에 깊이 관여한 많은资深人士로 구성되어 있으며, 평균从业经验은 【10】년 이상입니다:</p>
+                <p class="lang-hi">हमारी कोर टीम कई वरिष्ठ पेशेवरों से बनी है जो BTCUSD ट्रेडिंग क्षेत्र में गहराई से लगे हुए हैं, औसत काम करने का अनुभव [10] वर्षों से अधिक है:</p>
+                
                 <ul class="advantage-list">
                     <li class="lang-zh">交易总监：曾主导多套量化交易策略研发，历史操盘累计资金规模超【1000】万美元，近3年实盘交易年化收益率稳定在18%以上，是固定交易信号体系的核心构建者；</li>
                     <li class="lang-en">Trading Director: Has led the research and development of multiple quantitative trading strategies, with a cumulative historical trading capital scale of over [10 million] US dollars. In the past 3 years, the annualized return rate of live trading has been stable above 18%, and is the core builder of the fixed trading signal system;</li>
+                    <li class="lang-ru">Директор торговли: Руководил разработкой нескольких квантитативных торговых стратегий, совокупный объем исторических торговых средств превышает [10 миллионов] долларов. За последние 3 года годовая доходность торговли на живом рынке стабильно выше 18%, является основным создателем системы фиксированных торговых сигналов;</li>
+                    <li class="lang-ko">트레이딩 디렉터: 여러 세트의 정량 트레이딩 전략 개발을 주도한 바 있으며,历史操盘累计资金规模는 【1000】만 달러를 초과합니다. 최근 3년 실거래 연간 수익률은 18% 이상으로 안정적이며, 고정 트레이딩 신호 체계의 핵심 구축자입니다;</li>
+                    <li class="lang-hi">ट्रेडिंग डायरेक्टर: कई मात्रात्मक ट्रेडिंग रणनीतियों के अनुसंधान और विकास का नेतृत्व किया है, ऐतिहासिक ट्रेडिंग की संचयी पूंजी规模 [10 मिलियन] अमेरिकी डॉलर से अधिक है। पिछले 3 वर्षों में लाइव ट्रेडिंग की वार्षिक रिटर्न दर 18% से ऊपर स्थिर रही है, और यह फिक्स्ड ट्रेडिंग सिग्नल सिस्टम का मुख्य निर्माता है;</li>
+                    
                     <li class="lang-zh">技术总监：拥有【10】年金融科技研发经验，主导开发多套加密货币跟单系统，精通数据加密与API对接技术，保障系统稳定安全；</li>
                     <li class="lang-en">Technical Director: Has [10] years of financial technology research and development experience, led the development of multiple cryptocurrency copy trading systems, proficient in data encryption and API docking technology, ensuring system stability and security;</li>
+                    <li class="lang-ru">Технический директор: Имеет [10] лет опыта в разработке финансовых технологий, руководил разработкой нескольких систем копирования торговли криптовалютами, владеет технологиями шифрования данных и интеграции API, обеспечивая стабильность и безопасность системы;</li>
+                    <li class="lang-ko">기술 디렉터: 【10】년 금융 기술 개발 경험을 가지고 있으며, 여러 세트의 암호화폐 카피 트레이딩 시스템 개발을 주도하였고, 데이터 암호화와 API对接 기술을 숙달하여 시스템의 안정성과 안전성을 보장합니다;</li>
+                    <li class="lang-hi">तकनीकी निदेशक: [10] वर्षों का फाइनेंशियल टेक्नोलॉजी अनुसंधान और विकास अनुभव है, कई क्रिप्टोकरेंसी कॉपी ट्रेडिंग सिस्टम के विकास का नेतृत्व किया है, डेटा एन्क्रिप्शन और API डॉकिंग तकनीक में निपुण, सिस्टम की स्थिरता और सुरक्षा सुनिश्चित करता है;</li>
+                    
                     <li class="lang-zh">服务团队：均具备丰富的投资人服务经验，可提供全方位的跟单支持与咨询服务。</li>
                     <li class="lang-en">Service team: All have rich experience in investor services and can provide comprehensive copy trading support and consulting services.</li>
+                    <li class="lang-ru">Сервисная команда: Все имеют богатый опыт в обслуживании инвесторов, могут предоставить всестороннюю поддержку и консультационные услуги по копированию торговли.</li>
+                    <li class="lang-ko">서비스 팀: 모두 풍부한 투자자 서비스 경험을 가지고 있으며, 전방위적인 카피 트레이딩 지원과 상담 서비스를 제공할 수 있습니다.</li>
+                    <li class="lang-hi">सर्विस टीम: सभी के पास निवेशक सेवाओं का समृद्ध अनुभव है, व्यापक कॉपी ट्रेडिंग समर्थन और कंसल्टेंसी सेवाएं प्रदान कर सकती है।</li>
                 </ul>
             </div>
             
             <div class="card">
                 <h2 class="lang-zh">七、合作诚意邀请：共享高收益，共赢未来</h2>
                 <h2 class="lang-en">VII. Sincere Invitation for Cooperation: Sharing High Returns, Winning Together in the Future</h2>
+                <h2 class="lang-ru">VII. Серьезное приглашение к сотрудничеству: Делимся высокими доходами, побеждаем вместе в будущем</h2>
+                <h2 class="lang-ko">7. 협력 진심 초대: 높은 수익 공유, 미래 함께 승리</h2>
+                <h2 class="lang-hi">7. सहयोग के लिए ईमानदार आमंत्रण: उच्च रिटर्न साझा करें, भविष्य में साथ जीतें</h2>
+                
                 <p class="lang-zh">这是一次「专业能力+个人资金」的优势互补合作：我们用成熟的交易信号与技术系统为您铺路，您用自有资金享受高收益回报，资金安全可控，盈利清晰可见。</p>
                 <p class="lang-en">This is a complementary cooperation of "professional ability + personal funds": We pave the way for you with mature trading signals and technical systems, and you enjoy high returns with your own funds. Funds are safe and controllable, and profits are clearly visible.</p>
+                <p class="lang-ru">Это сотрудничество на взаимовыгоде "профессиональные способности + личные средства": Мы прокладываем путь для вас с помощью зрелых торговых сигналов и технических систем, вы получаете высокие доходы за счет своих средств. Средства безопасны и контролируемые, прибыль ясно видна.</p>
+                <p class="lang-ko">이것은 '전문 능력+개인 자금'의 우세 상호 보완 협력입니다: 저희는 성숙한 트레이딩 신호와 기술 시스템으로 귀하의 길을 열어주고, 귀하는 자체 자금으로 높은 수익을 누리실 수 있으며, 자금은 안전하고 관리 가능하며, 수익은 명확하게 확인할 수 있습니다.</p>
+                <p class="lang-hi">यह "प्रोफेशनल क्षमता + व्यक्तिगत फंड" का पूरक सहयोग है: हम परिपक्व ट्रेडिंग सिग्नल और तकनीकी सिस्टम के साथ आपके लिए रास्ता बनाते हैं, आप अपने स्वयं के फंड के साथ उच्च रिटर्न享受 करते हैं, फंड सुरक्षित और नियंत्रण में हैं, लाभ स्पष्ट रूप से दिखाई देता है।</p>
+                
                 <p class="lang-zh">当前加密货币市场正值发展机遇期，BTCUSD交易的盈利潜力巨大。我们诚邀您把握此次低门槛、高回报的投资机会，与我们携手共赢。</p>
                 <p class="lang-en">The current cryptocurrency market is in a period of development opportunities, and the profit potential of BTCUSD trading is huge. We sincerely invite you to seize this low-threshold, high-return investment opportunity and win together with us.</p>
+                <p class="lang-ru">Текущий рынок криптовалют находится в периоде развития и возможностей, прибыльный потенциал торговли BTCUSD огромен. Мы серьезно приглашаем вас воспользоваться этой инвестиционной возможностью с низким порогом и высокими доходами, чтобы вместе побеждать.</p>
+                <p class="lang-ko">현재 암호화폐 시장은 발전机遇期에 있으며, BTCUSD 거래의 수익 잠재력은 매우 큽니다. 저희는 귀하가 이번 저门槛、高回报의 투자机会를 잡아 저희와 함께 승리하길 진심으로 초대합니다.</p>
+                <p class="lang-hi">वर्तमान में क्रिप्टोकरेंसी बाजार विकास के अवसर की अवधि में है, BTCUSD ट्रेडिंग की लाभ क्षमता बहुत बड़ी है। हम आपको इस कम दहलीज, उच्च रिटर्न वाले निवेश अवसर को पकड़ने के लिए诚邀 करते हैं, हमारे साथ मिलकर जीतें।</p>
+                
                 <p class="lang-zh">若您想了解更多细节，欢迎随时与我们联系！</p>
                 <p class="lang-en">If you want to know more details, please feel free to contact us at any time!</p>
+                <p class="lang-ru">Если вы хотите узнать больше деталей, не стесняйтесь обращаться к нам в любое время!</p>
+                <p class="lang-ko">더 많은 세부 사항을 알고 싶으시다면 언제든지 저희에게 연락해 주세요!</p>
+                <p class="lang-hi">यदि आप अधिक विवरण जानना चाहते हैं, तो किसी भी समय हमसे संपर्क करने का स्वागत है!</p>
                 
                 <div class="contact-info">
                     <p class="lang-zh">联系人：【甲子】</p>
                     <p class="lang-en">Contact Person: 【Jiazi】</p>
+                    <p class="lang-ru">Контактное лицо: 【Джазы】</p>
+                    <p class="lang-ko">연락처 사람: 【甲子】</p>
+                    <p class="lang-hi">संपर्क व्यक्ति: 【जियाज़ी】</p>
+                    
                     <p class="lang-zh">联系方式：【15219407427】</p>
-                    <p class="lang-en">Contact Information: 【15219407427】</p>
+                    <p class="lang-en">Contact Information: 【+86 15219407427】</p>
+                    <p class="lang-ru">Контактная информация: 【+86 15219407427】</p>
+                    <p class="lang-ko">연락 방법: 【+86 15219407427】</p>
+                    <p class="lang-hi">संपर्क जानकारी: 【+86 15219407427】</p>
+                    
                     <p class="lang-zh">项目方/交易员团队全称：【甲子外汇】</p>
                     <p class="lang-en">Full name of project party/trader team: 【Jiazi Foreign Exchange】</p>
+                    <p class="lang-ru">Полное название проектной стороны/команды трейдеров: 【Джазы Валютный обмен】</p>
+                    <p class="lang-ko">프로젝트 측/트레이더 팀 전체 이름: 【甲子外汇】</p>
+                    <p class="lang-hi">परियोजना पक्ष/ट्रेडर टीम का पूरा नाम: 【जियाज़ी विदेशी मुद्रा】</p>
                 </div>
             </div>
         </div>
@@ -417,6 +618,10 @@
         // 语言切换功能
         document.addEventListener('DOMContentLoaded', function() {
             const langButtons = document.querySelectorAll('.language-btn');
+            const body = document.body;
+            
+            // 初始化 - 移除所有语言类，只保留默认的中文
+            body.className = body.className.replace(/\b(en|ru|ko|hi)\b/g, '').trim() + ' zh';
             
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -428,16 +633,13 @@
                     // 获取要切换的语言
                     const lang = this.getAttribute('data-lang');
                     
-                    // 切换页面语言
-                    if (lang === 'en') {
-                        document.body.classList.add('en');
-                    } else {
-                        document.body.classList.remove('en');
-                    }
+                    // 移除所有语言类
+                    body.className = body.className.replace(/\b(zh|en|ru|ko|hi)\b/g, '').trim();
+                    // 添加当前语言类
+                    body.classList.add(lang);
                 });
             });
         });
     </script>
 </body>
-
 </html>
