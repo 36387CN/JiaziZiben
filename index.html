@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTCUSD交易信号跟单项目介绍</title>
+    <title>BTCUSD交易信号跟单项目介绍 | BTCUSD Trading Signal Copy Project Introduction</title>
     <style>
         * {
             margin: 0;
@@ -23,6 +23,27 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+        }
+
+        /* 语言切换按钮 */
+        .language-switch {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .language-btn {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .language-btn:hover, .language-btn.active {
+            background-color: #2b6cb0;
         }
         
         /* 头部区域 */
@@ -191,123 +212,232 @@
             h2 {
                 font-size: 20px;
             }
+
+            .language-switch {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* 语言内容显示控制 */
+        .lang-zh {
+            display: block;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        body.en .lang-zh {
+            display: none;
+        }
+
+        body.en .lang-en {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 语言切换按钮 -->
+        <div class="language-switch">
+            <button class="language-btn active" data-lang="zh">中文</button>
+            <button class="language-btn" data-lang="en">English</button>
+        </div>
+
         <div class="header">
-            <h1>BTCUSD交易信号跟单项目介绍</h1>
-            <div class="header-tagline">专业交易信号加持 · 资金安全可控 · 稳定高收益回报</div>
+            <h1 class="lang-zh">BTCUSD交易信号跟单项目介绍</h1>
+            <h1 class="lang-en">BTCUSD Trading Signal Copy Project Introduction</h1>
+            <div class="header-tagline lang-zh">专业交易信号加持 · 资金安全可控 · 稳定高收益回报</div>
+            <div class="header-tagline lang-en">Professional Trading Signals · Secure Fund Control · Stable High Returns</div>
         </div>
         <img 
-            src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f4c9e1c43aeb4327a9b105d774ed1791.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251225220308F6E0AB03D3166FCB35E4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1767276189&x-signature=YZe1bvTlbKgTssAJuHZPPZDf7EE%3D" width=100% height=500
+            src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f4c9e1c43aeb4327a9b105d774ed1791.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251225220308F6E0AB03D3166FCB35E4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1767276189&x-signature=YZe1bvTlbKgTssAJuHZPPZDf7EE%3D" 
+            width="100%" 
+            height="500"
             alt="BTCUSD M1交易信号图表" 
             title="BTCUSD 1分钟周期交易信号（红绿点为开平仓信号，红蓝线为趋势指标）"
             class="signal-img"
         >
         <div class="content">
             <div class="card">
-                <p class="greeting">尊敬的投资人：</p>
-                <p>您好！我们专注于BTCUSD加密货币交易领域，推出【固定交易信号+个人账户跟单】合作项目，核心目标是让您无需专业交易经验，仅凭个人BTCUSD交易账户即可轻松享受稳定高收益——<span class="highlight">历史实盘验证年化收益率高达20%</span>，资金全程存放于您的个人账户，安全可控，零资金挪用风险。</p>
-                <p>无需您研究市场行情、制定交易策略，更无需占用大量时间盯盘，仅需授权我们的跟单系统对接您的账户，即可自动同步专业交易员的优质交易信号，坐享盈利分成。这是一份为您量身定制的低风险、高回报投资机会，诚邀您深入了解。</p>
+                <p class="greeting lang-zh">尊敬的投资人：</p>
+                <p class="greeting lang-en">Dear Investors:</p>
+                <p class="lang-zh">您好！我们专注于BTCUSD加密货币交易领域，推出【固定交易信号+个人账户跟单】合作项目，核心目标是让您无需专业交易经验，仅凭个人BTCUSD交易账户即可轻松享受稳定高收益——<span class="highlight">历史实盘验证年化收益率高达20%</span>，资金全程存放于您的个人账户，安全可控，零资金挪用风险。</p>
+                <p class="lang-en">Greetings! We specialize in the BTCUSD cryptocurrency trading field and launch the [Fixed Trading Signals + Personal Account Copy Trading] cooperation project. Our core goal is to allow you to easily enjoy stable high returns with just a personal BTCUSD trading account, without the need for professional trading experience — <span class="highlight">historical live trading verified annualized return rate up to 20%</span>. Funds are kept in your personal account throughout the process, secure and controllable, with zero risk of fund misappropriation.</p>
+                <p class="lang-zh">无需您研究市场行情、制定交易策略，更无需占用大量时间盯盘，仅需授权我们的跟单系统对接您的账户，即可自动同步专业交易员的优质交易信号，坐享盈利分成。这是一份为您量身定制的低风险、高回报投资机会，诚邀您深入了解。</p>
+                <p class="lang-en">There's no need for you to research market conditions, formulate trading strategies, or spend a lot of time monitoring the market. Simply authorize our copy trading system to connect to your account, and it will automatically synchronize high-quality trading signals from professional traders, allowing you to enjoy profit sharing. This is a low-risk, high-return investment opportunity tailored for you, and we sincerely invite you to learn more.</p>
             </div>
             
             <div class="card">
-                <h2>一、项目背景：精准解决投资人核心痛点</h2>
-                <p>当前BTCUSD交易市场规模持续扩大，日均交易量超千亿美金，是全球最活跃的加密货币交易对之一，蕴含丰厚盈利机会。但多数投资人面临三大核心痛点：</p>
+                <h2 class="lang-zh">一、项目背景：精准解决投资人核心痛点</h2>
+                <h2 class="lang-en">I. Project Background: Precisely Solving Core Pain Points of Investors</h2>
+                <p class="lang-zh">当前BTCUSD交易市场规模持续扩大，日均交易量超千亿美金，是全球最活跃的加密货币交易对之一，蕴含丰厚盈利机会。但多数投资人面临三大核心痛点：</p>
+                <p class="lang-en">The current BTCUSD trading market continues to expand, with a daily trading volume exceeding 100 billion US dollars. It is one of the most active cryptocurrency trading pairs globally, containing abundant profit opportunities. However, most investors face three core pain points:</p>
                 <ul class="pain-point-list">
-                    <li>专业门槛高：缺乏加密货币交易知识、技术指标分析能力，自主交易胜率低，亏损风险大；</li>
-                    <li>时间精力有限：无法24小时跟踪市场动态，错过最佳交易时机；</li>
-                    <li>资金安全担忧：担心参与项目时资金被挪用、归集，资产控制权旁落。</li>
+                    <li class="lang-zh">专业门槛高：缺乏加密货币交易知识、技术指标分析能力，自主交易胜率低，亏损风险大；</li>
+                    <li class="lang-en">High professional threshold: Lack of cryptocurrency trading knowledge and technical indicator analysis capabilities, resulting in low winning rate in independent trading and high risk of losses;</li>
+                    <li class="lang-zh">时间精力有限：无法24小时跟踪市场动态，错过最佳交易时机；</li>
+                    <li class="lang-en">Limited time and energy: Unable to track market dynamics 24/7, missing the best trading opportunities;</li>
+                    <li class="lang-zh">资金安全担忧：担心参与项目时资金被挪用、归集，资产控制权旁落。</li>
+                    <li class="lang-en">Concerns about fund security: Worry about fund misappropriation and pooling when participating in the project, leading to loss of asset control.</li>
                 </ul>
-                <p>针对以上痛点，我们打磨出成熟的交易信号跟单模式：您的资金始终在自己的交易账户内，仅用于跟单交易；专业交易信号为您铺路，自动化跟单为您省时，让投资盈利更轻松、更安心。</p>
+                <p class="lang-zh">针对以上痛点，我们打磨出成熟的交易信号跟单模式：您的资金始终在自己的交易账户内，仅用于跟单交易；专业交易信号为您铺路，自动化跟单为您省时，让投资盈利更轻松、更安心。</p>
+                <p class="lang-en">To address the above pain points, we have developed a mature trading signal copy mode: Your funds remain in your own trading account and are only used for copy trading; professional trading signals pave the way for you, and automated copy trading saves you time, making investment profits easier and more secure.</p>
             </div>
             
             <div class="card">
-                <h2>二、项目核心模式：简单三步，坐享分成</h2>
-                <p>我们的合作模式极简透明，全程仅需三步即可开启盈利：</p>
+                <h2 class="lang-zh">二、项目核心模式：简单三步，坐享分成</h2>
+                <h2 class="lang-en">II. Core Project Mode: Simple Three Steps to Enjoy Profit Sharing</h2>
+                <p class="lang-zh">我们的合作模式极简透明，全程仅需三步即可开启盈利：</p>
+                <p class="lang-en">Our cooperation model is extremely simple and transparent, requiring only three steps to start making profits:</p>
                 <ul class="step-list">
-                    <li>第一步：您准备个人BTCUSD交易账户（支持币安、Coinbase等主流交易所，账户归属权100%属于您）；</li>
-                    <li>第二步：授权我们的跟单系统对接账户（授权范围仅含【接收信号+自动交易】，无任何资金划转权限）；</li>
-                    <li>第三步：系统自动同步交易信号执行操作，交易完成后，您与专业交易员按约定比例分成盈利。</li>
+                    <li class="lang-zh">第一步：您准备个人BTCUSD交易账户（支持币安、Coinbase等主流交易所，账户归属权100%属于您）；</li>
+                    <li class="lang-en">Step 1: Prepare your personal BTCUSD trading account (supports mainstream exchanges such as Binance and Coinbase, with 100% ownership belonging to you);</li>
+                    <li class="lang-zh">第二步：授权我们的跟单系统对接账户（授权范围仅含【接收信号+自动交易】，无任何资金划转权限）；</li>
+                    <li class="lang-en">Step 2: Authorize our copy trading system to connect to your account (authorization scope only includes [receiving signals + automatic trading], no fund transfer authority);</li>
+                    <li class="lang-zh">第三步：系统自动同步交易信号执行操作，交易完成后，您与专业交易员按约定比例分成盈利。</li>
+                    <li class="lang-en">Step 3: The system automatically synchronizes trading signals to execute operations. After the transaction is completed, you and the professional trader share profits according to the agreed ratio.</li>
                 </ul>
                 
                 <div class="key-point">
-                    <p><strong>核心亮点：</strong></p>
+                    <p class="lang-zh"><strong>核心亮点：</strong></p>
+                    <p class="lang-en"><strong>Core Highlights:</strong></p>
                 </div>
                 <ul class="advantage-list">
-                    <li>交易信号优质稳定：由我们的核心交易团队结合量化模型与多年实战经验生成，经过12个月实盘验证，年化收益率可达200%，最大回撤控制在10%以内，风险可控；</li>
-                    <li>资金绝对安全：您的资金全程存放于个人交易账户，我们不触碰、不归集任何资金，账户控制权、支配权始终在您手中，资金仅用于跟单交易，不流向任何非交易用途；</li>
-                    <li>操作零门槛：无需学习交易知识，无需手动操作，系统全自动化执行，您可实时查看交易明细、资产变动，全程透明可追溯。</li>
+                    <li class="lang-zh">交易信号优质稳定：由我们的核心交易团队结合量化模型与多年实战经验生成，经过12个月实盘验证，年化收益率可达200%，最大回撤控制在10%以内，风险可控；</li>
+                    <li class="lang-en">High-quality and stable trading signals: Generated by our core trading team combining quantitative models and years of practical experience. Verified by 12 months of live trading, the annualized return rate can reach 200%, with maximum drawdown controlled within 10%, making risks manageable;</li>
+                    <li class="lang-zh">资金绝对安全：您的资金全程存放于个人交易账户，我们不触碰、不归集任何资金，账户控制权、支配权始终在您手中，资金仅用于跟单交易，不流向任何非交易用途；</li>
+                    <li class="lang-en">Absolute fund security: Your funds are kept in your personal trading account throughout the process. We do not touch or pool any funds. Account control and dominance are always in your hands. Funds are only used for copy trading and do not flow to any non-trading purposes;</li>
+                    <li class="lang-zh">操作零门槛：无需学习交易知识，无需手动操作，系统全自动化执行，您可实时查看交易明细、资产变动，全程透明可追溯。</li>
+                    <li class="lang-en">Zero operation threshold: No need to learn trading knowledge or manual operation. The system is fully automated. You can check transaction details and asset changes in real-time, with the entire process being transparent and traceable.</li>
                 </ul>
             </div>
             
             <div class="card">
-                <h2>三、收益优势：高年化+灵活分成，盈利清晰可见</h2>
-                <p>1. 核心收益：跟单交易盈利分成</p>
-                <p>您与我们的专业交易员按比例共享跟单盈利，分成规则极具吸引力：</p>
+                <h2 class="lang-zh">三、收益优势：高年化+灵活分成，盈利清晰可见</h2>
+                <h2 class="lang-en">III. Profit Advantages: High Annualized Returns + Flexible Profit Sharing, Profits Clearly Visible</h2>
+                <p class="lang-zh">1. 核心收益：跟单交易盈利分成</p>
+                <p class="lang-en">1. Core Income: Profit sharing from copy trading</p>
+                <p class="lang-zh">您与我们的专业交易员按比例共享跟单盈利，分成规则极具吸引力：</p>
+                <p class="lang-en">You and our professional traders share copy trading profits in proportion, with extremely attractive profit-sharing rules:</p>
                 <ul class="advantage-list">
-                    <li>默认分成：您获65%，本机构获35%；</li>
-                    <li>大额资金优惠：若您单次投入跟单资金超100万美元，分成比例升级为您获70%，本机构获30%，投入越多，收益占比越高。</li>
+                    <li class="lang-zh">默认分成：您获65%，本机构获35%；</li>
+                    <li class="lang-en">Default sharing: You get 65%, our institution gets 35%;</li>
+                    <li class="lang-zh">大额资金优惠：若您单次投入跟单资金超100万美元，分成比例升级为您获70%，本机构获30%，投入越多，收益占比越高。</li>
+                    <li class="lang-en">Large capital discount: If you invest more than 1 million US dollars in a single copy trading, the sharing ratio is upgraded to 70% for you and 30% for our institution. The more you invest, the higher your profit share.</li>
                 </ul>
                 
-                <p>2. 收益案例参考（按年化20%测算）：</p>
+                <p class="lang-zh">2. 收益案例参考（按年化20%测算）：</p>
+                <p class="lang-en">2. Profit case reference (calculated at 20% annualized):</p>
                 <div class="收益案例">
-                    <p>若您投入10万美元跟单，一年后理论盈利2万美元，按默认分成比例，您可获得1.3万美元纯收益，收益率13%；若投入100万美元（享受大额优惠），一年理论盈利20万美元，您可获得14万美元纯收益，收益率14%。</p>
+                    <p class="lang-zh">若您投入10万美元跟单，一年后理论盈利2万美元，按默认分成比例，您可获得1.3万美元纯收益，收益率13%；若投入100万美元（享受大额优惠），一年理论盈利20万美元，您可获得14万美元纯收益，收益率14%。</p>
+                    <p class="lang-en">If you invest 100,000 US dollars in copy trading, the theoretical profit after one year is 20,000 US dollars. According to the default sharing ratio, you can get a net profit of 13,000 US dollars, with a yield of 13%; if you invest 1 million US dollars (enjoying large capital discount), the theoretical profit after one year is 200,000 US dollars, you can get a net profit of 140,000 US dollars, with a yield of 14%.</p>
                 </div>
                 
-                <p>3. 结算方式灵活：按月结算，每月结束后5个工作日内，我们会统计您的当月盈利明细，双方确认无误后，您仅需将交易员分成支付至指定账户即可，流程简单高效。</p>
+                <p class="lang-zh">3. 结算方式灵活：按月结算，每月结束后5个工作日内，我们会统计您的当月盈利明细，双方确认无误后，您仅需将交易员分成支付至指定账户即可，流程简单高效。</p>
+                <p class="lang-en">3. Flexible settlement method: Settled monthly. Within 5 working days after the end of each month, we will calculate your monthly profit details. After both parties confirm, you only need to pay the trader's share to the designated account. The process is simple and efficient.</p>
             </div>
             
             <div class="card">
-                <h2>四、我们的服务与保障：全程护航您的投资</h2>
+                <h2 class="lang-zh">四、我们的服务与保障：全程护航您的投资</h2>
+                <h2 class="lang-en">IV. Our Services and Guarantees: Escorting Your Investment Throughout the Process</h2>
                 <ul class="advantage-list">
-                    <li>信号与系统保障：我们承诺持续优化交易信号质量，若信号准确率连续3个月低于【1】%，将第一时间向您说明原因并整改；跟单系统采用端到端加密技术，保障您的账户信息与交易数据安全，杜绝未授权操作；</li>
-                    <li>全天候咨询服务：配备专业服务团队，提供24小时在线咨询，及时解答您关于信号、交易、账户的各类疑问；</li>
-                    <li>透明化跟踪：为您提供专属后台，可实时查看交易信号历史表现、当前跟单进度、资产变动明细，每一笔交易都清晰可查，让您投资更放心；</li>
-                    <li>风险应对支持：若遇极端市场行情，我们将第一时间暂停信号输出并协助您止损，最大程度降低损失。</li>
+                    <li class="lang-zh">信号与系统保障：我们承诺持续优化交易信号质量，若信号准确率连续3个月低于【1】%，将第一时间向您说明原因并整改；跟单系统采用端到端加密技术，保障您的账户信息与交易数据安全，杜绝未授权操作；</li>
+                    <li class="lang-en">Signal and system guarantee: We promise to continuously optimize the quality of trading signals. If the signal accuracy rate is lower than [1]% for three consecutive months, we will explain the reasons and rectify immediately; the copy trading system adopts end-to-end encryption technology to ensure the security of your account information and transaction data and prevent unauthorized operations;</li>
+                    <li class="lang-zh">全天候咨询服务：配备专业服务团队，提供24小时在线咨询，及时解答您关于信号、交易、账户的各类疑问；</li>
+                    <li class="lang-en">Round-the-clock consulting service: Equipped with a professional service team, providing 24-hour online consultation to promptly answer all kinds of questions about signals, transactions, and accounts;</li>
+                    <li class="lang-zh">透明化跟踪：为您提供专属后台，可实时查看交易信号历史表现、当前跟单进度、资产变动明细，每一笔交易都清晰可查，让您投资更放心；</li>
+                    <li class="lang-en">Transparent tracking: Provide you with an exclusive background, allowing you to check the historical performance of trading signals, current copy trading progress, and detailed asset changes in real-time. Every transaction is clearly traceable, making your investment more secure;</li>
+                    <li class="lang-zh">风险应对支持：若遇极端市场行情，我们将第一时间暂停信号输出并协助您止损，最大程度降低损失。</li>
+                    <li class="lang-en">Risk response support: In case of extreme market conditions, we will suspend signal output and assist you in stopping losses as soon as possible to minimize losses.</li>
                 </ul>
             </div>
             
             <div class="card">
-                <h2>五、合作流程与期限：简单高效，灵活可控</h2>
-                <p>1. 合作流程：</p>
+                <h2 class="lang-zh">五、合作流程与期限：简单高效，灵活可控</h2>
+                <h2 class="lang-en">V. Cooperation Process and Duration: Simple, Efficient, Flexible and Controllable</h2>
+                <p class="lang-zh">1. 合作流程：</p>
+                <p class="lang-en">1. Cooperation process:</p>
                 <ul class="step-list">
-                    <li>初步沟通：您确认合作意向，我们提供详细的交易信号实盘业绩报告；</li>
-                    <li>签订协议：双方签订正式合作协议，明确权利义务与分成规则；</li>
-                    <li>账户授权：您完成跟单系统授权对接，自主存入跟单资金；</li>
-                    <li>开启跟单：系统自动同步信号执行交易，按月结算盈利分成。</li>
+                    <li class="lang-zh">初步沟通：您确认合作意向，我们提供详细的交易信号实盘业绩报告；</li>
+                    <li class="lang-en">Preliminary communication: You confirm the cooperation intention, and we provide a detailed live trading performance report of trading signals;</li>
+                    <li class="lang-zh">签订协议：双方签订正式合作协议，明确权利义务与分成规则；</li>
+                    <li class="lang-en">Signing agreement: Both parties sign a formal cooperation agreement, clarifying rights, obligations and profit-sharing rules;</li>
+                    <li class="lang-zh">账户授权：您完成跟单系统授权对接，自主存入跟单资金；</li>
+                    <li class="lang-en">Account authorization: You complete the authorization connection of the copy trading system and independently deposit copy trading funds;</li>
+                    <li class="lang-zh">开启跟单：系统自动同步信号执行交易，按月结算盈利分成。</li>
+                    <li class="lang-en">Start copy trading: The system automatically synchronizes signals to execute transactions and settles profit sharing monthly.</li>
                 </ul>
                 
-                <p>2. 合作期限：</p>
-                <p>默认合作期限为【1】年，期限届满前30日，若您无书面终止意向，协议自动续期。您也可在协议期限内随时终止跟单授权（需提前10个工作日书面通知），灵活可控。</p>
+                <p class="lang-zh">2. 合作期限：</p>
+                <p class="lang-en">2. Cooperation duration:</p>
+                <p class="lang-zh">默认合作期限为【1】年，期限届满前30日，若您无书面终止意向，协议自动续期。您也可在协议期限内随时终止跟单授权（需提前10个工作日书面通知），灵活可控。</p>
+                <p class="lang-en">The default cooperation period is [1] year. If you have no written intention to terminate 30 days before the expiration, the agreement will be automatically renewed. You can also terminate the copy trading authorization at any time during the agreement period (with 10 working days' written notice in advance), which is flexible and controllable.</p>
             </div>
             
             <div class="card">
-                <h2>六、核心团队：专业背书，值得信赖</h2>
-                <p>我们的核心团队由多名深耕BTCUSD交易领域的资深人士组成，平均从业经验超【10】年：</p>
+                <h2 class="lang-zh">六、核心团队：专业背书，值得信赖</h2>
+                <h2 class="lang-en">VI. Core Team: Professional Endorsement, Trustworthy</h2>
+                <p class="lang-zh">我们的核心团队由多名深耕BTCUSD交易领域的资深人士组成，平均从业经验超【10】年：</p>
+                <p class="lang-en">Our core team consists of many senior professionals who have been deeply engaged in the BTCUSD trading field, with an average working experience of more than [10] years:</p>
                 <ul class="advantage-list">
-                    <li>交易总监：曾主导多套量化交易策略研发，历史操盘累计资金规模超【1000】万美元，近3年实盘交易年化收益率稳定在18%以上，是固定交易信号体系的核心构建者；</li>
-                    <li>技术总监：拥有【10】年金融科技研发经验，主导开发多套加密货币跟单系统，精通数据加密与API对接技术，保障系统稳定安全；</li>
-                    <li>服务团队：均具备丰富的投资人服务经验，可提供全方位的跟单支持与咨询服务。</li>
+                    <li class="lang-zh">交易总监：曾主导多套量化交易策略研发，历史操盘累计资金规模超【1000】万美元，近3年实盘交易年化收益率稳定在18%以上，是固定交易信号体系的核心构建者；</li>
+                    <li class="lang-en">Trading Director: Has led the research and development of multiple quantitative trading strategies, with a cumulative historical trading capital scale of over [10 million] US dollars. In the past 3 years, the annualized return rate of live trading has been stable above 18%, and is the core builder of the fixed trading signal system;</li>
+                    <li class="lang-zh">技术总监：拥有【10】年金融科技研发经验，主导开发多套加密货币跟单系统，精通数据加密与API对接技术，保障系统稳定安全；</li>
+                    <li class="lang-en">Technical Director: Has [10] years of financial technology research and development experience, led the development of multiple cryptocurrency copy trading systems, proficient in data encryption and API docking technology, ensuring system stability and security;</li>
+                    <li class="lang-zh">服务团队：均具备丰富的投资人服务经验，可提供全方位的跟单支持与咨询服务。</li>
+                    <li class="lang-en">Service team: All have rich experience in investor services and can provide comprehensive copy trading support and consulting services.</li>
                 </ul>
             </div>
             
             <div class="card">
-                <h2>七、合作诚意邀请：共享高收益，共赢未来</h2>
-                <p>这是一次「专业能力+个人资金」的优势互补合作：我们用成熟的交易信号与技术系统为您铺路，您用自有资金享受高收益回报，资金安全可控，盈利清晰可见。</p>
-                <p>当前加密货币市场正值发展机遇期，BTCUSD交易的盈利潜力巨大。我们诚邀您把握此次低门槛、高回报的投资机会，与我们携手共赢。</p>
-                <p>若您想了解更多细节，欢迎随时与我们联系！</p>
+                <h2 class="lang-zh">七、合作诚意邀请：共享高收益，共赢未来</h2>
+                <h2 class="lang-en">VII. Sincere Invitation for Cooperation: Sharing High Returns, Winning Together in the Future</h2>
+                <p class="lang-zh">这是一次「专业能力+个人资金」的优势互补合作：我们用成熟的交易信号与技术系统为您铺路，您用自有资金享受高收益回报，资金安全可控，盈利清晰可见。</p>
+                <p class="lang-en">This is a complementary cooperation of "professional ability + personal funds": We pave the way for you with mature trading signals and technical systems, and you enjoy high returns with your own funds. Funds are safe and controllable, and profits are clearly visible.</p>
+                <p class="lang-zh">当前加密货币市场正值发展机遇期，BTCUSD交易的盈利潜力巨大。我们诚邀您把握此次低门槛、高回报的投资机会，与我们携手共赢。</p>
+                <p class="lang-en">The current cryptocurrency market is in a period of development opportunities, and the profit potential of BTCUSD trading is huge. We sincerely invite you to seize this low-threshold, high-return investment opportunity and win together with us.</p>
+                <p class="lang-zh">若您想了解更多细节，欢迎随时与我们联系！</p>
+                <p class="lang-en">If you want to know more details, please feel free to contact us at any time!</p>
                 
                 <div class="contact-info">
-                    <p>联系人：【甲子】</p>
-                    <p>联系方式：【15219407427】</p>
-                    <p>项目方/交易员团队全称：【甲子外汇】</p>
+                    <p class="lang-zh">联系人：【甲子】</p>
+                    <p class="lang-en">Contact Person: 【Jiazi】</p>
+                    <p class="lang-zh">联系方式：【15219407427】</p>
+                    <p class="lang-en">Contact Information: 【15219407427】</p>
+                    <p class="lang-zh">项目方/交易员团队全称：【甲子外汇】</p>
+                    <p class="lang-en">Full name of project party/trader team: 【Jiazi Foreign Exchange】</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // 语言切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.language-btn');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    // 给当前点击的按钮添加active类
+                    this.classList.add('active');
+                    
+                    // 获取要切换的语言
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // 切换页面语言
+                    if (lang === 'en') {
+                        document.body.classList.add('en');
+                    } else {
+                        document.body.classList.remove('en');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
