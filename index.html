@@ -1,1210 +1,995 @@
 <!DOCTYPE html>
-="zh-CN">
+<html lang="zh-CN">
 <head>
-="UTF-8">
-="width=device-width, initial-scale=1.0">
-甲子AR - 专业AR线下活动策划专家</title>
-  <!-- 引入外部资源 -->
-="https://cdn.tailwindcss.com"></script>
-="stylesheet">
-="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-  <!-- 引入Google字体 -->
-="stylesheet">
-  
-  <!-- Tailwind配置 -->
-  <script>
- = {
-: {
-: {
-: {
-, // 主色调：紫蓝色
-, // 辅助色：青绿色
-, // 强调色：亮红色
-,
-: '#F8F9FA'
-          },
-: inter{
-            : ['Inter', 'sans-serif'],
-          },
-        },
-      }
-    }
-  </script>
-  
-  <!-- 自定义样式 -->
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      .text-shadow {
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      .text-shadow-lg {
-        text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
-      }
-      .bg-gradient-hero {
-        background: linear-gradient(135deg, #6C5CE7 0%, #0984E3 100%);
-      }
-      .bg-glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-      .rotate-hover {
-        transition: transform 0.3s ease;
-      }
-      .rotate-hover:hover {
-        transform: rotate(5deg) scale(1.05);
-      }
-    }
-  </style>
-</head>
-            : '#2D3436',
-            : '#FF7675', <body class="font-inter bg-light text-dark antialiased">
-darksecondaryaccent'#00B894',   <!-- 导航栏 -->
-,             primary: '#6C5CE7'  <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
-:           colors    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-fontFamilylight:       <a href="#" class="flex items-center space-x-2">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-          <i class="fa fa-gamepad text-white text-xl"></i>
-        </div>
-        <span class="text-2xl font-bold text-white text-shadow">甲子AR</span>
-      </a>
-      
-      <!-- 桌面导航 -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#about" class="text-white hover:text-accent transition-colors">关于我们</a>
-        <a href="#services" class="text-white hover:text-accent transition-colors">服务项目</a>
-        <a href="#cases" class="text-white hover:text-accent transition-colors">成功案例</a>
-        <a href="#process" class="text-white hover:text-accent transition-colors">合作流程</a>
-        <a href="#contact" class="bg-accent hover:bg-accent/90 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105">联系我们</a>
-      </nav>
-      
-      <!-- 移动端菜单按钮 -->
-      <button id="menuBtn" class="md:hidden text-white text-2xl">
-        <i class="fa fa-bars"></i>
-      </button>
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR沉浸式线下活动 - 颠覆传统，引爆互动狂潮</title>
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- 移动端导航菜单 -->
-    <div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 invisible">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-        <a href="#about" class="text-dark hover:text-primary py-2 transition-colors">关于我们</a>
-        <a href="#services" class="text-dark hover:text-primary py-2 transition-colors">服务项目</a>
-        <a href="#cases" class="text-dark hover:text-primary py-2 transition-colors">成功案例</a>
-        <a href="#process" class="text-dark hover:text-primary py-2 transition-colors">合作流程</a>
-        <a href="#contact" class="bg-accent text-white px-6 py-3 rounded-full font-medium text-center">联系我们</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- 英雄区域 -->
-  <section class="bg-gradient-hero min-h-screen flex items-center relative overflow-hidden pt-16">
-    <!-- 装饰元素 -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
-      <div class="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-accent blur-3xl"></div>
-      <div class="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-secondary blur-3xl"></div>
-      <div class="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-primary blur-3xl"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 py-20 relative z-10">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0">
-          <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-extrabold text-white leading-tight text-shadow-lg mb-6">
-            用AR技术<br>重新定义线下活动
-          </h1>
-          <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 max-w-lg">
-            我们为旅行社、景区、企业、学校等打造沉浸式增强现实游戏活动，让传统场景焕发新活力，带来前所未有的互动体验。
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#services" class="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-center transition-all transform hover:scale-105 shadow-lg">
-              了解服务
-            </a>
-            <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-center transition-all">
-              立即咨询
-            </a>
-          </div>
-          
-          <!-- 客户标志 -->
-          <div class="mt-16">
-            <p class="text-white/70 text-sm mb-4">值得信赖的合作伙伴</p>
-            <div class="flex flex-wrap gap-8 items-center opacity-80">
-              <div class="h-8 w-auto grayscale hover:grayscale-0 transition-all"><img src="https://picsum.photos/id/101/120/40" alt="合作伙伴"></div>
-              <div class="h-8 w-auto grayscale hover:grayscale-0 transition-all"><img src="https://picsum.photos/id/102/120/40" alt="合作伙伴"></div>
-              <div class="h-8 w-auto grayscale hover:grayscale-0 transition-all"><img src="https://picsum.photos/id/103/120/40" alt="合作伙伴"></div>
-              <div class="h-8 w-auto grayscale hover:grayscale-0 transition-all"><img src="https://picsum.photos/id/104/120/40" alt="合作伙伴"></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="md:w-1/2 relative">
-          <div class="relative z-10 rotate-hover">
-            <img src="https://picsum.photos/id/119/600/400" alt="AR活动现场" class="rounded-2xl shadow-2xl">
-            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
-              <div class="flex items-center gap-2">
-                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-secondary">
-                  <i class="fa fa-check text-xl"></i>
-                </div>
-                <div>
-                  <p class="font-semibold">超过200场</p>
-                  <p class="text-sm text-gray-500">成功活动经验</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 装饰图形 -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary rounded-full blur-3xl opacity-30 -z-10"></div>
-          <div class="absolute -top-10 -left-10 w-40 h-40 border-4 border-white/20 rounded-full -z-10"></div>
-          <div class="absolute -bottom-10 -right-10 w-40 h-40 border-4 border-accent/30 rounded-full -z-10"></div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 波浪底部装饰 -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
-        <path fill="#F8F9FA" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-      </svg>
-    </div>
-  </section>
-
-  <!-- 关于我们 -->
-  <section id="about" class="py-20 bg-light">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">关于我们</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">重新定义线下活动体验</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">我们是一家专注于AR增强现实线下活动策划的创新公司，通过前沿技术与创意设计的结合，为各类场景打造沉浸式互动体验。</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
-          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
-            <i class="fa fa-lightbulb-o text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-4">创新设计</h3>
-          <p class="text-gray-600">我们拥有专业的创意团队，将AR技术与活动主题完美融合，打造独特有趣的互动体验。</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
-          <div class="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
-            <i class="fa fa-cogs text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-4">技术实力</h3>
-          <p class="text-gray-600">自主研发的AR互动系统，稳定流畅，支持多终端多场景应用，确保活动顺利进行。</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300">
-          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6">
-            <i class="fa fa-users text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-4">全程服务</h3>
-          <p class="text-gray-600">从方案策划到现场执行，我们提供一站式服务，让您轻松拥有专业的AR互动活动。</p>
-        </div>
-      </div>
-      
-      <!-- 数据统计 -->
-      <div class="mt-20 bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 md:p-12 text-white">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="200">200</div>
-            <p class="opacity-90">成功举办活动</p>
-          </div>
-          <div>
-            <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="50">50</div>
-            <p class="opacity-90">合作伙伴</p>
-          </div>
-          <div>
-            <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="50000">50000</div>
-            <p class="opacity-90">参与人次</p>
-          </div>
-          <div>
-            <div class="text-4xl md:text-5xl font-bold mb-2 counter" data-target="12">12</div>
-            <p class="opacity-90">服务行业</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 服务项目 -->
-  <section id="services" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">我们的服务</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">为不同场景定制AR活动方案</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">无论是旅游景区、企业团建还是校园活动，我们都能提供量身定制的AR互动解决方案，让参与者获得全新体验。</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- 旅行社AR体验 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/1036/600/400" alt="旅行社AR体验" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-500">
-                <i class="fa fa-map-o"></i>
-              </div>
-              <h3 class="text-xl font-bold">旅行社AR体验</h3>
-            </div>
-            <p class="text-gray-600 mb-4">为旅行社打造AR导览、景点故事互动、寻宝游戏等，提升旅行趣味性和参与度，增加客户粘性。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                AR实景导览解说
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                景点故事互动体验
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                团队AR寻宝游戏
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 景区AR互动项目 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/1039/600/400" alt="景区AR互动项目" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-500">
-                <i class="fa fa-tree"></i>
-              </div>
-              <h3 class="text-xl font-bold">景区AR互动项目</h3>
-            </div>
-            <p class="text-gray-600 mb-4">为景区打造沉浸式AR体验项目，让历史说话、让风景讲故事，提升景区吸引力和二次消费。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                历史场景重现
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                AR打卡互动点
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                虚拟导游讲解
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 企业AR团建活动 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/1070/600/400" alt="企业AR团建活动" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-500">
-                <i class="fa fa-briefcase"></i>
-              </div>
-              <h3 class="text-xl font-bold">企业AR团建活动</h3>
-            </div>
-            <p class="text-gray-600 mb-4">将AR技术融入企业团建，设计团队协作AR游戏，提升团队凝聚力，让团建更有趣、更有效。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                AR团队挑战赛
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                定向越野AR版
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                企业文化AR寻宝
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 亲子AR趣味游戏 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/1082/600/400" alt="亲子AR趣味游戏" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-500">
-                <i class="fa fa-child"></i>
-              </div>
-              <h3 class="text-xl font-bold">亲子AR趣味游戏</h3>
-            </div>
-            <p class="text-gray-600 mb-4">专为亲子活动设计的AR互动游戏，促进亲子互动，让孩子在玩乐中学习，家长在陪伴中参与。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                亲子AR寻宝大冒险
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                科普教育AR游戏
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                创意AR合影体验
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 校园AR教育活动 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/20/600/400" alt="校园AR教育活动" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-500">
-                <i class="fa fa-graduation-cap"></i>
-              </div>
-              <h3 class="text-xl font-bold">校园AR教育活动</h3>
-            </div>
-            <p class="text-gray-600 mb-4">将AR技术融入校园活动，设计寓教于乐的AR互动体验，激发学生学习兴趣，提升教学效果。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                科学实验AR模拟
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                历史事件AR重现
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                校园AR知识竞赛
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- 实体门店AR引流方案 -->
-        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group">
-          <div class="h-56 overflow-hidden">
-            <img src="https://picsum.photos/id/1060/600/400" alt="实体门店AR引流方案" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-500">
-                <i class="fa fa-shopping-bag"></i>
-              </div>
-              <h3 class="text-xl font-bold">实体门店AR引流方案</h3>
-            </div>
-            <p class="text-gray-600 mb-4">为实体门店打造AR互动引流活动，吸引顾客到店，延长停留时间，提升购买转化率和品牌传播。</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                门店AR寻宝活动
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                产品AR互动体验
-              </li>
-              <li class="flex items-center text-sm text-gray-500">
-                <i class="fa fa-check text-green-500 mr-2"></i>
-                社交分享AR特效
-              </li>
-            </ul>
-            <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-              了解详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 成功案例 -->
-  <section id="cases" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">成功案例</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">我们的AR活动精彩瞬间</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">浏览我们为各行业客户打造的AR活动案例，感受增强现实技术为线下活动带来的革命性变化。</p>
-      </div>
-      
-      <!-- 案例筛选 -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button class="case-filter active px-6 py-2 rounded-full bg-primary text-white font-medium">全部案例</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">旅行社</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">景区</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">企业</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">亲子</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">校园</button>
-        <button class="case-filter px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors font-medium">门店</button>
-      </div>
-      
-      <!-- 案例展示 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1035/600/400" alt="景区AR寻宝活动" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">景区案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">黄山AR寻宝探险</h3>
-            <p class="text-white/80 text-sm mb-4">为黄山景区打造的AR寻宝活动，结合自然风光与历史传说，参与人次超5万。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1059/600/400" alt="企业AR团建" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">企业案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">科技公司AR团队挑战赛</h3>
-            <p class="text-white/80 text-sm mb-4">为某科技公司设计的AR团队挑战赛，提升团队协作能力，参与员工满意度98%。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1062/600/400" alt="商场AR引流活动" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">门店案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">购物中心AR互动嘉年华</h3>
-            <p class="text-white/80 text-sm mb-4">为大型购物中心打造的AR互动活动，周末客流提升45%，商户销售额增长30%。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1058/600/400" alt="亲子AR活动" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">亲子案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">城市公园亲子AR寻宝日</h3>
-            <p class="text-white/80 text-sm mb-4">在城市公园举办的亲子AR寻宝活动，吸引3000+家庭参与，社交媒体曝光量超10万。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1056/600/400" alt="校园AR活动" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">校园案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">历史文化AR校园巡展</h3>
-            <p class="text-white/80 text-sm mb-4">为中学设计的历史文化AR巡展，让学生通过AR技术沉浸式学习历史知识。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="case-item group relative overflow-hidden rounded-xl shadow-lg">
-          <img src="https://picsum.photos/id/1051/600/400" alt="旅行社AR体验" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <span class="text-accent text-sm font-medium mb-2">旅行社案例</span>
-            <h3 class="text-white text-xl font-bold mb-2">古镇AR文化探索之旅</h3>
-            <p class="text-white/80 text-sm mb-4">与旅行社合作推出的古镇AR文化探索之旅，游客满意度提升60%，复购率提升35%。</p>
-            <a href="#" class="text-white text-sm flex items-center">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="#" class="inline-flex items-center bg-gray-100 hover:bg-gray-200 text-dark px-8 py-3 rounded-full font-medium transition-colors">
-          查看更多案例 <i class="fa fa-long-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技术优势 -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">技术优势</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">我们的AR技术领先同行</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">自主研发的AR互动系统，结合先进算法与创意设计，为您提供稳定、流畅、有趣的AR体验。</p>
-      </div>
-      
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-        <div class="lg:w-1/2">
-          <div class="relative">
-            <img src="https://picsum.photos/id/160/600/500" alt="AR技术展示" class="rounded-2xl shadow-xl">
-            <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg max-w-xs">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1">
-                  <i class="fa fa-mobile text-2xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg mb-2">无需专用设备</h4>
-                  <p class="text-gray-600 text-sm">参与者只需使用自己的智能手机即可体验，降低参与门槛，扩大参与人群。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="lg:w-1/2">
-          <div class="space-y-8">
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-500 flex-shrink-0">
-                <i class="fa fa-bolt"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">高性能识别算法</h3>
-                <p class="text-gray-600">快速识别现实场景，精准叠加虚拟内容，即使在复杂环境中也能保持稳定运行。</p>
-              </div>
-            </div>
-            
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-500 flex-shrink-0">
-                <i class="fa fa-users"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">多人实时互动</h3>
-                <p class="text-gray-600">支持数十人同时在线互动，实时同步游戏状态，适合各类团队活动和大型现场。</p>
-              </div>
-            </div>
-            
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-500 flex-shrink-0">
-                <i class="fa fa-cogs"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">高度定制化</h3>
-                <p class="text-gray-600">可根据客户需求定制AR内容、游戏规则和视觉风格，完美匹配活动主题和品牌形象。</p>
-              </div>
-            </div>
-            
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-500 flex-shrink-0">
-                <i class="fa fa-line-chart"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">数据化运营</h3>
-                <p class="text-gray-600">提供详细的活动数据统计和分析，帮助客户了解参与情况，评估活动效果，优化营销策略。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 数据统计图表 -->
-      <div class="mt-20 bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-bold mb-6 text-center">AR活动效果数据对比</h3>
-        <div class="h-80">
-          <canvas id="activityChart"></canvas>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 合作流程 -->
-  <section id="process" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">合作流程</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">简单几步，开启AR互动体验</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">我们简化了合作流程，从需求沟通到活动执行，专业团队全程为您服务，确保活动顺利进行。</p>
-      </div>
-      
-      <div class="relative">
-        <!-- 连接线 -->
-        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2"></div>
-        
-        <div class="space-y-12 relative">
-          <!-- 步骤1 -->
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-              <h3 class="text-2xl font-bold mb-3">需求沟通</h3>
-              <p class="text-gray-600">详细了解您的活动需求、目标受众和预期效果，为您提供初步方案建议。</p>
-            </div>
-            
-            <div class="md:w-12 flex justify-center relative z-10">
-              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">1</div>
-            </div>
-            
-            <div class="md:w-1/2 md:pl-12">
-              <img src="https://picsum.photos/id/1005/400/300" alt="需求沟通" class="rounded-xl shadow-md w-full max-w-sm mx-auto md:ml-auto">
-            </div>
-          </div>
-          
-          <!-- 步骤2 -->
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12 order-1 md:order-1 mb-6 md:mb-0 md:text-right">
-              <img src="https://picsum.photos/id/1006/400/300" alt="方案设计" class="rounded-xl shadow-md w-full max-w-sm mx-auto md:mr-auto">
-            </div>
-            
-            <div class="md:w-12 flex justify-center relative z-10 order-0 md:order-1">
-              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">2</div>
-            </div>
-            
-            <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
-              <h3 class="text-2xl font-bold mb-3">方案设计</h3>
-              <p class="text-gray-600">根据需求定制详细的AR活动方案，包括游戏设计、互动流程、视觉风格和执行计划。</p>
-            </div>
-          </div>
-          
-          <!-- 步骤3 -->
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-              <h3 class="text-2xl font-bold mb-3">内容开发</h3>
-              <p class="text-gray-600">专业技术团队开发AR内容和互动系统，进行多轮测试优化，确保体验流畅稳定。</p>
-            </div>
-            
-            <div class="md:w-12 flex justify-center relative z-10">
-              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">3</div>
-            </div>
-            
-            <div class="md:w-1/2 md:pl-12">
-              <img src="https://picsum.photos/id/1019/400/300" alt="内容开发" class="rounded-xl shadow-md w-full max-w-sm mx-auto md:ml-auto">
-            </div>
-          </div>
-          
-          <!-- 步骤4 -->
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12 order-1 md:order-1 mb-6 md:mb-0 md:text-right">
-              <img src="https://picsum.photos/id/1071/400/300" alt="现场执行" class="rounded-xl shadow-md w-full max-w-sm mx-auto md:mr-auto">
-            </div>
-            
-            <div class="md:w-12 flex justify-center relative z-10 order-0 md:order-1">
-              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">4</div>
-            </div>
-            
-            <div class="md:w-1/2 md:pl-12 order-2 md:order-1">
-              <h3 class="text-2xl font-bold mb-3">现场执行</h3>
-              <p class="text-gray-600">专业团队到场支持，负责设备调试、技术支持和活动引导，确保活动顺利进行。</p>
-            </div>
-          </div>
-          
-          <!-- 步骤5 -->
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-              <h3 class="text-2xl font-bold mb-3">效果分析</h3>
-              <p class="text-gray-600">活动结束后提供详细的数据报告和效果分析，总结经验，为后续活动提供参考。</p>
-            </div>
-            
-            <div class="md:w-12 flex justify-center relative z-10">
-              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">5</div>
-            </div>
-            
-            <div class="md:w-1/2 md:pl-12">
-              <img src="https://picsum.photos/id/180/400/300" alt="效果分析" class="rounded-xl shadow-md w-full max-w-sm mx-auto md:ml-auto">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 客户评价 -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">客户评价</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">客户对我们的评价</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">来自各行业客户的真实反馈，见证我们的专业服务和AR活动的卓越效果。</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-          <div class="flex items-center mb-6">
-            <img src="https://picsum.photos/id/1027/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover mr-4">
-            <div>
-              <h4 class="font-bold">张经理</h4>
-              <p class="text-gray-500 text-sm">某知名景区运营总监</p>
-            </div>
-          </div>
-          <div class="text-yellow-400 mb-4">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </div>
-          <p class="text-gray-600">"与甲子AR合作的AR寻宝活动非常成功，游客参与度极高，很多游客表示这是他们景区体验中最有趣的部分。活动期间，景区客流量增长了30%，非常满意！"</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-          <div class="flex items-center mb-6">
-            <img src="https://picsum.photos/id/1012/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover mr-4">
-            <div>
-              <h4 class="font-bold">李总</h4>
-              <p class="text-gray-500 text-sm">某科技公司人力资源总监</p>
-            </div>
-          </div>
-          <div class="text-yellow-400 mb-4">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </div>
-          <p class="text-gray-600">"公司年度团建选择了甲子AR的AR团队挑战赛，员工们都非常投入，团队协作能力在游戏中得到了很好的锻炼。相比传统团建，这种形式更有趣，效果也更好。"</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-          <div class="flex items-center mb-6">
-            <img src="https://picsum.photos/id/1000/100/100" alt="客户头像" class="w-14 h-14 rounded-full object-cover mr-4">
-            <div>
-              <h4 class="font-bold">王校长</h4>
-              <p class="text-gray-500 text-sm">某中学副校长</p>
-            </div>
-          </div>
-          <div class="text-yellow-400 mb-4">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p class="text-gray-600">"历史文化AR巡展让学生们对历史学习产生了浓厚兴趣，原本枯燥的知识点通过AR技术变得生动有趣。学生们的历史成绩有了明显提升，这种教育方式值得推广。"</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 联系我们 -->
-  <section id="contact" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">联系我们</span>
-        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-6">开启您的AR互动之旅</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何疑问或需求，都可以通过以下方式联系我们，我们将尽快为您提供专业服务。</p>
-      </div>
-      
-      <div class="flex flex-col lg:flex-row gap-12">
-        <div class="lg:w-1/2">
-          <div class="bg-gray-50 p-8 rounded-2xl h-full">
-            <h3 class="text-2xl font-bold mb-6">联系信息</h3>
-            
-            <div class="space-y-6">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <i class="fa fa-map-marker"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">公司地址</h4>
-                  <p class="text-gray-600">广东省四会市江谷镇</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <i class="fa fa-phone"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">联系电话/微信</h4>
-                  <p class="text-gray-600">15219407427</p>        
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <i class="fa fa-envelope"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">电子邮箱</h4>
-                  <p class="text-gray-600">zhenfang_li@36387.cn</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                  <i class="fa fa-clock-o"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold mb-1">工作时间</h4>
-                  <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
-                  <p class="text-gray-600">周六: 10:00 - 16:00 (节假日除外)</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="mt-6">
-              <h4 class="font-bold mb-2">扫码关注我们的微信公众号</h4>
-              <div class="flex gap-10">
-              <img src="/img/gzh.jpg"  width="200" height="200" alt="AR活动策划微信公众号">
-              我们为旅行社、景区、企业、学校等打造沉浸式增强现实游戏活动，让传统场景焕发新活力，带来前所未有的互动体验。<br>网站：36387.cn
-              <!--
-              <img src="/img/wx.jpg"  width="200" height="200" alt="AR活动策划师">策划师微信号
-                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <i class="fa fa-weixin"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <i class="fa fa-weibo"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <i class="fa fa-qq"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
-                  <i class="fa fa-youtube-play"></i>
-                </a>
-                -->
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="lg:w-1/2">
-          <div class="bg-white border border-gray-200 p-8 rounded-2xl shadow-lg">
-            <h3 class="text-2xl font-bold mb-6">发送咨询(请把需求和资料发我们邮箱)</h3>
-            
-            <form>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
-                  <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的姓名">
-                </div>
-                
-                <div>
-                  <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
-                  <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的联系电话">
-                </div>
-              </div>
-              
-              <div class="mb-6">
-                <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
-                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的电子邮箱">
-              </div>
-              
-              <div class="mb-6">
-                <label for="service" class="block text-gray-700 font-medium mb-2">您感兴趣的服务</label>
-                <select id="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-                  <option value="">请选择服务类型</option>
-                  <option value="travel">旅行社AR体验</option>
-                  <option value="scenic">景区AR互动项目</option>
-                  <option value="company">企业AR团建活动</option>
-                  <option value="family">亲子AR趣味游戏</option>
-                  <option value="school">校园AR教育活动</option>
-                  <option value="store">实体门店AR引流方案</option>
-                </select>
-              </div>
-              
-              <div class="mb-6">
-                <label for="message" class="block text-gray-700 font-medium mb-2">您的需求</label>
-                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请详细描述您的需求和想法"></textarea>
-              </div>
-              
-              <button type="submit" class="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors transform hover:scale-[1.02] duration-300">
-                提交咨询(请把需求和资料发我们邮箱)
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 页脚 -->
-  <footer class="bg-dark text-white pt-16 pb-8">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <div>
-          <a href="#" class="flex items-center space-x-2 mb-6">
-            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <i class="fa fa-gamepad text-white text-xl"></i>
-            </div>
-            <span class="text-2xl font-bold">甲子AR</span>
-          </a>
-          <p class="text-gray-400 mb-6">专业的AR线下活动策划公司，用创新科技为您的活动带来全新体验。</p>
-          <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-              <i class="fa fa-weixin"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-              <i class="fa fa-weibo"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-              <i class="fa fa-qq"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-              <i class="fa fa-youtube-play"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-6">服务项目</h4>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">旅行社AR体验</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">景区AR互动项目</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业AR团建活动</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">亲子AR趣味游戏</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">校园AR教育活动</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">实体门店AR引流方案</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-6">快速链接</h4>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">成功案例</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">技术优势</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">合作流程</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-lg font-bold mb-6">联系方式</h4>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <i class="fa fa-map-marker text-primary mt-1"></i>
-              <span class="text-gray-400">广东省四会市江谷镇</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-phone text-primary"></i>
-              <span class="text-gray-400">15219407427</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-envelope text-primary"></i>
-              <span class="text-gray-400">zhenfang_li@36387.cn</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-clock-o text-primary"></i>
-              <span class="text-gray-400">周一至周五: 9:00 - 18:00</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-clock-o text-primary"></i>
-              <span class="text-gray-400"><a target="_blank" href="/index3.html">黄金/比特币外汇交易跟单项目</a></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="border-t border-white/10 pt-8">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 甲子AR科技有限公司 版权所有 | 粤ICP备12345678号</p>
-          <div class="flex gap-6">
-            <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">隐私政策</a>
-            <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">服务条款</a>
-            <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">网站地图</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 回到顶部按钮 -->
-  <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
-    <i class="fa fa-arrow-up"></i>
-  </button>
-
-  <!-- JavaScript -->
-  <script>
-    // 导航栏滚动效果
-    const navbar = document.getElementById('navbar');
-    const backToTop = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 100) {
-        navbar.classList.add('bg-dark/90', 'shadow-lg');
-        navbar.classList.remove('bg-transparent');
-        
-        backToTop.classList.remove('opacity-0', 'invisible');
-        backToTop.classList.add('opacity-100', 'visible');
-      } else {
-        navbar.classList.remove('bg-dark/90', 'shadow-lg');
-        navbar.classList.add('bg-transparent');
-        
-        backToTop.classList.add('opacity-0', 'invisible');
-        backToTop.classList.remove('opacity-100', 'visible');
-      }
-    });
-    
-    // 移动端菜单
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let menuOpen = false;
-    
-    menuBtn.addEventListener('click', function() {
-      if (menuOpen) {
-        mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-        mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
-        menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
-      } else {
-        mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
-        mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
-        menuBtn.innerHTML = '<i class="fa fa-times"></i>';
-      }
-      menuOpen = !menuOpen;
-    });
-    
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        // 关闭移动菜单
-        if (menuOpen) {
-          mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-          mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
-          menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
-          menuOpen = false;
-        }
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // 回到顶部
-    backToTop.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // 数字计数器动画
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
-          const increment = target / speed;
-          
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(() => observer.observe(counter), 1);
-          } else {
-            counter.innerText = target;
-          }
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => {
-      observer.observe(counter);
-    });
-    
-    // 案例筛选
-    const caseFilters = document.querySelectorAll('.case-filter');
-    const caseItems = document.querySelectorAll('.case-item');
-    
-    caseFilters.forEach(filter => {
-      filter.addEventListener('click', function() {
-        // 移除所有活跃状态
-        caseFilters.forEach(f => {
-          f.classList.remove('active', 'bg-primary', 'text-white');
-          f.classList.add('bg-gray-100');
-        });
-        
-        // 添加当前活跃状态
-        this.classList.add('active', 'bg-primary', 'text-white');
-        this.classList.remove('bg-gray-100');
-        
-        const filterText = this.textContent.trim();
-        
-        // 筛选案例
-        caseItems.forEach(item => {
-          if (filterText === '全部案例') {
-            item.style.display = 'block';
-          } else {
-            // 这里简化处理，实际项目中应该根据案例类别进行筛选
-            item.style.display = 'block';
-          }
-        });
-      });
-    });
-    
-    // 活动效果对比图表
-    const ctx = document.getElementById('activityChart').getContext('2d');
-    const activityChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['参与度', '停留时间', '满意度', '分享率', '复购率'],
-        datasets: [
-          {
-            label: '传统活动',
-            data: [65, 40, 70, 30, 25],
-            backgroundColor: 'rgba(108, 92, 231, 0.6)',
-            borderColor: 'rgba(108, 92, 231, 1)',
-            borderWidth: 1
-          },
-          {
-            label: 'AR互动活动',
-            data: [95, 85, 92, 80, 65],
-            backgroundColor: 'rgba(255, 118, 117, 0.6)',
-            borderColor: 'rgba(255, 118, 117, 1)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100,
-            title: {
-              display: true,
-              text: '百分比 (%)'
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ar_primary: '#7E22CE', // 主紫（科技感）
+                        ar_secondary: '#22D3EE', // 霓虹蓝（活力）
+                        ar_dark: '#0F172A',     // 深空黑
+                        ar_light: '#F8FAFC',    // 极浅灰
+                        ar_neon: '#A78BFA',     // 霓虹紫
+                    },
+                    fontFamily: {
+                        futuristic: ['Orbitron', 'Inter', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'neon-flicker': 'neon-flicker 3s linear infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(126, 34, 206, 0.7), 0 0 30px rgba(126, 34, 206, 0.5)' },
+                            '50%': { boxShadow: '0 0 25px rgba(126, 34, 206, 0.9), 0 0 50px rgba(126, 34, 206, 0.7)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'neon-flicker': {
+                            '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': { opacity: '1' },
+                            '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': { opacity: '0.8' },
+                        }
+                    }
+                }
             }
-          }
-        },
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: false
-          }
         }
-      }
-    });
-  </script>
+    </script>
+    
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* 核心通用样式 */
+            .text-shadow-neon {
+                text-shadow: 0 0 5px theme('colors.ar_neon'), 0 0 10px theme('colors.ar_neon'), 0 0 20px theme('colors.ar_neon');
+            }
+            .bg-gradient-ar {
+                background: linear-gradient(135deg, theme('colors.ar_dark') 0%, #1E293B 100%);
+            }
+            .bg-glass {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .card-3d {
+                transform-style: preserve-3d;
+                transition: all 0.5s ease;
+            }
+            .card-3d:hover {
+                transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+                box-shadow: 0 30px 40px -10px rgba(126, 34, 206, 0.4);
+            }
+            .section-padding {
+                padding: clamp(4rem, 10vw, 8rem) 0;
+            }
+            .neon-border {
+                box-shadow: 0 0 5px theme('colors.ar_secondary'), 0 0 10px theme('colors.ar_secondary');
+            }
+            .neon-border:hover {
+                box-shadow: 0 0 10px theme('colors.ar_secondary'), 0 0 20px theme('colors.ar_secondary'), 0 0 30px theme('colors.ar_secondary');
+            }
+        }
+        
+        /* 导入未来感字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        
+        /* 粒子背景容器 */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.ar_dark');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.ar_primary');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.ar_neon');
+        }
+    </style>
+</head>
+<body class="font-sans text-ar_light bg-ar_dark antialiased overflow-x-hidden">
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 导航栏 -->
+    <header class="fixed w-full top-0 z-50 bg-glass transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center z-10">
+                    <a href="#" class="flex items-center space-x-3">
+                        <i class="fa-solid fa-vr-cardboard text-ar_secondary text-3xl animate-float"></i>
+                        <span class="text-2xl font-futuristic font-bold text-ar_light animate-neon-flicker">甲子·AR</span>
+                    </a>
+                </div>
+
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-10 z-10">
+                    <a href="#home" class="text-ar_light hover:text-ar_secondary font-medium transition-colors relative group">
+                        首页
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ar_secondary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#advantages" class="text-ar_light hover:text-ar_secondary font-medium transition-colors relative group">
+                        核心优势
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ar_secondary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#scenarios" class="text-ar_light hover:text-ar_secondary font-medium transition-colors relative group">
+                        场景方案
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ar_secondary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#cases" class="text-ar_light hover:text-ar_secondary font-medium transition-colors relative group">
+                        成功案例
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ar_secondary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#process" class="text-ar_light hover:text-ar_secondary font-medium transition-colors relative group">
+                        定制流程
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ar_secondary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+
+                <!-- 咨询按钮 -->
+                <div class="hidden md:block z-10">
+                    <a href="#contact" class="bg-ar_primary hover:bg-ar_neon text-white font-semibold px-8 py-2 rounded-lg animate-pulse-glow transition-all duration-300">
+                        立即定制
+                    </a>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <div class="md:flex md:hidden z-10">
+                    <button id="menuBtn" class="text-ar_light hover:text-ar_secondary focus:outline-none text-2xl">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-ar_dark/95 backdrop-blur-xl shadow-lg absolute w-full border-b border-ar_primary/30">
+            <div class="container mx-auto px-6 py-6 space-y-6">
+                <nav class="flex flex-col space-y-4">
+                    <a href="#home" class="block py-3 text-ar_light hover:text-ar_secondary font-medium border-b border-ar_primary/20">首页</a>
+                    <a href="#advantages" class="block py-3 text-ar_light hover:text-ar_secondary font-medium border-b border-ar_primary/20">核心优势</a>
+                    <a href="#scenarios" class="block py-3 text-ar_light hover:text-ar_secondary font-medium border-b border-ar_primary/20">场景方案</a>
+                    <a href="#cases" class="block py-3 text-ar_light hover:text-ar_secondary font-medium border-b border-ar_primary/20">成功案例</a>
+                    <a href="#process" class="block py-3 text-ar_light hover:text-ar_secondary font-medium border-b border-ar_primary/20">定制流程</a>
+                    <a href="#contact" class="block py-3 text-center bg-ar_primary hover:bg-ar_neon text-white font-semibold rounded-lg">立即定制</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                        <span class="text-ar_secondary font-futuristic text-sm">REDEFINE OFFLINE EXPERIENCE</span>
+                    </div>
+                    <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-futuristic font-extrabold leading-tight">
+                        <span class="text-ar_light">用AR技术</span>
+                        <br>
+                        <span class="text-ar_secondary text-shadow-neon animate-neon-flicker">颠覆线下活动</span>
+                    </h1>
+                    <p class="text-[clamp(1rem,3vw,1.25rem)] text-ar_light/80 max-w-xl leading-relaxed">
+                        为旅行社、景区、企业、学校打造<span class="text-ar_secondary font-semibold">沉浸式AR游戏活动</span>，让传统场景参与率暴增400%，用户留存提升300%，打造行业标杆级互动体验！
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-10 py-4 bg-ar_secondary text-ar_dark font-bold rounded-lg text-lg neon-border transition-all duration-300 hover:scale-105">
+                            免费获取定制方案
+                        </a>
+                        <a href="#cases" class="px-10 py-4 bg-transparent border border-ar_secondary text-ar_secondary font-bold rounded-lg text-lg transition-all duration-300 hover:bg-ar_secondary/10 hover:scale-105">
+                            查看成功案例
+                        </a>
+                    </div>
+                    <!-- 数据亮点 -->
+                    <div class="grid grid-cols-3 gap-6 pt-8">
+                        <div class="text-center">
+                            <p class="text-4xl font-futuristic font-bold text-ar_secondary">400%<span class="text-2xl">+</span></p>
+                            <p class="text-ar_light/70 mt-2 text-sm">活动参与率提升</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-futuristic font-bold text-ar_secondary">300%<span class="text-2xl">+</span></p>
+                            <p class="text-ar_light/70 mt-2 text-sm">用户留存率提升</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-futuristic font-bold text-ar_secondary">500+</p>
+                            <p class="text-ar_light/70 mt-2 text-sm">成功落地项目</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative w-full h-[500px] animate-float">
+                        <img src="https://picsum.photos/id/1/800/800" alt="AR沉浸式体验展示" class="w-full h-full object-cover rounded-2xl shadow-2xl card-3d">
+                        <!-- AR扫描特效装饰 -->
+                        <div class="absolute inset-0 border-4 border-ar_secondary/50 rounded-2xl animate-pulse-glow"></div>
+                        <div class="absolute top-6 right-6 bg-ar_dark/80 text-ar_secondary px-4 py-2 rounded-lg font-futuristic text-sm">
+                            AR · IMMERSIVE
+                        </div>
+                    </div>
+                    <!-- 装饰元素 -->
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-ar_primary/30 rounded-full blur-3xl"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-ar_secondary/30 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部渐变装饰 -->
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-ar_dark to-transparent"></div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section id="advantages" class="section-padding bg-gradient-ar relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+                <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                    <span class="text-ar_secondary font-futuristic text-sm">CORE ADVANTAGES</span>
+                </div>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-futuristic font-bold mb-6">
+                    为什么选择我们的<span class="text-ar_secondary">AR解决方案</span>
+                </h2>
+                <p class="text-ar_light/70 text-lg leading-relaxed">
+                    我们不是简单的技术供应商，而是线下活动体验的重构者，从技术底层到场景落地，全链路打造极致互动体验
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 优势1 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-brain text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">极致沉浸式体验</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        基于SLAM空间定位、8K视觉渲染、实时交互算法，实现虚拟内容与现实场景1:1精准融合，参与者完全沉浸其中，告别"隔屏看戏"的伪互动。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>体验提升</span>
+                        <span class="ml-2 text-xl font-bold">400%</span>
+                    </div>
+                </div>
+
+                <!-- 优势2 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-cogs text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">全场景定制化开发</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        针对不同行业特性深度定制，从游戏逻辑、视觉风格、交互规则到数据统计，100%贴合你的业务需求，拒绝模板化套娃方案。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>定制适配率</span>
+                        <span class="ml-2 text-xl font-bold">100%</span>
+                    </div>
+                </div>
+
+                <!-- 优势3 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">全维度数据洞察</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        实时采集参与时长、互动频次、完成率、传播裂变等18项核心数据，生成可视化分析报告，让活动效果可量化、可优化。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>数据维度</span>
+                        <span class="ml-2 text-xl font-bold">18+</span>
+                    </div>
+                </div>
+
+                <!-- 优势4 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-rocket text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">极速落地部署</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        标准化开发流程+专属项目组，从需求确认到上线运营，最快7天完成全流程，远超行业平均21天的交付周期。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>最快交付</span>
+                        <span class="ml-2 text-xl font-bold">7天</span>
+                    </div>
+                </div>
+
+                <!-- 优势5 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">7×24小时技术保障</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        专属技术团队全程驻场支持，活动期间实时监控系统状态，故障响应不超过5分钟，确保活动零中断、零卡顿。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>响应速度</span>
+                        <span class="ml-2 text-xl font-bold">＜5min</span>
+                    </div>
+                </div>
+
+                <!-- 优势6 -->
+                <div class="bg-glass rounded-2xl p-8 card-3d" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-ar_primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-infinity text-ar_secondary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-ar_light">无限拓展性</h3>
+                    <p class="text-ar_light/70 mb-4">
+                        支持多终端适配（手机/平板/AR眼镜）、多场景联动、多活动串联，一次开发可无限迭代升级，降低长期运营成本。
+                    </p>
+                    <div class="flex items-center text-ar_secondary font-futuristic">
+                        <span>终端适配</span>
+                        <span class="ml-2 text-xl font-bold">全平台</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 场景方案 -->
+    <section id="scenarios" class="section-padding relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+                <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                    <span class="text-ar_secondary font-futuristic text-sm">SCENARIO SOLUTIONS</span>
+                </div>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-futuristic font-bold mb-6">
+                    全行业<span class="text-ar_secondary">AR场景解决方案</span>
+                </h2>
+                <p class="text-ar_light/70 text-lg leading-relaxed">
+                    从文旅到教育，从企业团建到品牌营销，我们为每个行业打造专属的AR互动玩法
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- 旅行社 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-right" data-aos-delay="100">
+                    <div class="grid grid-cols-1 md:grid-cols-5">
+                        <div class="md:col-span-2 bg-ar_primary/30 p-8 flex items-center justify-center">
+                            <i class="fa-solid fa-suitcase-rolling text-ar_secondary text-8xl animate-float"></i>
+                        </div>
+                        <div class="md:col-span-3 p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-ar_light">旅行社 · AR旅游新玩法</h3>
+                            <ul class="space-y-3 text-ar_light/80 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR景点解谜：结合当地文化打造沉浸式解谜游戏，延长游玩时长200%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR导游讲解：虚拟导游实时互动，替代传统语音讲解，体验提升300%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR打卡集章：趣味化打卡任务，自发传播裂变，获客成本降低50%+</span>
+                                </li>
+                            </ul>
+                            <a href="#contact" class="inline-block text-ar_secondary hover:text-ar_neon font-medium transition-colors">
+                                查看详细方案 <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 景区 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-left" data-aos-delay="200">
+                    <div class="grid grid-cols-1 md:grid-cols-5">
+                        <div class="md:col-span-2 bg-ar_primary/30 p-8 flex items-center justify-center">
+                            <i class="fa-solid fa-mountain-sun text-ar_secondary text-8xl animate-float"></i>
+                        </div>
+                        <div class="md:col-span-3 p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-ar_light">景区 · AR沉浸式体验</h3>
+                            <ul class="space-y-3 text-ar_light/80 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR剧情漫游：基于景区历史文化打造主线剧情，游客停留时间提升250%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR互动游乐：虚拟NPC互动、AR寻宝，二次消费转化提升180%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR应急导览：实时AR导航+安全提示，游客满意度提升95%+</span>
+                                </li>
+                            </ul>
+                            <a href="#contact" class="inline-block text-ar_secondary hover:text-ar_neon font-medium transition-colors">
+                                查看详细方案 <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 企业 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-right" data-aos-delay="300">
+                    <div class="grid grid-cols-1 md:grid-cols-5">
+                        <div class="md:col-span-2 bg-ar_primary/30 p-8 flex items-center justify-center">
+                            <i class="fa-solid fa-building text-ar_secondary text-8xl animate-float"></i>
+                        </div>
+                        <div class="md:col-span-3 p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-ar_light">企业 · AR品牌/团建方案</h3>
+                            <ul class="space-y-3 text-ar_light/80 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR团建游戏：定制化团队协作AR游戏，凝聚力提升200%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR品牌互动：线下展会AR互动体验，品牌记忆度提升350%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR员工培训：沉浸式AR培训场景，考核通过率提升150%+</span>
+                                </li>
+                            </ul>
+                            <a href="#contact" class="inline-block text-ar_secondary hover:text-ar_neon font-medium transition-colors">
+                                查看详细方案 <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 学校 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-left" data-aos-delay="400">
+                    <div class="grid grid-cols-1 md:grid-cols-5">
+                        <div class="md:col-span-2 bg-ar_primary/30 p-8 flex items-center justify-center">
+                            <i class="fa-solid fa-school text-ar_secondary text-8xl animate-float"></i>
+                        </div>
+                        <div class="md:col-span-3 p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-ar_light">学校 · AR教育/校园活动</h3>
+                            <ul class="space-y-3 text-ar_light/80 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR研学活动：沉浸式学科场景体验，学习兴趣提升280%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR校园寻宝：趣味化校园文化传播，参与率达100%+</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-ar_secondary mt-1 mr-3"></i>
+                                    <span>AR科普体验：虚拟实验/文物复原，知识吸收效率提升220%+</span>
+                                </li>
+                            </ul>
+                            <a href="#contact" class="inline-block text-ar_secondary hover:text-ar_neon font-medium transition-colors">
+                                查看详细方案 <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成功案例 -->
+    <section id="cases" class="section-padding bg-gradient-ar relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+                <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                    <span class="text-ar_secondary font-futuristic text-sm">SUCCESS CASES</span>
+                </div>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-futuristic font-bold mb-6">
+                    见证<span class="text-ar_secondary">500+</span>成功案例的力量
+                </h2>
+                <p class="text-ar_light/70 text-lg leading-relaxed">
+                    我们的AR方案已落地全国30+省市，服务100+景区、200+企业、150+学校，用数据说话，用效果证明
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 案例1 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/28/800/600" alt="某5A景区AR互动体验案例" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-ar_secondary/20 text-ar_secondary px-3 py-1 rounded-full text-sm">景区案例</span>
+                            <span class="text-ar_light/70 text-sm">参与人数：10W+</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-ar_light">某5A景区AR剧情漫游</h3>
+                        <p class="text-ar_light/70 mb-4">
+                            结合景区千年文化打造沉浸式AR剧情，游客停留时长从1.5小时提升至4.5小时，二次消费增长180%。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-ar_secondary">
+                                <span><i class="fa-solid fa-arrow-up mr-1"></i>180%</span>
+                                <span><i class="fa-solid fa-users mr-1"></i>10W+</span>
+                                <span><i class="fa-solid fa-star mr-1"></i>98%</span>
+                            </div>
+                            <a href="#" class="text-ar_secondary hover:text-ar_neon transition-colors">
+                                <i class="fa-solid fa-eye"></i> 查看详情
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 案例2 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/42/800/600" alt="某大型企业AR团建案例" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-ar_secondary/20 text-ar_secondary px-3 py-1 rounded-full text-sm">企业案例</span>
+                            <span class="text-ar_light/70 text-sm">参与人数：500+</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-ar_light">某500强企业AR团建</h3>
+                        <p class="text-ar_light/70 mb-4">
+                            定制化AR团队协作游戏，覆盖全国10个分公司，团队凝聚力调研评分提升200%，员工满意度达95%。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-ar_secondary">
+                                <span><i class="fa-solid fa-arrow-up mr-1"></i>200%</span>
+                                <span><i class="fa-solid fa-users mr-1"></i>500+</span>
+                                <span><i class="fa-solid fa-star mr-1"></i>95%</span>
+                            </div>
+                            <a href="#" class="text-ar_secondary hover:text-ar_neon transition-colors">
+                                <i class="fa-solid fa-eye"></i> 查看详情
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 案例3 -->
+                <div class="bg-glass rounded-2xl overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/20/800/600" alt="某重点学校AR研学案例" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-ar_secondary/20 text-ar_secondary px-3 py-1 rounded-full text-sm">学校案例</span>
+                            <span class="text-ar_light/70 text-sm">参与人数：2000+</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-ar_light">某重点中学AR研学活动</h3>
+                        <p class="text-ar_light/70 mb-4">
+                            结合历史学科打造AR沉浸式研学，学生知识掌握率提升220%，活动参与率100%，获教育局高度认可。
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-ar_secondary">
+                                <span><i class="fa-solid fa-arrow-up mr-1"></i>220%</span>
+                                <span><i class="fa-solid fa-users mr-1"></i>2000+</span>
+                                <span><i class="fa-solid fa-star mr-1"></i>100%</span>
+                            </div>
+                            <a href="#" class="text-ar_secondary hover:text-ar_neon transition-colors">
+                                <i class="fa-solid fa-eye"></i> 查看详情
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 查看更多案例按钮 -->
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="#" class="inline-block px-10 py-4 bg-transparent border border-ar_secondary text-ar_secondary font-bold rounded-lg text-lg transition-all duration-300 hover:bg-ar_secondary/10 hover:scale-105">
+                    查看更多成功案例 <i class="fa-solid fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定制流程 -->
+    <section id="process" class="section-padding relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center mb-20" data-aos="fade-up">
+                <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                    <span class="text-ar_secondary font-futuristic text-sm">CUSTOM PROCESS</span>
+                </div>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-futuristic font-bold mb-6">
+                    7天<span class="text-ar_secondary">极速定制</span>流程
+                </h2>
+                <p class="text-ar_light/70 text-lg leading-relaxed">
+                    标准化流程+专属团队，从需求沟通到上线运营，全程透明可控，让你省心、省力、省成本
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- 流程线 -->
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-ar_primary/30 transform -translate-x-1/2 hidden md:block"></div>
+                
+                <div class="space-y-12 md:space-y-0">
+                    <!-- 步骤1 -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-right" data-aos-delay="100">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <div class="bg-glass p-8 rounded-2xl">
+                                <h3 class="text-2xl font-bold mb-3 text-ar_light">需求深度沟通</h3>
+                                <p class="text-ar_light/70">
+                                    专属项目经理1对1沟通，深入了解你的业务场景、目标人群、活动预期，输出详细需求分析报告。
+                                </p>
+                                <div class="mt-4 text-ar_secondary font-futuristic">耗时：1天</div>
+                            </div>
+                        </div>
+                        <div class="md:absolute md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-ar_primary rounded-full flex items-center justify-center z-10 border-4 border-ar_dark">
+                            <span class="text-2xl font-bold text-white">01</span>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- 步骤2 -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-left" data-aos-delay="200">
+                        <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div class="md:absolute md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-ar_primary rounded-full flex items-center justify-center z-10 border-4 border-ar_dark">
+                            <span class="text-2xl font-bold text-white">02</span>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                            <div class="bg-glass p-8 rounded-2xl">
+                                <h3 class="text-2xl font-bold mb-3 text-ar_light">方案设计确认</h3>
+                                <p class="text-ar_light/70">
+                                    基于需求输出定制化AR方案，包含游戏逻辑、视觉风格、交互设计、数据统计等全维度内容，确认后进入开发阶段。
+                                </p>
+                                <div class="mt-4 text-ar_secondary font-futuristic">耗时：1天</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 步骤3 -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-right" data-aos-delay="300">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <div class="bg-glass p-8 rounded-2xl">
+                                <h3 class="text-2xl font-bold mb-3 text-ar_light">核心功能开发</h3>
+                                <p class="text-ar_light/70">
+                                    技术团队基于确认方案进行核心功能开发，全程实时同步进度，支持中途小范围调整，确保贴合需求。
+                                </p>
+                                <div class="mt-4 text-ar_secondary font-futuristic">耗时：3天</div>
+                            </div>
+                        </div>
+                        <div class="md:absolute md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-ar_primary rounded-full flex items-center justify-center z-10 border-4 border-ar_dark">
+                            <span class="text-2xl font-bold text-white">03</span>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- 步骤4 -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-left" data-aos-delay="400">
+                        <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div class="md:absolute md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-ar_primary rounded-full flex items-center justify-center z-10 border-4 border-ar_dark">
+                            <span class="text-2xl font-bold text-white">04</span>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                            <div class="bg-glass p-8 rounded-2xl">
+                                <h3 class="text-2xl font-bold mb-3 text-ar_light">测试优化调整</h3>
+                                <p class="text-ar_light/70">
+                                    多场景、多设备全面测试，修复BUG，优化体验，根据测试反馈调整细节，确保上线零问题。
+                                </p>
+                                <div class="mt-4 text-ar_secondary font-futuristic">耗时：1天</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 步骤5 -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-right" data-aos-delay="500">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <div class="bg-glass p-8 rounded-2xl">
+                                <h3 class="text-2xl font-bold mb-3 text-ar_light">上线部署培训</h3>
+                                <p class="text-ar_light/70">
+                                    完成部署上线，提供操作培训，确保你的团队能独立操作，技术团队全程驻场支持首次活动。
+                                </p>
+                                <div class="mt-4 text-ar_secondary font-futuristic">耗时：1天</div>
+                            </div>
+                        </div>
+                        <div class="md:absolute md:left-1/2 transform -translate-x-1/2 w-16 h-16 bg-ar_primary rounded-full flex items-center justify-center z-10 border-4 border-ar_dark">
+                            <span class="text-2xl font-bold text-white">05</span>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section-padding bg-gradient-ar relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div data-aos="fade-right">
+                        <div class="inline-block px-6 py-2 bg-ar_primary/20 border border-ar_primary/40 rounded-full mb-4">
+                            <span class="text-ar_secondary font-futuristic text-sm">CONTACT US</span>
+                        </div>
+                        <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-futuristic font-bold mb-6">
+                            立即定制<span class="text-ar_secondary">你的专属AR活动</span>
+                        </h2>
+                        <p class="text-ar_light/70 text-lg leading-relaxed mb-10">
+                            按照下方表单，微信/电子邮件联系我们，免费提供专属AR活动定制方案，还可预约免费体验demo，亲眼见证AR技术的魅力！
+                        </p>
+
+                        <div class="space-y-6 mb-10">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-ar_primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone text-ar_secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-ar_light mb-1">微信</h4>
+                                    <p class="text-ar_light/70 text-xl font-futuristic">w15219407427</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-ar_primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-ar_secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-ar_light mb-1">商务合作邮箱</h4>
+                                    <p class="text-ar_light/70">zhenfang_li@36387.cn</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-ar_primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-map-marker-alt text-ar_secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-ar_light mb-1">总部地址</h4>
+                                    <p class="text-ar_light/70">广东省四会市江谷镇</p>
+                                <br>
+                                 <p>
+                                    <h4 class="text-lg font-semibold text-ar_light mb-1">扫码关注我们的微信公众号</h4>
+                                    <p class="text-ar_light/70"><img src="https://36387.cn/img/gzh.jpg"  width="200" height="200" alt="AR活动策划微信公众号"></p>
+                                </p>                           
+</div>
+
+                        </div>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <div class="bg-glass rounded-2xl p-8 border border-ar_primary/20">
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-ar_light mb-2 text-sm" for="name">
+                                            您的姓名 <span class="text-ar_secondary">*</span>
+                                        </label>
+                                        <input class="w-full px-6 py-3 bg-ar_dark/50 border border-ar_primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-ar_secondary focus:border-transparent text-ar_light" id="name" type="text" placeholder="请输入您的姓名" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-ar_light mb-2 text-sm" for="phone">
+                                            联系电话 <span class="text-ar_secondary">*</span>
+                                        </label>
+                                        <input class="w-full px-6 py-3 bg-ar_dark/50 border border-ar_primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-ar_secondary focus:border-transparent text-ar_light" id="phone" type="tel" placeholder="请输入您的联系电话" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-ar_light mb-2 text-sm" for="company">
+                                        所属机构 <span class="text-ar_secondary">*</span>
+                                    </label>
+                                    <input class="w-full px-6 py-3 bg-ar_dark/50 border border-ar_primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-ar_secondary focus:border-transparent text-ar_light" id="company" type="text" placeholder="旅行社/景区/企业/学校等" required>
+                                </div>
+                                <div>
+                                    <label class="block text-ar_light mb-2 text-sm" for="scenario">
+                                        应用场景 <span class="text-ar_secondary">*</span>
+                                    </label>
+                                    <select class="w-full px-6 py-3 bg-ar_dark/50 border border-ar_primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-ar_secondary focus:border-transparent text-ar_light" id="scenario" required>
+                                        <option value="" disabled selected>请选择场景类型</option>
+                                        <option value="travel">旅行社 - AR旅游玩法</option>
+                                        <option value="scenic">景区 - AR沉浸式体验</option>
+                                        <option value="enterprise">企业 - AR团建/品牌活动</option>
+                                        <option value="school">学校 - AR教育/校园活动</option>
+                                        <option value="other">其他场景 - 定制需求</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-ar_light mb-2 text-sm" for="message">
+                                        需求描述 <span class="text-ar_secondary">*</span>
+                                    </label>
+                                    <textarea class="w-full px-6 py-3 bg-ar_dark/50 border border-ar_primary/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-ar_secondary focus:border-transparent text-ar_light h-32" id="message" placeholder="请简要描述您的AR活动需求，例如：景区AR寻宝游戏，预计参与人数500人，希望提升二次消费..." required></textarea>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="agreement" class="w-4 h-4 text-ar_secondary focus:ring-ar_secondary border-ar_primary/30 rounded bg-ar_dark/50" required>
+                                    <label for="agreement" class="ml-2 text-ar_light/70 text-sm">
+                                        我同意贵公司联系我并提供相关方案，且知晓并同意<a href="#" class="text-ar_secondary hover:underline">隐私政策</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="w-full bg-ar_secondary text-ar_dark font-bold px-6 py-4 rounded-lg text-lg neon-border transition-all duration-300 hover:scale-105">
+                                    提交需求 · 免费获取定制方案
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-ar_dark border-t border-ar_primary/20 py-12 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fa-solid fa-vr-cardboard text-ar_secondary text-3xl"></i>
+                        <span class="text-2xl font-futuristic font-bold text-ar_light">甲子·AR</span>
+                    </div>
+                    <p class="text-ar_light/70 mb-6">
+                        用AR技术重新定义线下活动，为旅行社、景区、企业、学校打造沉浸式增强现实游戏活动，让传统场景焕发新活力！
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-ar_primary/20 rounded-full flex items-center justify-center hover:bg-ar_primary hover:text-white transition-colors">
+                            <i class="fa-solid fa-weixin text-ar_secondary"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-ar_primary/20 rounded-full flex items-center justify-center hover:bg-ar_primary hover:text-white transition-colors">
+                            <i class="fa-solid fa-weibo text-ar_secondary"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-ar_primary/20 rounded-full flex items-center justify-center hover:bg-ar_primary hover:text-white transition-colors">
+                            <i class="fa-solid fa-qq text-ar_secondary"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-ar_primary/20 rounded-full flex items-center justify-center hover:bg-ar_primary hover:text-white transition-colors">
+                            <i class="fa-solid fa抖音 text-ar_secondary"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-ar_light border-b border-ar_primary/20 pb-2">快速链接</h3>
+                    <ul class="space-y-3 text-ar_light/70">
+                        <li><a href="#home" class="hover:text-ar_secondary transition-colors">首页</a></li>
+                        <li><a href="#advantages" class="hover:text-ar_secondary transition-colors">核心优势</a></li>
+                        <li><a href="#scenarios" class="hover:text-ar_secondary transition-colors">场景方案</a></li>
+                        <li><a href="#cases" class="hover:text-ar_secondary transition-colors">成功案例</a></li>
+                        <li><a href="#process" class="hover:text-ar_secondary transition-colors">定制流程</a></li>
+                        <li><a href="#contact" class="hover:text-ar_secondary transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-ar_light border-b border-ar_primary/20 pb-2">解决方案</h3>
+                    <ul class="space-y-3 text-ar_light/70">
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">旅行社AR解决方案</a></li>
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">景区AR解决方案</a></li>
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">企业AR解决方案</a></li>
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">学校AR解决方案</a></li>
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">定制化AR开发</a></li>
+                        <li><a href="#" class="hover:text-ar_secondary transition-colors">AR技术咨询</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-ar_light border-b border-ar_primary/20 pb-2">联系我们</h3>
+                    <ul class="space-y-4 text-ar_light/70">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-phone text-ar_secondary mt-1"></i>
+                            <span>15219407427</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-envelope text-ar_secondary mt-1"></i>
+                            <span>zhenfang_li@36387.cn</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-map-marker-alt text-ar_secondary mt-1"></i>
+                            <span>广东省四会市江谷镇</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-clock text-ar_secondary mt-1"></i>
+                            <span>7×24小时全天候服务</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-clock text-ar_secondary mt-1"></i>
+                            <span><a target="_blank" href="/index3.html">【黄金/比特币交易跟单项目】</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-ar_primary/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-ar_light/50 text-sm mb-4 md:mb-0">© 2025 甲子·AR 版权所有 | 用AR技术重新定义线下活动</p>
+                <div class="flex space-x-6 text-ar_light/50 text-sm">
+                    <a href="#" class="hover:text-ar_secondary transition-colors">隐私政策</a>
+                    <a href="#" class="hover:text-ar_secondary transition-colors">服务条款</a>
+                    <a href="#" class="hover:text-ar_secondary transition-colors">免责声明</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 初始化AOS滚动动画
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+
+        // 粒子背景配置
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#7E22CE", "#22D3EE", "#A78BFA"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#7E22CE", opacity: 0.2, width: 1 },
+                move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // 切换菜单图标
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars-staggered')) {
+                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
+            }
+        });
+
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-ar_dark/95');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('bg-ar_dark/95');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.replace('fa-xmark', 'fa-bars-staggered');
+                }
+            });
+        });
+
+        // 表单提交提示
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('需求提交成功！我们将在1小时内与您联系，为您提供专属AR定制方案！');
+            contactForm.reset();
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
