@@ -55,9 +55,10 @@
             min-width: 600px;
         }
         
+        /* 核心修改1：将th和td的text-align改为center（原先是left） */
         th, td {
             padding: 12px 15px;
-            text-align: left;
+            text-align: center; /* 全局居中核心样式 */
             border-bottom: 1px solid #dee2e6;
         }
         
@@ -79,7 +80,7 @@
         }
         
         .amount {
-            text-align: right;
+            /* 移除原有的右对齐，继承全局居中 */
             font-family: 'Courier New', monospace;
         }
         
@@ -88,6 +89,8 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            /* 补充：确保摘要文本也居中 */
+            text-align: center;
         }
         
         .summary:hover {
@@ -121,6 +124,8 @@
             th, td {
                 padding: 10px 8px;
                 font-size: 0.9rem;
+                /* 响应式下保持居中 */
+                text-align: center;
             }
             
             .summary {
@@ -136,6 +141,8 @@
             th, td {
                 padding: 8px 5px;
                 font-size: 0.85rem;
+                /* 小屏下保持居中 */
+                text-align: center;
             }
             
             .amount {
@@ -520,12 +527,13 @@
                         <td class="amount">-</td>
                     </tr>
                     <tr class="">
-                        <td>2025年度结余</td>
-                        <td class="summary"></td>
-                        <td class="amount">118,280.49</td>
-                        <td class="amount">117,352.48</td>
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">2025年度结余</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
                         <td class="amount">91,089.18</td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
