@@ -1,277 +1,546 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <!-- 视口设置，确保手机端正确缩放，允许用户缩放 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-  <title>2025年度江边一经济合作社收支明细 · 自适应版</title>
-  <style>
-    /* 全局重置与基调 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-    }
-
-    body {
-      background: #eef2f6;
-      padding: 20px 16px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* 主卡片容器 */
-    .container {
-      max-width: 1400px;
-      width: 100%;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 28px;
-      box-shadow: 0 20px 40px -10px rgba(0, 20, 30, 0.15);
-      padding: 28px 20px;
-      transition: all 0.2s;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      font-weight: 600;
-      text-align: center;
-      color: #0b2b3d;
-      letter-spacing: 1px;
-      margin-bottom: 28px;
-      border-bottom: 3px solid #cfdee9;
-      padding-bottom: 18px;
-      line-height: 1.3;
-    }
-
-    /* 表格外包装——水平滑动，手机友好 */
-    .table-wrapper {
-      overflow-x: auto;
-      overflow-y: visible;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 18px;
-      border: 1px solid #dde7ed;
-      background: #fff;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    /* 表格基本风格 */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;         /* 保证桌面完整显示，过窄时出现滚动 */
-      font-size: 0.95rem;
-      background: white;
-    }
-
-    /* 表头 */
-    th {
-      background: #1c3b4f;
-      color: white;
-      font-weight: 600;
-      font-size: 0.98rem;
-      padding: 16px 10px;
-      white-space: nowrap;
-      text-align: center;
-      border-right: 1px solid #34596b;
-    }
-    th:last-child {
-      border-right: none;
-    }
-
-    /* 常规单元格 */
-    td {
-      padding: 12px 8px;
-      border-bottom: 1px solid #e4edf3;
-      text-align: center;
-      vertical-align: middle;
-      background-color: inherit;
-    }
-
-    /* 行交替底色 */
-    tbody tr:nth-child(even) {
-      background-color: #f9fcff;
-    }
-    tbody tr:hover {
-      background-color: #e1f0f9;
-      transition: 0.1s;
-    }
-
-    /* 数字列视觉区分 */
-    td:nth-child(3) {  /* 收入 */
-      color: #0f6e4a;
-      font-weight: 550;
-    }
-    td:nth-child(4) {  /* 支出 */
-      color: #b13e3e;
-      font-weight: 550;
-    }
-    td:nth-child(5) {  /* 余额 */
-      color: #1f5090;
-      font-weight: 550;
-    }
-
-    /* 保持数字不换行，日期和摘要按需换行 */
-    td:nth-child(3), td:nth-child(4), td:nth-child(5) {
-      white-space: nowrap;
-    }
-    td:nth-child(1), td:nth-child(2) {
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    /* 为没有内容的单元格添加占位符「—」, 避免完全空白 */
-    td:empty::before {
-      content: "—";
-      color: #b0c6d4;
-      font-style: italic;
-      font-size: 0.85em;
-      letter-spacing: 0.5px;
-    }
-
-    /* 最后一行「2025年度结余」加粗 + 柔和背景 */
-    tbody tr:last-child {
-      background: #e6f0f8 !important;
-      font-weight: 600;
-      border-top: 2px solid #b8cfde;
-    }
-    tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* 注脚样式 */
-    .note {
-      margin-top: 28px;
-      color: #3f5564;
-      background: #eef5fa;
-      padding: 14px 20px;
-      border-radius: 50px;
-      font-size: 0.92rem;
-      text-align: center;
-      border: 1px dashed #9fbdd0;
-      line-height: 1.6;
-      word-break: break-word;
-    }
-
-    /* 手机专用优化 */
-    @media screen and (max-width: 600px) {
-      body {
-        padding: 8px 6px;
-      }
-      .container {
-        padding: 18px 10px;
-        border-radius: 24px;
-      }
-      h1 {
-        font-size: 1.4rem;
-        margin-bottom: 18px;
-        padding-bottom: 12px;
-      }
-      th {
-        padding: 12px 5px;
-        font-size: 0.85rem;
-      }
-      td {
-        padding: 10px 5px;
-        font-size: 0.82rem;
-      }
-      .note {
-        font-size: 0.8rem;
-        padding: 12px 10px;
-        border-radius: 28px;
-      }
-    }
-
-    /* 对于极小设备，降低最小宽度让表格更紧凑 */
-    @media screen and (max-width: 420px) {
-      table {
-        min-width: 660px;   /* 仍保留滚动，但内容略压缩 */
-      }
-      th, td {
-        padding: 8px 4px;
-      }
-    }
-
-    /* 保留原数据中的问号标记，不加干扰 */
-    td {
-      font-variant-numeric: tabular-nums;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度江边一经济合作社收支明细</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        th {
+            background-color: #495057;
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+        
+        .amount {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .summary {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .summary:hover {
+            white-space: normal;
+            overflow: visible;
+            background-color: #fff8e1;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .total-row {
+            background-color: #e6f7ff !important;
+            font-weight: bold;
+            border-top: 2px solid #2196f3;
+        }
+        
+        .empty-date {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .summary {
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.2rem;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.85rem;
+            }
+            
+            .amount {
+                font-size: 0.8rem;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .stat-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            color: #343a40;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .value {
+            color: #28a745;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .stat-card .expense {
+            color: #dc3545;
+        }
+        
+        .stat-card .balance {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>📋 江边一经济合作社 · 2025年度收支明细</h1>
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>日期</th>
-          <th>摘要</th>
-          <th>收入 (¥)</th>
-          <th>支出 (¥)</th>
-          <th>余额 (¥)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 以下数据完全忠实于原始文件，包括空白单元格、问号及特殊符号 -->
-        <tr><td>20250218</td><td>2024年银行结余</td><td></td><td></td><td>90161.17</td></tr>
-        <tr><td>20250224</td><td>现金存入含李亦新､林进城､林志峰租金</td><td>17110</td><td>0</td><td>0</td></tr>
-        <tr><td>20250306</td><td>现金存入租金</td><td>732</td><td>0</td><td>0</td></tr>
-        <tr><td>20250310</td><td>电费</td><td>0</td><td>7.66</td><td>0</td></tr>
-        <tr><td>20250320</td><td>结存款息</td><td>32.79</td><td>0</td><td>0</td></tr>
-        <tr><td>20250410</td><td>电费</td><td>0</td><td>63.96</td><td>0</td></tr>
-        <tr><td>20250421</td><td>肇庆市恒电电力工程有限公司</td><td>7515</td><td>0</td><td>0</td></tr>
-        <tr><td>20250509</td><td>电费</td><td>0</td><td>36.74</td><td>0</td></tr>
-        <tr><td>20250609</td><td>电费</td><td>0</td><td>42.3</td><td>0</td></tr>
-        <tr><td>20250620</td><td>结存款息</td><td>25.18</td><td>0</td><td>0</td></tr>
-        <tr><td>20250710</td><td>电费</td><td>0</td><td>15.42</td><td>0</td></tr>
-        <tr><td>20250809</td><td>电费</td><td>0</td><td>31.1</td><td>0</td></tr>
-        <tr><td>20250909</td><td>电费</td><td>0</td><td>45.49</td><td>0</td></tr>
-        <tr><td>20250920</td><td>结存款息</td><td>14.74</td><td>0</td><td>0</td></tr>
-        <tr><td>20251010</td><td>电费</td><td>0</td><td>20.85</td><td>0</td></tr>
-        <tr><td>20251109</td><td>电费</td><td>0</td><td>9.98</td><td>0</td></tr>
-        <tr><td>20251220</td><td>结存款息</td><td>14.58</td><td>0</td><td>0</td></tr>
-        <tr><td>20251225</td><td>农委红珠坳44.5亩2026年租金</td><td>6710.2</td><td>0</td><td>0</td></tr>
-        <tr><td>20260105</td><td>海风公司2026年租金</td><td>23496</td><td>0</td><td>0</td></tr>
-        <tr><td>20260109</td><td>电费</td><td>0</td><td>6.53</td><td>0</td></tr>
-        <tr><td>20260110</td><td>吕仲平2026年租金</td><td>23472</td><td>0</td><td>0</td></tr>
-        <tr><td>20260209</td><td>电费</td><td>0</td><td>8.45</td><td>0</td></tr>
-        <tr><td>20260211</td><td>现金存入林志峰2025剩余租金</td><td>9230</td><td>0</td><td>0</td></tr>
-        <!-- 以下为无日期行 (按原顺序) -->
-        <tr><td></td><td>林进国2024年度分红少支付金额</td><td>0</td><td>200</td><td>0</td></tr>
-        <tr><td></td><td>李锡基上交的电费</td><td>288</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李炽光租金</td><td>2280</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林水洲租金</td><td>1740</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>吴明福租金</td><td>4000</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>刘耀荣租金</td><td>10800</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>雷亦文租金</td><td>2650</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>肖俊文租金</td><td>1575?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>段海兵租金</td><td>27379?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林新华租金</td><td>10208?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林进城租金</td><td></td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林观水租金</td><td>736.56?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林福全租金</td><td>243?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林志军租金</td><td>1989.9?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李锡基租金</td><td>509</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李深友租金</td><td>409.2?</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李三租金</td><td>8</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李国华租金</td><td>8</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李加强租金</td><td>429</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>李国辉租金</td><td>12</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>林森玉租金</td><td>18</td><td>0</td><td>0</td></tr>
-        <tr><td></td><td>备用金</td><td></td><td>103500</td><td></td></tr>
-        <!-- 年度结余行 (保留原始数据) -->
-        <tr><td></td><td>2025年度结余</td><td>111094.49</td><td>103988.48</td><td>97267.18</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="note">
-    ※ 注：部分租金金额后带“？”为原表标注信息；余额列除首行“2024年银行结余”外其余均为原表填写的“0”或留空；空白单元格以「—」占位。所有数据保持原始文件内容未作改动。
-  </p>
-</div>
-<!-- 原html中所有无关脚本及扩展代码均已移除，仅保留纯净表格与样式 -->
+    <div class="container">
+        <div class="header">
+            <h1>2025年度江边一经济合作社收支明细</h1>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>摘要</th>
+                        <th>收入 (¥)</th>
+                        <th>支出 (¥)</th>
+                        <th>余额 (¥)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td>2025年02月18日</td>
+                        <td class="summary">2024年银行结余</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                        <td class="amount">90,161.17</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年02月24日</td>
+                        <td class="summary">现金存入含李亦新、林进城、林志峰租金</td>
+                        <td class="amount">17,110.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年03月06日</td>
+                        <td class="summary">现金存入租金</td>
+                        <td class="amount">732.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年03月10日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">7.66</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年03月20日</td>
+                        <td class="summary">结存款息</td>
+                        <td class="amount">32.79</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年04月10日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">63.96</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年04月21日</td>
+                        <td class="summary">肇庆市恒电电力工程有限公司</td>
+                        <td class="amount">7,515.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年05月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">36.74</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年06月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">42.30</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年06月20日</td>
+                        <td class="summary">结存款息</td>
+                        <td class="amount">25.18</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年07月10日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">15.42</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年08月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">31.10</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年09月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">45.49</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年09月20日</td>
+                        <td class="summary">结存款息</td>
+                        <td class="amount">14.74</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年10月10日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">20.85</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年11月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">9.98</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年12月20日</td>
+                        <td class="summary">结存款息</td>
+                        <td class="amount">14.58</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年12月25日</td>
+                        <td class="summary">农委红珠坳44.5亩租金</td>
+                        <td class="amount">6,710.20</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2026年01月05日</td>
+                        <td class="summary">海风公司租金</td>
+                        <td class="amount">23,496.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2026年01月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">6.53</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2026年01月10日</td>
+                        <td class="summary">吕仲平租金</td>
+                        <td class="amount">23,472.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2026年02月09日</td>
+                        <td class="summary">电费</td>
+                        <td class="amount">-</td>
+                        <td class="amount">8.45</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2026年02月11日</td>
+                        <td class="summary">现金存入林志峰2025剩余租金</td>
+                        <td class="amount">9,230.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林进国2024年度分红少支付金额</td>
+                        <td class="amount">-</td>
+                        <td class="amount">200.00</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李锡基上交的电费</td>
+                        <td class="amount">288.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李炽光租金</td>
+                        <td class="amount">2,280.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林水洲租金</td>
+                        <td class="amount">1,740.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">吴明福租金</td>
+                        <td class="amount">4,000.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">刘耀荣租金</td>
+                        <td class="amount">10,800.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">雷亦文租金</td>
+                        <td class="amount">2,650.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">段海兵租金</td>
+                        <td class="amount">27,379.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林进城租金</td>
+                        <td class="amount">944.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林观水租金</td>
+                        <td class="amount">736.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林福全租金</td>
+                        <td class="amount">243.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林志军租金</td>
+                        <td class="amount">1,990.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李锡基租金</td>
+                        <td class="amount">509.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李深友租金</td>
+                        <td class="amount">409.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李三租金</td>
+                        <td class="amount">8.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李国华租金</td>
+                        <td class="amount">8.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李加强租金</td>
+                        <td class="amount">429.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">李国辉租金</td>
+                        <td class="amount">12.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">林森玉租金</td>
+                        <td class="amount">18.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">现金分红金</td>
+                        <td class="amount">-</td>
+                        <td class="amount">26,864.00</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">银行取款分红金</td>
+                        <td class="amount">-</td>
+                        <td class="amount">90,000.00</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td><span class="empty-date">无日期</span></td>
+                        <td class="summary">分红剩余款</td>
+                        <td class="amount">2,864.00</td>
+                        <td class="amount">-</td>
+                        <td class="amount">-</td>
+                    </tr>
+                    <tr class="">
+                        <td>2025年度结余</td>
+                        <td class="summary"></td>
+                        <td class="amount">118,280.49</td>
+                        <td class="amount">117,352.48</td>
+                        <td class="amount">91,089.18</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>数据来源：江边一经济合作社收支明细 | 网页制作：李振芳 15219407427</p>
+            <p class="text-ar_light/50 text-sm mb-4 md:mb-0"><a href="/">© 2025 甲子·AR 版权所有 | 用AR技术重新定义线下活动</a></p>
+        </div>
+    </div>
 </body>
 </html>
