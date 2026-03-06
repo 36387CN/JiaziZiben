@@ -2,15 +2,18 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <!-- 视口设置，确保手机端正确缩放，允许用户缩放 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-  <title>2025年度江边一经济合作社收支明细 · 优化居中版</title>
+  <title>2025年度江边一经济合作社收支明细 · 自适应版</title>
   <style>
+    /* 全局重置与基调 */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
     }
+
     body {
       background: #eef2f6;
       padding: 20px 16px;
@@ -19,8 +22,10 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* 主卡片容器 */
     .container {
-      max-width: 1300px;
+      max-width: 1400px;
       width: 100%;
       margin: 0 auto;
       background: #ffffff;
@@ -29,16 +34,20 @@
       padding: 28px 20px;
       transition: all 0.2s;
     }
+
     h1 {
       font-size: 1.9rem;
       font-weight: 600;
       text-align: center;
       color: #0b2b3d;
+      letter-spacing: 1px;
       margin-bottom: 28px;
       border-bottom: 3px solid #cfdee9;
       padding-bottom: 18px;
       line-height: 1.3;
     }
+
+    /* 表格外包装——水平滑动，手机友好 */
     .table-wrapper {
       overflow-x: auto;
       overflow-y: visible;
@@ -48,51 +57,41 @@
       background: #fff;
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
+
+    /* 表格基本风格 */
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 760px;          /* 保证桌面完整显示，窄屏时出现滚动 */
+      min-width: 760px;         /* 保证桌面完整显示，过窄时出现滚动 */
       font-size: 0.95rem;
       background: white;
     }
+
     /* 表头 */
     th {
       background: #1c3b4f;
       color: white;
       font-weight: 600;
       font-size: 0.98rem;
-      padding: 16px 12px;
+      padding: 16px 10px;
       white-space: nowrap;
+      text-align: center;
       border-right: 1px solid #34596b;
     }
     th:last-child {
       border-right: none;
     }
-    /* 单元格对齐：日期居中，摘要左对齐，金额右对齐 */
+
+    /* 常规单元格 */
     td {
-      padding: 12px 12px;
+      padding: 12px 8px;
       border-bottom: 1px solid #e4edf3;
-      vertical-align: middle;
-    }
-    /* 列对齐具体设置 */
-    td:nth-child(1) {            /* 日期 */
       text-align: center;
+      vertical-align: middle;
+      background-color: inherit;
     }
-    td:nth-child(2) {            /* 摘要 */
-      text-align: left;
-      word-break: break-word;
-    }
-    td:nth-child(3),             /* 收入 */
-    td:nth-child(4),             /* 支出 */
-    td:nth-child(5) {            /* 余额 */
-      text-align: right;
-      white-space: nowrap;
-    }
-    /* 数字颜色 */
-    td:nth-child(3) { color: #0f6e4a; }
-    td:nth-child(4) { color: #b13e3e; }
-    td:nth-child(5) { color: #1f5090; }
-    
+
+    /* 行交替底色 */
     tbody tr:nth-child(even) {
       background-color: #f9fcff;
     }
@@ -100,7 +99,31 @@
       background-color: #e1f0f9;
       transition: 0.1s;
     }
-    /* 空白单元格占位符 */
+
+    /* 数字列视觉区分 */
+    td:nth-child(3) {  /* 收入 */
+      color: #0f6e4a;
+      font-weight: 550;
+    }
+    td:nth-child(4) {  /* 支出 */
+      color: #b13e3e;
+      font-weight: 550;
+    }
+    td:nth-child(5) {  /* 余额 */
+      color: #1f5090;
+      font-weight: 550;
+    }
+
+    /* 保持数字不换行，日期和摘要按需换行 */
+    td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+      white-space: nowrap;
+    }
+    td:nth-child(1), td:nth-child(2) {
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    /* 为没有内容的单元格添加占位符「—」, 避免完全空白 */
     td:empty::before {
       content: "—";
       color: #b0c6d4;
@@ -108,7 +131,8 @@
       font-size: 0.85em;
       letter-spacing: 0.5px;
     }
-    /* 最后结余行加粗 */
+
+    /* 最后一行「2025年度结余」加粗 + 柔和背景 */
     tbody tr:last-child {
       background: #e6f0f8 !important;
       font-weight: 600;
@@ -117,6 +141,8 @@
     tbody tr:last-child td {
       border-bottom: none;
     }
+
+    /* 注脚样式 */
     .note {
       margin-top: 28px;
       color: #3f5564;
@@ -129,16 +155,49 @@
       line-height: 1.6;
       word-break: break-word;
     }
+
+    /* 手机专用优化 */
     @media screen and (max-width: 600px) {
-      body { padding: 8px 6px; }
-      .container { padding: 18px 10px; border-radius: 24px; }
-      h1 { font-size: 1.4rem; margin-bottom: 18px; padding-bottom: 12px; }
-      th { padding: 12px 8px; font-size: 0.85rem; }
-      td { padding: 10px 8px; font-size: 0.82rem; }
-      .note { font-size: 0.8rem; padding: 12px 10px; border-radius: 28px; }
+      body {
+        padding: 8px 6px;
+      }
+      .container {
+        padding: 18px 10px;
+        border-radius: 24px;
+      }
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+      }
+      th {
+        padding: 12px 5px;
+        font-size: 0.85rem;
+      }
+      td {
+        padding: 10px 5px;
+        font-size: 0.82rem;
+      }
+      .note {
+        font-size: 0.8rem;
+        padding: 12px 10px;
+        border-radius: 28px;
+      }
     }
+
+    /* 对于极小设备，降低最小宽度让表格更紧凑 */
     @media screen and (max-width: 420px) {
-      table { min-width: 660px; }
+      table {
+        min-width: 660px;   /* 仍保留滚动，但内容略压缩 */
+      }
+      th, td {
+        padding: 8px 4px;
+      }
+    }
+
+    /* 保留原数据中的问号标记，不加干扰 */
+    td {
+      font-variant-numeric: tabular-nums;
     }
   </style>
 </head>
@@ -157,7 +216,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- 数据完全忠实于原始文件 -->
+        <!-- 以下数据完全忠实于原始文件，包括空白单元格、问号及特殊符号 -->
         <tr><td>20250218</td><td>2024年银行结余</td><td></td><td></td><td>90161.17</td></tr>
         <tr><td>20250224</td><td>现金存入含李亦新､林进城､林志峰租金</td><td>17110</td><td>0</td><td>0</td></tr>
         <tr><td>20250306</td><td>现金存入租金</td><td>732</td><td>0</td><td>0</td></tr>
@@ -181,7 +240,7 @@
         <tr><td>20260110</td><td>吕仲平2026年租金</td><td>23472</td><td>0</td><td>0</td></tr>
         <tr><td>20260209</td><td>电费</td><td>0</td><td>8.45</td><td>0</td></tr>
         <tr><td>20260211</td><td>现金存入林志峰2025剩余租金</td><td>9230</td><td>0</td><td>0</td></tr>
-        <!-- 无日期行 -->
+        <!-- 以下为无日期行 (按原顺序) -->
         <tr><td></td><td>林进国2024年度分红少支付金额</td><td>0</td><td>200</td><td>0</td></tr>
         <tr><td></td><td>李锡基上交的电费</td><td>288</td><td>0</td><td>0</td></tr>
         <tr><td></td><td>李炽光租金</td><td>2280</td><td>0</td><td>0</td></tr>
@@ -204,13 +263,15 @@
         <tr><td></td><td>李国辉租金</td><td>12</td><td>0</td><td>0</td></tr>
         <tr><td></td><td>林森玉租金</td><td>18</td><td>0</td><td>0</td></tr>
         <tr><td></td><td>备用金</td><td></td><td>103500</td><td></td></tr>
+        <!-- 年度结余行 (保留原始数据) -->
         <tr><td></td><td>2025年度结余</td><td>111094.49</td><td>103988.48</td><td>97267.18</td></tr>
       </tbody>
     </table>
   </div>
   <p class="note">
-    ※ 注：部分租金金额后带“？”为原表标注信息；余额列除首行外其余均为原表填写的“0”或留空；空白单元格以「—」占位。摘要左对齐、金额右对齐，版面更清晰。
+    ※ 注：部分租金金额后带“？”为原表标注信息；余额列除首行“2024年银行结余”外其余均为原表填写的“0”或留空；空白单元格以「—」占位。所有数据保持原始文件内容未作改动。
   </p>
 </div>
+<!-- 原html中所有无关脚本及扩展代码均已移除，仅保留纯净表格与样式 -->
 </body>
 </html>
