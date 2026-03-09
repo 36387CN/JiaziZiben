@@ -27,6 +27,7 @@
 	  height: 100%;
       }
       .sidebar {
+	  /* 原先的 fixed 定位会被后续覆盖，这里保留原样，后面用更具体的规则重写 */
 	  position: fixed;
 	  width: 550px;
 	  height: 100%;
@@ -80,133 +81,167 @@
 	  color:#fff;
       }
       
+      /* ========= 新增布局调整：整体宽度95%，居中，flex排列 ========= */
+      .main-wrapper {
+        display: flex;
+        width: 98%;
+        max-width: 100%;        /* 可选，防止过宽，可自行调整 */
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      /* 覆盖侧边栏样式：取消固定定位，宽度保持550px，高度占满，背景保留 */
+      .main-wrapper .sidebar {
+        position: relative;
+        width: 550px;
+        height: 100%;
+        background-color: #ffffff;  /* bg-gray 的等效色，保留原类即可 */
+        flex-shrink: 0;              /* 防止 flex 压缩侧边栏宽度 */
+      }
+
+      /* 覆盖地图容器样式：取消左边距，让 flex 接管剩余宽度 */
+      .main-wrapper .map-container {
+        margin-left: 0;
+        flex: 1;                     /* 占据剩余所有宽度 */
+        height: 100%;
+        position: relative;
+      }
+
+      /* 保持 side-scroll 滚动能力 */
+      .main-wrapper .sidebar.side-scroll {
+        overflow-y: auto;
+      }
     </style>
 
   </head>
   <body>
 
     <div class="help-tip" onClick="window.open('https://docs.unity-ar-gps-location.com/map', '_blank');"></div>
-    <div class="sidebar side-scroll bg-gray">
+    
+    <!-- 新增外层包裹容器，宽度95%居中，flex布局 -->
+    <div class="main-wrapper">
+      <div class="sidebar side-scroll bg-gray">
 
-      <div class="menu">
-	<li class="divider" data-content="Current Point"></li>
-	<li class="menu-item">
-	  <span>ID</span>
-	  <div class="menu-badge">
-	    <span id="id-value">---</span>
-	  </div>	    
-	</li>
-	<li class="mt-10 menu-item mt-10">
-	  <span>Latitude</span>
-	  <div class="menu-badge">
-	    <span id="lat-value">0.000</span>
-	  </div>	    
-	</li>
-	<li class="menu-item mt-10">
-	  <span>Longitude</span>
-	  <div class="menu-badge">
-	    <span id="lng-value">0.000</span>
-	  </div>	    
-	</li>
-	<li class="menu-item mt-10">
-	  <span>Altitude mode</span>
-	  <div class="menu-badge">
-	    <select name="altitude-mode" id="altitude-mode-input" class="form-select">
-	      <option value="GroundRelative">Ground Relative</option>
-	      <option value="Absolute">Absolute</option>
-	      <option value="Relative">Relative</option>
-	      <option value="Ignore">Ignore</option>
-	    </select>
-	  </div>	    
-	</li>
+        <div class="menu">
+          <li class="divider" data-content="Current Point"></li>
+          <li class="menu-item">
+            <span>标记数量</span>
+            <div class="menu-badge">
+              <span id="id-value">---</span>
+            </div>	    
+          </li>
+          <li class="mt-10 menu-item mt-10">
+            <span>纬度</span>
+            <div class="menu-badge">
+              <span id="lat-value">0.000</span>
+            </div>	    
+          </li>
+          <li class="menu-item mt-10">
+            <span>经度</span>
+            <div class="menu-badge">
+              <span id="lng-value">0.000</span>
+            </div>	    
+          </li>
+          <li class="menu-item mt-10">
+            <span>高度模式</span>
+            <div class="menu-badge">
+              <select name="altitude-mode" id="altitude-mode-input" class="form-select">
+                <option value="GroundRelative">Ground Relative</option>
+                <option value="Absolute">Absolute</option>
+                <option value="Relative">Relative</option>
+                <option value="Ignore">Ignore</option>
+              </select>
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Altitude</span>
-	  <div class="menu-badge">
-	    <input type="number" id="altitude-input" class="form-input" value=0>
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>海拔</span>
+            <div class="menu-badge">
+              <input type="number" id="altitude-input" class="form-input" value=0>
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Name</span>
-	  <div class="menu-badge">
-	    <input id="name-input" type="text" class="form-input">
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>标记名称</span>
+            <div class="menu-badge">
+              <input id="name-input" type="text" class="form-input">
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Mesh ID</span>
-	  <div class="menu-badge">
-	    <input id="mesh-id-input" type="text" class="form-input">
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>项目/线路名称</span>
+            <div class="menu-badge">
+              <input id="mesh-id-input" type="text" class="form-input">
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Movement Smoothing</span>
-	  <div class="menu-badge">
-	    <input type="number" id="movement-smoothing-input" class="form-input" value=0.05 step=0.01>
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>运动平滑</span>
+            <div class="menu-badge">
+              <input type="number" id="movement-smoothing-input" class="form-input" value=0.05 step=0.01>
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Max Number Of Location Updates</span>
-	  <div class="menu-badge">
-	    <input type="number" id="max-number-location-updates-input" class="form-input" value=0 step=1>
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>最大位置更新次数</span>
+            <div class="menu-badge">
+              <input type="number" id="max-number-location-updates-input" class="form-input" value=0 step=1>
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Use Moving Average</span>
-	  <div class="menu-badge">
-	    <label class="form-checkbox">
-	      <input type="checkbox" id="use-moving-average-input">
-	      <i class="form-icon"></i> 
-	    </label>
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>使用移动平均</span>
+            <div class="menu-badge">
+              <label class="form-checkbox">
+                <input type="checkbox" id="use-moving-average-input">
+                <i class="form-icon"></i> 
+              </label>
+            </div>	    
+          </li>
 
-	<li class="menu-item mt-10">
-	  <span>Hide Object Until It Is Placed</span>
-	  <div class="menu-badge">
-	    <label class="form-checkbox">
-	      <input type="checkbox" id="hide-object-until-placed-input">
-	      <i class="form-icon"></i> 
-	    </label>
-	  </div>	    
-	</li>
+          <li class="menu-item mt-10">
+            <span>隐藏物体直到放置</span>
+            <div class="menu-badge">
+              <label class="form-checkbox">
+                <input type="checkbox" id="hide-object-until-placed-input">
+                <i class="form-icon"></i> 
+              </label>
+            </div>	    
+          </li>
 
-	<div class="btn-group btn-group-block mt-10">
-	  <button id="add-marker-button" class="btn btn-sm">Add marker</button>
-	  <button id="remove-marker-button" class="btn btn-sm">Remove marker</button>
-	  <button id="clear-all-button" class="btn btn-sm">Remove all markers</button>
-	</div>
+          <div class="btn-group btn-group-block mt-10">
+            <button id="add-marker-button" class="btn btn-sm">添加标记</button>
+            <button id="remove-marker-button" class="btn btn-sm">移除标记</button>
+            <button id="clear-all-button" class="btn btn-sm">移除所有标记</button>
+          </div>
 
-	<div class="btn-group btn-group-block mt-10">
-          <button id="download-json-button" class="btn btn-sm">Download JSON</button>
-          <button id="download-xml-button" class="btn btn-sm">Download XML</button>
+          <div class="btn-group btn-group-block mt-10">
+            <button id="download-json-button" class="btn btn-sm">下载 JSON</button>
+            <button id="download-xml-button" class="btn btn-sm">下载 XML</button>
 
-	  <input id="json-file-input" type='file' name='filename' accept=".json" multiple hidden/>
-          <button id="upload-json-button" class="btn btn-sm">Upload JSON</button>
-	  
-	  <input id="xml-file-input" type='file' name='filename' accept=".xml" multiple hidden/>
-          <button id="upload-xml-button" class="btn btn-sm">Upload XML</button>
-	</div>
-	
+            <input id="json-file-input" type='file' name='filename' accept=".json" multiple hidden/>
+            <button id="upload-json-button" class="btn btn-sm">上传 JSON</button>
+            
+            <input id="xml-file-input" type='file' name='filename' accept=".xml" multiple hidden/>
+            <button id="upload-xml-button" class="btn btn-sm">上传 XML</button>
+          </div>
+          
 
-	<li class="divider" data-content="List of Points"></li>
+          <li class="divider" data-content="List of Points"></li>
 
-	<div id="points-list">
-	  <li class="mt-10 menu-item mt-10 active">
-	    <a href="#" class="active">
-	      <span>Latitude</span>
-	    </a>
-	  </li>
-	</div>
-	
+          <div id="points-list">
+            <li class="mt-10 menu-item mt-10 active">
+              <a href="#" class="active">
+                <span>Latitude</span>
+              </a>
+            </li>
+          </div>
+          
+        </div>
       </div>
-    </div>
 
-    <div id="map-containter" class="map-container"></div>
+      <div id="map-containter" class="map-container"></div>
+    </div>  <!-- end .main-wrapper -->
 
   
 
