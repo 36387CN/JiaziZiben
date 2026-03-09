@@ -1,0 +1,96 @@
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+</head>
+<br>
+<p align="center"><b><a href="/unity-ar-gps-location-map/help/1.html" style="text-decoration: none">
+<font size="5">介绍</font></a><font size="5">&nbsp;&nbsp; 
+<a href="/unity-ar-gps-location-map/help/2.html" style="text-decoration: none">指南</a>&nbsp;&nbsp; 
+<a href="/unity-ar-gps-location-map/help/3.html" style="text-decoration: none">网页地图编辑器</a>&nbsp;&nbsp; </font>
+<a href="/unity-ar-gps-location-map/help/4.html" style="text-decoration: none"><font size="5">路线与航行</font></a></b></p>
+
+<div class="theme-default-content content__default" style="max-width: 740px; margin: 0px auto; padding: 2rem 2.5rem; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+	<h1 id="web-map-editor" style="font-weight: 600; line-height: 1.25; font-size: 2.2rem; margin-top: -1.5rem; padding-top: 4.6rem; margin-bottom: 1rem;">
+	<font _mstmutation="1" _msttexthash="26655629" _msthash="909">
+	<br class="Apple-interchange-newline">
+	网页地图编辑器</font></h1>
+	<p style="line-height: 1.7; margin-top: 2rem;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/01.c5913964.png" alt="图片" _mstalt="57161" _msthash="910" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="3258983" _msthash="911">该</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://editor.unity-ar-gps-location.com/"><font _mstmutation="1" _msttexthash="39677755" _msthash="912">网页地图编辑器界面</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="1430545389" _msthash="913">目前处于Alpha阶段，可用于在地图上放置标记，关联 
+	将AR+GPS位置数据发送到这些标记器，并导出包含生成数据的XML文件，用于Unity内部， 这样AR+GPS定位插件会自动在指定位置创建物体。</font></p>
+	<h2 id="usage" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/map/#usage">
+	#</a><font _mstmutation="1" _msttexthash="6565208" _msthash="914">用途</font></h2>
+	<p _msttexthash="295400157" _msthash="915" style="line-height: 1.7;">
+	首先，点击地图右侧你想放置标记的位置。最初这会在地图上放置一个红色标记。</p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/02.9e27a4eb.png" alt="图片" _mstalt="57161" _msthash="916" style="max-width: 100%;"></p>
+	<p _msttexthash="233173980" _msthash="917" style="line-height: 1.7;">
+	这是临时标记。制作永久性马克笔时，请在右侧面板上填写必要信息。</p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/03.8f626d02.png" alt="图片" _mstalt="57161" _msthash="918" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="1140955062" _msthash="919">
+	大多数字段都是属性的完全复制。除此之外，你需要输入a代表位置，并且输入一个。这是字符串，必须匹配Unity中预制件的可脚本对象，我们将在下一节中详细介绍</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">PlaceAtLocationNameMesh 
+	IDMesh IDMesh IDPrefabDatabase</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="424512114" _msthash="920">
+	之后，点击按钮。然后马克笔会变成蓝色，表示它变成了永久性马克笔，而且这个点 将出现在 。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Add 
+	MarkerList of points</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="123991972" _msthash="921">你可以通过在地图上或 
+	.选中的标记会变成绿色。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">List 
+	of Points</code></p>
+	<p _msttexthash="142346555" _msthash="922" style="line-height: 1.7;">
+	你也可以通过在地图上拖动任何标记来更改它的位置。</p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="1080800396" _msthash="923">
+	添加所有想添加的标记后，点击按钮下载包含所有数据的XML文件。如果你愿意 如果想以后再次编辑同一数据，可以点击并上传同一个文件，在编辑器中恢复所有数据。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Download 
+	XMLUpload XML</code></p>
+	<h2 id="importing-data-to-unity" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/map/#importing-data-to-unity">
+	#</a><font _mstmutation="1" _msttexthash="13962247" _msthash="924">将数据导入 
+	Unity</font></h2>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="400742147" _msthash="925">
+	首先，把你从网页编辑器下载的文件导入到Unity。你最终应该会得到类似这样的文本资源：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">XML</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/04.65b61d7b.png" alt="图片" _mstalt="57161" _msthash="926" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="156863382" _msthash="927">
+	之后，开启一个场景。创建一个新的GameObject并添加一个组件。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AR+GPS 
+	LocationWeb Map Loader</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/05.e0bcb3bf.png" alt="图片" _mstalt="57161" _msthash="928" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="81775590" _msthash="929">
+	现在，在属性中选择你刚导入的文件。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Xml 
+	Data FileXML</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/06.d38fbc11.png" alt="图片" _mstalt="57161" _msthash="930" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="175753227" _msthash="931">接下来我们需要一个 
+	。要创建一个，右键点击面板并点击。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Prefab 
+	DatabaseProjectCreate &gt; AR+GPS Location &gt; PrefabDatabase</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/07.535beb94.png" alt="图片" _mstalt="57161" _msthash="932" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="230310353" _msthash="933">
+	这样应该会创建一个资源文件。选择后，你可以在检查器中编辑：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">PrefabDb</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/08.cde55490.png" alt="图片" _mstalt="57161" _msthash="934" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="678632474" _msthash="935">
+	现在把你需要的条目加入这里。应该是网页地图编辑器里的 ，而且 是 你希望与该 ID 关联，即你想放置的对象在与 关联的位置。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Mesh 
+	IdMesh IdPrefabPrefab/GameObjectMesh Id</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="62147228" _msthash="936">创建后，只需将其添加到：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">PrefabDbWeb 
+	Map Loacer</code></p>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/09.cde55490.png" alt="图片" _mstalt="57161" _msthash="937" style="max-width: 100%;"></p>
+	<p _msttexthash="345219628" _msthash="938" style="line-height: 1.7;">
+	就这些！运行应用时，你应该能看到你在网页地图编辑器中选择的位置上有物体！</div>
+<footer class="page-edit" style="max-width: 740px; margin: 0px auto; padding: 1rem 2.5rem; overflow: auto; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></footer>
+<div class="page-nav" style="max-width: 740px; margin: 0px auto; padding: 1rem 2.5rem 0px; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+	<p class="inner" style="line-height: 1.7; min-height: 2rem; margin-top: 0px; border-top: 1px solid rgb(234, 236, 239); padding-top: 1rem; overflow: auto;">
+	<span class="prev" _msttexthash="5914571" _msthash="908">←&nbsp;<a class="prev" _istranslated="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/guide/">指南</a></span></div>

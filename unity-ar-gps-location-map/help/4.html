@@ -1,0 +1,499 @@
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+</head>
+<br>
+<p align="center"><b><a href="/unity-ar-gps-location-map/help/1.html" style="text-decoration: none">
+<font size="5">介绍</font></a><font size="5">&nbsp;&nbsp; 
+<a href="/unity-ar-gps-location-map/help/2.html" style="text-decoration: none">指南</a>&nbsp;&nbsp; 
+<a href="/unity-ar-gps-location-map/help/3.html" style="text-decoration: none">网页地图编辑器</a>&nbsp;&nbsp; </font>
+<a href="/unity-ar-gps-location-map/help/4.html" style="text-decoration: none"><font size="5">路线与航行</font></a></b></p>
+
+<div class="theme-default-content content__default" style="max-width: 740px; margin: 0px auto; padding: 2rem 2.5rem; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+	<h1 id="routes-and-navigation" style="font-weight: 600; line-height: 1.25; font-size: 2.2rem; margin-top: -1.5rem; padding-top: 4.6rem; margin-bottom: 1rem;">
+	<font _mstmutation="1" _msttexthash="38386712" _msthash="941">
+	<br class="Apple-interchange-newline">
+	路线与航行 &#127381; &#10024;</font></h1>
+	<p _msttexthash="222871051" _msthash="942" style="line-height: 1.7; margin-top: 2rem;">
+	Unity AR+GPS 定位带来了期待已久的新功能：路线与导航！</p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="26433810" _msthash="943">该功能与Mapbox集成</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.mapbox.com/help/getting-started/directions/"><font _mstmutation="1" _msttexthash="210262" _msthash="944">Directions 
+	API</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="279886035" _msthash="945">创造 
+	增强现实实时路由，允许应用用户查看 导航、导航指示、距离以及 地面。</font></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="358425652" _msthash="946">该功能特别适合引导用户完成 
+	户外展览、活动、音乐会、动物园、寻宝活动，应有尽有！</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Routes 
+	and Navigation</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="1667203642" _msthash="947">
+	该功能的基础是组件。以下内容 各章节将详细介绍如何使用该组件来创建 基于位置的增强现实导航体验，如何创建自定义路线 
+	Mapbox未映射的地点，以及如何通过创建自定义所有内容 脚本来构建你独特的体验。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRoutes</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="911596907" _msthash="948">所有与<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">路线和导航</strong>功能相关的内容，比如脚本， 
+	预制件和示例场景可在目录中找到。如果你不需要使用这个功能 可以安全地从你的项目中删除这个目录。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Assets/ARLocation/Mapbox 
+	Routes</code></p>
+	<h2 id="quickstart" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#quickstart">
+	#</a><font _mstmutation="1" _msttexthash="13498394" _msthash="949">快速入门</font></h2>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="188182852" _msthash="950">
+	在Unity中创建一个新的场景。然后右键点击窗口，再点击。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">HirarchyAR+GPS 
+	-&gt; Create Basic Scene Structure</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/01.baa7b904.png" alt="Basic Scene Structure" _msthidden="A" _mstalt="415519" _msthash="951" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="793520260" _msthash="952">
+	然后，在同一个上下文菜单上，点击按钮。这将在你的场景上创建一个带有名称的表格，包含一个最低可行路线体验所需的所有组件：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AR+GPS 
+	-&gt; Mapbox RouteGameObjectMapboxRoute</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/02.00860516.png" alt="MapboxRoute Component" _msthidden="A" _mstalt="453973" _msthash="953" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="10658817" _msthash="954">现在前往</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://account.mapbox.com/access-tokens/"><font _mstmutation="1" _msttexthash="11410477" _msthash="955">代币部分</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="333629374" _msthash="956">然后创建一个新的令牌，或者复制一个已有的令牌 
+	并粘贴到检查器中组件的属性上：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Mapbox 
+	TokenMapboxRoute</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/03.f697e848.png" alt="Mapbox Token" _msthidden="A" _mstalt="178113" _msthash="957" style="max-width: 100%;"></p>
+	<p _msttexthash="155889695" _msthash="958" style="line-height: 1.7;">
+	这一步至关重要，因为没有这个我们无法访问 mapbox API 代币。</p>
+	<p _msttexthash="634388001" _msthash="959" style="line-height: 1.7;">
+	下一步是配置我们的路由。举个简单的例子，我们可以直接用 虽然是硬编码的，但你可以在运行时配置动态路由 经验。</p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="273046345" _msthash="960">一条路线由两个<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">航点</strong>定义，分别称为 
+	和 督察。它们定义了路线的起点和终点。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">FromTo</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/04.456b3d32.png" alt="Route Settings" _msthidden="A" _mstalt="234624" _msthash="961" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="71676436" _msthash="962">每种类型可以有三种不同类型：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Waypoint</code></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="71833164" _msthash="963"><em _istranslated="1">用户位置</em>意味着航点位于用户位置;</li>
+		<li><font _mstmutation="1" _msttexthash="163907536" _msthash="964">
+		<em _mstmutation="1" _istranslated="1">位置</em>意味着将由地理坐标定义（即， 纬度和经度）</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Waypoint</code></li>
+		<li><font _mstmutation="1" _msttexthash="588087422" _msthash="965">
+		<em _mstmutation="1" _istranslated="1">查询</em>意味着位置将成为<em _mstmutation="1" _istranslated="1">Mapbox查询</em>的第一个结果。&nbsp;<em _mstmutation="1" _istranslated="1">Mapbox 
+		查询</em>是一个表示位置的字符串，比如其地址， 例如， 。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">&quot;160 
+		E 25th St, New York, NY 10010&quot;</code></li>
+	</ul>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/05.ece1f4c9.png" alt="Waypoint types" _msthidden="A" _mstalt="243256" _msthash="966" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="505015498" _msthash="967">
+	以我们的基本例子来说，默认设置就可以了。它会创建一条路线 从用户所在位置开始，结束于由定义的地址。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Query</code></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="120991481" _msthash="968">
+	所以请把你附近的地址写成查询！你可以使用</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.mapbox.com/playground/geocoding/"><font _mstmutation="1" _msttexthash="27142297" _msthash="969">这个地图盒游乐场</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="57830799" _msthash="970">在这里使用之前先测试查询。</font></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/06.0adf5693.png" alt="Query" _msthidden="A" _mstalt="63479" _msthash="971" style="max-width: 100%;"></p>
+	<p _msttexthash="543228517" _msthash="972" style="line-height: 1.7;">
+	而且......就这些！搭建你的项目，部署，安装设备，测试一下！你应该看看类似这样的内容：</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/25.cefd9c94.png" alt="Query" _msthidden="A" _mstalt="63479" _msthash="973" style="max-width: 100%;"></p>
+	<h2 id="route-anatomy" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#route-anatomy">
+	#</a><font _mstmutation="1" _msttexthash="13551096" _msthash="974">路线解剖</font></h2>
+	<p _msttexthash="276570242" _msthash="975" style="line-height: 1.7;">
+	<strong _istranslated="1" style="font-weight: 600;">路由</strong>是用户必须穿过的一系列线段 
+	从起点开始，抵达<strong _istranslated="1" style="font-weight: 600;">目的地韦庞特</strong>&nbsp;<strong _istranslated="1" style="font-weight: 600;">航点</strong>。</p>
+	<p _msttexthash="573170299" _msthash="976" style="line-height: 1.7;">每个段称为路由<strong _istranslated="1" style="font-weight: 600;">步，</strong>由两个定义 
+	地理坐标以及用户在移动时必须执行的<em _istranslated="1">指令</em>&nbsp;在这条路线上，还有一些额外的数据。</p>
+	<p _msttexthash="231762427" _msthash="977" style="line-height: 1.7;">每个<strong _istranslated="1" style="font-weight: 600;">阶梯</strong>之间的实际路线不必是直线 
+	但 can 提供了自身复杂的几何形状。</p>
+	<h2 id="custom-routes" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#custom-routes">
+	#</a><font _mstmutation="1" _msttexthash="17173546" _msthash="978">自定义路线</font></h2>
+	<p _msttexthash="1015067027" _msthash="979" style="line-height: 1.7;">
+	您不受Mapbox Directions API提供的路线限制。你也可以用自己的数据创建<strong _istranslated="1" style="font-weight: 600;">自定义路线</strong>。例如，如果你想为一个没有 
+	Mapbox中的路线 你需要使用这个功能。</p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="261592890" _msthash="980">要创建自定义路由，右键点击<em _mstmutation="1" _istranslated="1">项目</em>文件夹，然后在上下文菜单中点击 
+	在 上。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Create-&gt;AR+GPS-&gt;Route</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/07.8bd66e52.png" alt="Create Custom Route" _msthidden="A" _mstalt="348361" _msthash="981" style="max-width: 100%;"></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="67589730" _msthash="982">自定义路线由两个或多个<em _istranslated="1">点</em>组成。</li>
+		<li _msttexthash="141690211" _msthash="983">自定义路线的第一个和最后一个点就是路线的<em _istranslated="1">航点</em>。</li>
+		<li><font _mstmutation="1" _msttexthash="142558689" _msthash="984">
+		路线的任何点都可以通过勾选选项标记为<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">“步骤</strong>”。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Is 
+		Step</code></li>
+		<li _msttexthash="94424122" _msthash="985">这里是一个简单的自定义路线示例：</li>
+	</ul>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/08.2788c407.png" alt="Custom Route Inspector" _msthidden="A" _mstalt="457015" _msthash="986" style="max-width: 100%;"></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li><font _mstmutation="1" _msttexthash="54743598" _msthash="987">
+		路线的每个点都有一个：</font><ul style="padding-left: 1.2em; line-height: 1.7;">
+			<li _msttexthash="49682451" _msthash="988">配置步骤地理位置的位置</li>
+			<li _msttexthash="43264260" _msthash="989"><em _istranslated="1">名称</em>是步骤的可选名称</li>
+			<li _msttexthash="282674756" _msthash="990"><em _istranslated="1">指令</em>是对用户在此时将采取的动作的描述 
+			踏步。这就是将在SignPost上出现的字符串。</li>
+		</ul>
+		</li>
+	</ul>
+	<h3 id="import-kml-files" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#import-kml-files">
+	#</a><font _mstmutation="1" _msttexthash="11822811" _msthash="991">导入 kml 文件</font></h3>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="92452256" _msthash="992">
+	你可以导入在应用程序中创建的，比如</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">kml</code><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://earth.google.com/"><font _mstmutation="1" _msttexthash="12595427" _msthash="993">谷歌地球</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="37410412" _msthash="994">方便创建自定义路线。</font></p>
+	<p _msttexthash="39960999" _msthash="995" style="line-height: 1.7;">
+	让我们逐步指导如何作。</p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="7356752" _msthash="996">先打开</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://earth.google.com/"><font _mstmutation="1" _msttexthash="12595427" _msthash="997">谷歌地球</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="32956417" _msthash="998">应用并创建新项目。</font></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/09.b33bc313.png" alt="Google Earth project" _msthidden="A" _mstalt="381082" _msthash="999" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="39863083" _msthash="1000">接下来点击，再点击。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">New 
+	FeatureDraw line or shape</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/10.b2bbaeec.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1001" style="max-width: 100%;"></p>
+	<p _msttexthash="530262382" _msthash="1002" style="line-height: 1.7;">
+	然后你可以通过在线上添加点来绘制路线。记住，并非所有点都必须是带有动作的<strong _istranslated="1" style="font-weight: 600;">阶梯</strong>;有些 
+	也可以只是为了几何。</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/11.7344657f.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1003" style="max-width: 100%;"></p>
+	<p _msttexthash="146258320" _msthash="1004" style="line-height: 1.7;">
+	路线绘制完成后，你可以导出 KML 文件并下载到电脑上。</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/12.a15e1131.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1005" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="462160621" _msthash="1006">现在把 kml 
+	文件导入你的 Unity 项目，比如把文件拖到标签页。则 右键点击导入的 .kml 文件，然后点击 。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">ProjectAR+GPS 
+	-&gt; Custom Route From KML</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/13.da05ceaa.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1007" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="84359314" _msthash="1008">
+	将用从KML文件导入的数据创建新资产。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Custom 
+	Route</code></p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/14.89643e3f.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1009" style="max-width: 100%;"></p>
+	<p _msttexthash="263276754" _msthash="1010" style="line-height: 1.7;">
+	现在你需要选择路线中哪些点是<strong _istranslated="1" style="font-weight: 600;">阶梯</strong>点，并添加导航 
+	关于这些点的说明。</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/15.f9a29b5b.png" alt="Google Earth" _msthidden="A" _mstalt="174239" _msthash="1011" style="max-width: 100%;"></p>
+	<p _msttexthash="173945135" _msthash="1012" style="line-height: 1.7;">
+	现在，您的自定义路线已经准备好用于您的应用程序！</p>
+	<h2 id="sample-project" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#sample-project">
+	#</a><font _mstmutation="1" _msttexthash="13466687" _msthash="1013">示例项目</font></h2>
+	<p _msttexthash="294718814" _msthash="1014" style="line-height: 1.7;">
+	使用MapBox Unity展示2D地图的示例项目，类似于谷歌 地图实时查看体验。</p>
+	<p style="line-height: 1.7;">
+	<a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://github.com/dmbfm/unity-ar-gps-location-mapbox-route-sample">
+	<font _mstmutation="1" _msttexthash="42517917" _msthash="1015">带地图视图的示例项目</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>&nbsp;(<a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://github.com/dmbfm/unity-ar-gps-location-mapbox-route-sample/archive/refs/heads/main.zip"><font _mstmutation="1" _msttexthash="5638321" _msthash="1016">下载</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>)</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/24.f1ad5574.jpeg" alt="Screenshot" _msthidden="A" _mstalt="160056" _msthash="1017" style="max-width: 100%;"></p>
+	<h2 id="abstract-monobehaviour-classes" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#abstract-monobehaviour-classes">
+	#</a><font _mstmutation="1" _msttexthash="24628591" _msthash="1018">抽象单一行为类</font></h2>
+	<h3 id="abstract-route-renderer" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#abstract-route-renderer">
+	#</a><font _mstmutation="1" _msttexthash="26107614" _msthash="1019">抽象路由渲染器</font></h3>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="118692522" _msthash="1020">该抽象类用于实现指示路线 
+	路径连接到用户。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Monobehaviour</code></p>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="5267275" _msthash="1021" style="font-weight: 600;">方法</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void Init(RoutePathRendererArgs args)</code><font _mstmutation="1" _msttexthash="60948927" _msthash="1022">： 
+		路由初始化时由组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRoute</code></li>
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void OnRouteUpdate(RoutePathRendererArgs args)</code><font _mstmutation="1" _msttexthash="80607891" _msthash="1023">：由其单一行为方法中的组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRouteUpdate</code></li>
+	</ul>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="11885965" _msthash="1024" style="font-weight: 600;">
+	内置实现</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<a class _msttexthash="51986064" _msthash="1025" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#next-step-route-path-renderer">
+		下一步：路由路径渲染器</a></li>
+		<li>
+		<a class _msttexthash="25919452" _msthash="1026" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#path-route-renderer">
+		路径路由渲染器</a></li>
+	</ul>
+	<h3 id="abstract-on-screen-indicator" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#abstract-on-screen-indicator">
+	#</a><font _mstmutation="1" _msttexthash="24146629" _msthash="1027">抽象屏幕指示器</font></h3>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="433152616" _msthash="1028">该抽象类派生于 
+	用于实现屏幕上指示方向的指示箭头 当下一个目标在屏幕视野之外时，它位于哪里。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Monobehaviour</code></p>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="5267275" _msthash="1029" style="font-weight: 600;">方法</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void Init(MapboxRoute route)</code><font _mstmutation="1" _msttexthash="60948927" _msthash="1030">： 
+		路由初始化时由组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRoute</code></li>
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void OnRouteUpdate(SignPostEventArgs args)</code><font _mstmutation="1" _msttexthash="80607891" _msthash="1031">：由其单一行为方法中的组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRouteUpdate</code></li>
+	</ul>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="11885965" _msthash="1032" style="font-weight: 600;">
+	内置实现</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<a class _msttexthash="25527190" _msthash="1033" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#default-on-screen-indicator">
+		默认屏幕指示器</a></li>
+	</ul>
+	<h3 id="abstract-route-signpost" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#abstract-route-signpost">
+	#</a><font _mstmutation="1" _msttexthash="27879254" _msthash="1034">摘要路线指示牌</font></h3>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="252249465" _msthash="1035">
+	该抽象类用于创建附加在路由每个<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">步骤</strong>上的组件 
+	帮助以各种方式引导用户。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">Monobehaviour</code></p>
+	<p _msttexthash="157056575" _msthash="1036" style="line-height: 1.7;">
+	该抽象类的每个实例将被附加到路由的某个<strong _istranslated="1" style="font-weight: 600;">特定步骤</strong>。</p>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="5267275" _msthash="1037" style="font-weight: 600;">方法</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void Init(MapboxRoute route)</code><font _mstmutation="1" _msttexthash="60948927" _msthash="1038">： 
+		路由初始化时由组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRoute</code></li>
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract bool UpdateSignPost(SignPostEventArgs args)</code><font _mstmutation="1" _msttexthash="80607891" _msthash="1039">：由其单一行为方法中的组件调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxRouteUpdate</code></li>
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void OnCurrentTarget(SignPostEventArgs args)</code><font _mstmutation="1" _msttexthash="70526222" _msthash="1040">当 
+		连接的步变为当前目标时调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AbstractRouteSignpost</code></li>
+		<li>
+		<code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">
+		public abstract void OffCurrentTarget(SignPostEventArgs args)</code><font _mstmutation="1" _msttexthash="62450570" _msthash="1041">当 
+		的步不再是当前目标时调用。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AbstractRouteSignpost</code></li>
+	</ul>
+	<p style="line-height: 1.7;">
+	<strong _msttexthash="11885965" _msthash="1042" style="font-weight: 600;">
+	内置实现</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<a class="router-link-exact-active router-link-active" _msttexthash="6076109" _msthash="1043" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#signpost">
+		路标</a></li>
+	</ul>
+	<h2 id="waypoint" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#waypoint">
+	#</a><font _mstmutation="1" _msttexthash="118677" _msthash="1044">Waypoint</font></h2>
+	<p _msttexthash="12007554" _msthash="1045" style="line-height: 1.7;">A&nbsp;<strong style="font-weight: 600;">Waypoint</strong>&nbsp;is 
+	a data structure that indicates and start or ending point of a Route. A&nbsp;<strong style="font-weight: 600;">Waypoint</strong>&nbsp;can 
+	be one of three types: User Location, Location, or Query.</p>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/21.82f830e7.png" alt="Waypoint" _msthidden="A" _mstalt="118677" _msthash="1046" style="max-width: 100%;">&nbsp;<img src="https://docs.unity-ar-gps-location.com/assets/img/22.b8ae46e9.png" alt="Waypoint" _msthidden="A" _mstalt="118677" _msthash="1047" style="max-width: 100%;">&nbsp;<img src="https://docs.unity-ar-gps-location.com/assets/img/23.7ff85140.png" alt="Waypoint" _msthidden="A" _mstalt="118677" _msthash="1048" style="max-width: 100%;"></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="9069567" _msthash="1049">
+		<strong style="font-weight: 600;">User Location</strong>: In this case 
+		the&nbsp;<strong style="font-weight: 600;">Waypoint</strong>&nbsp;resolves to the 
+		current user location. Usually used for the starting point of the route.</li>
+		<li _msttexthash="4004338" _msthash="1050">
+		<strong style="font-weight: 600;">Location</strong>: Resolves to a 
+		geo-location defined by latitude/longitude coordinates.</li>
+		<li _msttexthash="4276090" _msthash="1051">
+		<strong style="font-weight: 600;">Query</strong>: Resolves to the first 
+		result of the mapbox Search API for the given query string.</li>
+	</ul>
+	<h2 id="component-reference" style="font-weight: 600; line-height: 1.25; font-size: 1.65rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgb(234, 236, 239); margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#component-reference">
+	#</a><font _mstmutation="1" _msttexthash="375674" _msthash="1052">Component 
+	Reference</font></h2>
+	<h3 id="mapbox-route" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#mapbox-route">
+	#</a><font _mstmutation="1" _msttexthash="180856" _msthash="1053">Mapbox 
+	Route</font></h3>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/16.f23469b7.png" alt="Mapbox Route" _msthidden="A" _mstalt="180856" _msthash="1054" style="max-width: 100%;"></p>
+	<p _msttexthash="174057" _msthash="1055" style="line-height: 1.7;">
+	<strong style="font-weight: 600;">Properties</strong>:</p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li><font _mstmutation="1" _msttexthash="67231476" _msthash="1056">
+		<strong _mstmutation="1" style="font-weight: 600;">Sign Post Prefabs</strong>: 
+		An array components which derive from&nbsp;<a class _mstmutation="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#abstract-route-signpost">AbstractRouteSignpost</a>. 
+		These should be Prefabs, since they will be instantiated at every&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Step</strong>&nbsp;of 
+		the route. They should be used to implement things which are associated 
+		with route&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Steps</strong>, 
+		like the sign post indicating to the user the next&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Step</strong>'s 
+		instruction and distance. It is optional and can have&nbsp;elements.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">0</code></li>
+		<li><font _mstmutation="1" _msttexthash="17416841" _msthash="1057">
+		<strong _mstmutation="1" style="font-weight: 600;">Path Renderer</strong>: 
+		A component which derives from&nbsp;<a class _mstmutation="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#abstract-route-renderer">AbstractRouteRenderer</a>. 
+		This should handle the line rendering of the route's path which guides 
+		the user. It is optional and can be set to&nbsp;.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">None</code></li>
+		<li><font _mstmutation="1" _msttexthash="22994764" _msthash="1058">
+		<strong _mstmutation="1" style="font-weight: 600;">On Screen Indicator</strong>: 
+		A component which derives from&nbsp;<a class _mstmutation="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#abstract-on-screen-indicator">AbstractOnScreenIndicator</a>. 
+		Used to implement an indicator on the screen that shows to the user the 
+		direction to the next&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Step</strong>. 
+		It is optional and can be set to&nbsp;.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">None</code></li>
+		<li><font _mstmutation="1" _msttexthash="4926571" _msthash="1059">
+		<strong _mstmutation="1" style="font-weight: 600;">Mapbox Token</strong>: 
+		The Mapbox API access token used to retrieve route information from the 
+		mapbox&nbsp;</font><a target="_blank" rel="noopener noreferrer" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.mapbox.com/help/glossary/directions-api/"><font _mstmutation="1" _msttexthash="210262" _msthash="1060">Directions 
+		API</font><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><font _mstmutation="1" _msttexthash="4186" _msthash="1061">.</font></li>
+		<li><font _mstmutation="1" _msttexthash="15983981" _msthash="1062">
+		<strong _mstmutation="1" style="font-weight: 600;">Route Type</strong>: 
+		Can be&nbsp;or&nbsp;. When set to&nbsp;it will construct a route from waypoint&nbsp;to 
+		waypoint&nbsp;using the mapbox Directions API. When set to&nbsp;it will construct 
+		a route from a&nbsp;asset instead.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">MapboxCustom 
+		RouteMapboxFromToCustom RouteCustom Route</code></li>
+		<li><font _mstmutation="1" _msttexthash="4409015" _msthash="1063">
+		<strong _mstmutation="1" style="font-weight: 600;">From</strong>: The&nbsp;<a class _mstmutation="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#waypoint">Waypoint</a>&nbsp;which 
+		defines the starting point of the route. Usually will be set to&nbsp;.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">User 
+		Location</code></li>
+		<li _msttexthash="2222415" _msthash="1064">
+		<strong style="font-weight: 600;">To</strong>: The&nbsp;<a class style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/routes/#waypoint">Waypoint</a>&nbsp;which 
+		defined the ending point of the route.</li>
+		<li><font _mstmutation="1" _msttexthash="18138445" _msthash="1065">
+		<strong _mstmutation="1" style="font-weight: 600;">Load Route At Startup</strong>: 
+		If set to&nbsp;, the route will be loaded on the component's start up. If&nbsp;you 
+		will need to load the route manually at a later time by calling on of 
+		the&nbsp;methods of the&nbsp;component.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">truefalseLoadRouteMapboxRoute</code></li>
+		<li _msttexthash="3911752" _msthash="1066">
+		<strong style="font-weight: 600;">Ground Height</strong>: The initial 
+		estimate of the ground's height relative to the device.</li>
+		<li _msttexthash="5525598" _msthash="1067">
+		<strong style="font-weight: 600;">On Mapbox Route Load Error</strong>: A 
+		callback that will be called if an error happens when loading the route.</li>
+	</ul>
+	<h3 id="next-step-route-path-renderer" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#next-step-route-path-renderer">
+	#</a><font _mstmutation="1" _msttexthash="638482" _msthash="1068">Next Step 
+	Route Path Renderer</font></h3>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/17.d402747e.png" alt="Next Step Route Path Renderer" _msthidden="A" _mstalt="638482" _msthash="1069" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="22118928" _msthash="1070">This 
+	component, which is derived from&nbsp;, renders a line from the current current 
+	user position to the next&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Step</strong>&nbsp;as 
+	a line on the ground to the user, disregarding geometry due to points which 
+	are not&nbsp;<strong _mstmutation="1" style="font-weight: 600;">Step</strong>&nbsp;points.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AbstractRouteRenderer</code></p>
+	<p _msttexthash="12835316" _msthash="1071" style="line-height: 1.7;">It does 
+	not draw the exact route geometry, but it is useful since it is always 
+	visible to the user and shows to him how to get to the next step in a 
+	straight line.</p>
+	<p _msttexthash="174057" _msthash="1072" style="line-height: 1.7;">
+	<strong style="font-weight: 600;">Properties</strong>:</p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="1674660" _msthash="1073">
+		<strong style="font-weight: 600;">Line Material</strong>: The material 
+		used to render the line.</li>
+		<li _msttexthash="18840861" _msthash="1074">
+		<strong style="font-weight: 600;">Texture Offset Factor</strong>: The 
+		amount of UV texture offset per distance unity applied to the texture to 
+		give the illusion that the pattern of the line is moving when the user 
+		walks along the line.</li>
+	</ul>
+	<h3 id="path-route-renderer" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#path-route-renderer">
+	#</a><font _mstmutation="1" _msttexthash="344253" _msthash="1075">Path Route 
+	Renderer</font></h3>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/18.6eed5021.png" alt="Path Route Renderer" _msthidden="A" _mstalt="344253" _msthash="1076" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="11052587" _msthash="1077">This 
+	component, which is derived from&nbsp;, renders the route's path to the user as a 
+	line on the ground. It renders the route's path geometry exactly.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AbstractRouteRenderer</code></p>
+	<p _msttexthash="174057" _msthash="1078" style="line-height: 1.7;">
+	<strong style="font-weight: 600;">Properties</strong>:</p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="1674660" _msthash="1079">
+		<strong style="font-weight: 600;">Line Material</strong>: The material 
+		used to render the line.</li>
+	</ul>
+	<h3 id="default-on-screen-indicator" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#default-on-screen-indicator">
+	#</a><font _mstmutation="1" _msttexthash="592436" _msthash="1080">Default On 
+	Screen Indicator</font></h3>
+	<p style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/19.ec19a325.png" alt="Default On Screen Indicator" _msthidden="A" _mstalt="592436" _msthash="1081" style="max-width: 100%;">&nbsp;<font _mstmutation="1" _msttexthash="174057" _msthash="1082"><strong _mstmutation="1" style="font-weight: 600;">Properties</strong>:</font></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="1573169" _msthash="1083">
+		<strong style="font-weight: 600;">Arrow Sprite</strong>: The sprite 
+		representing the arrow.</li>
+		<li><font _mstmutation="1" _msttexthash="6388408" _msthash="1084">
+		<strong _mstmutation="1" style="font-weight: 600;">Neutral Arrow 
+		Direction</strong>: Can be&nbsp;or&nbsp;; this should be the direction that the 
+		arrow is pointing to in the sprite.</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">LeftRight</code></li>
+		<li _msttexthash="4387136" _msthash="1085">
+		<strong style="font-weight: 600;">Margin</strong>: The margin, in 
+		pixels, from the border, used when positioning the arrow sprite.</li>
+	</ul>
+	<h3 id="signpost" style="font-weight: 600; line-height: 1.25; font-size: 1.35rem; margin-top: -3.1rem; padding-top: 4.6rem; margin-bottom: 0px;">
+	<a aria-hidden="true" class="header-anchor" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124); font-size: 0.85em; float: left; margin-left: -0.87em; padding-right: 0.23em; margin-top: 0.125em; opacity: 0;" href="https://docs.unity-ar-gps-location.com/routes/#signpost">
+	#</a><font _mstmutation="1" _msttexthash="6076109" _msthash="1086">路标</font></h3>
+	<p _msthidden="1" style="line-height: 1.7;">
+	<img src="https://docs.unity-ar-gps-location.com/assets/img/20.5fb6436b.png" alt="SignPost" _msthidden="A" _mstalt="114127" _msthash="1087" style="max-width: 100%;"></p>
+	<p style="line-height: 1.7;">
+	<font _mstmutation="1" _msttexthash="234357409" _msthash="1088">
+	这是我们对Monobehaviour的默认实现。它由三个组成部分组成：</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">AbstractRouteSignpost</code></p>
+	<ol style="padding-left: 1.2em; line-height: 1.7;">
+		<li _msttexthash="341973099" _msthash="1089">一个跟随用户的<strong _istranslated="1" style="font-weight: 600;">方向标志</strong>，显示下一个的字符串 
+		台阶的动作以及距离当前台阶的距离。</li>
+		<li _msttexthash="146047798" _msthash="1090">一个3D<strong _istranslated="1" style="font-weight: 600;">箭头网格</strong>，显示用户必须<strong _istranslated="1" style="font-weight: 600;">前往下一步的</strong>方向。</li>
+		<li _msttexthash="131124149" _msthash="1091">当用户到达最终<strong _istranslated="1" style="font-weight: 600;">航点</strong>时，会显示一个3D<strong _istranslated="1" style="font-weight: 600;">终点</strong>标志。</li>
+	</ol>
+	<p _msttexthash="12023583" _msthash="1092" style="line-height: 1.7;">
+	<strong _istranslated="1" style="font-weight: 600;">房产：</strong></p>
+	<ul style="padding-left: 1.2em; line-height: 1.7;">
+		<li>
+		<strong _msttexthash="14502527" _msthash="1093" style="font-weight: 600;">
+		路标设置</strong><ul style="padding-left: 1.2em; line-height: 1.7;">
+			<li><font _mstmutation="1" _msttexthash="92480388" _msthash="1094">
+			<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">
+			容器</strong>：路标网格所在的容器 被控制住了。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">GameObject</code></li>
+			<li><font _mstmutation="1" _msttexthash="80446223" _msthash="1095">
+			<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">
+			方向标签</strong>：A，显示<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">步骤</strong>的 
+			教学。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">TMP_Text</code></li>
+			<li><font _mstmutation="1" _msttexthash="85811531" _msthash="1096">
+			<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">
+			距离标签</strong>：A，显示到距离 下一步<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">。</strong></font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">TMP_Text</code></li>
+			<li _msttexthash="122130385" _msthash="1097">
+			<strong _istranslated="1" style="font-weight: 600;">跟随距离</strong>：指示牌网格将跟随的距离 
+			用户。</li>
+		</ul>
+		</li>
+		<li>
+		<strong _msttexthash="21485646" _msthash="1098" style="font-weight: 600;">
+		方向箭头设置</strong><ul style="padding-left: 1.2em; line-height: 1.7;">
+			<li><font _mstmutation="1" _msttexthash="91330083" _msthash="1099">
+			<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">
+			容器</strong>：箭头网格所在的容器 被控制住了。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">GameObject</code></li>
+			<li _msttexthash="67600910" _msthash="1100">
+			<strong _istranslated="1" style="font-weight: 600;">掉落距离</strong>：箭头激活的距离。</li>
+			<li _msttexthash="116233299" _msthash="1101">
+			<strong _istranslated="1" style="font-weight: 600;">落箭持续时间</strong>：箭头落下动画的持续时间。</li>
+			<li _msttexthash="255075730" _msthash="1102">
+			<strong _istranslated="1" style="font-weight: 600;">隐藏箭头在下一个目标</strong>：如果正确，箭头会被隐藏 
+			下一个目标被激活。</li>
+		</ul>
+		</li>
+		<li>
+		<strong _msttexthash="21253583" _msthash="1103" style="font-weight: 600;">
+		完成标志设置</strong><ul style="padding-left: 1.2em; line-height: 1.7;">
+			<li><font _mstmutation="1" _msttexthash="111461922" _msthash="1104">
+			<strong _mstmutation="1" _istranslated="1" style="font-weight: 600;">
+			容器</strong>：装有终点标志网格的容器 被控制住了。</font><code style="font-family: source-code-pro, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; color: rgb(71, 101, 130); padding: 0.25rem 0.5rem; margin: 0px; font-size: 0.85em; background-color: rgba(27, 31, 35, 0.05); border-radius: 3px;">GameObject</code></li>
+			<li _msttexthash="136514144" _msthash="1105">
+			<strong _istranslated="1" style="font-weight: 600;">偏移</strong>：终点标志网格相对于<strong _istranslated="1" style="font-weight: 600;">阶梯</strong>位置的位置偏移。</li>
+			<li _msttexthash="99646833" _msthash="1106">
+			<strong _istranslated="1" style="font-weight: 600;">掉落持续时间</strong>：掉落动画的持续时间。</li>
+			<li _msttexthash="95982978" _msthash="1107">
+			<strong _istranslated="1" style="font-weight: 600;">落差</strong>高度：动画中网格被投放的高度。</li>
+		</ul>
+		</li>
+		<li>
+		<strong _msttexthash="11230700" _msthash="1108" style="font-weight: 600;">
+		其他设定</strong><ul style="padding-left: 1.2em; line-height: 1.7;">
+			<li _msttexthash="136173388" _msthash="1109">
+			<strong _istranslated="1" style="font-weight: 600;">停用距离</strong>：激活后， 
+			路标会变得非活跃/隐藏。</li>
+		</ul>
+		</li>
+	</ul>
+</div>
+<footer class="page-edit" style="max-width: 740px; margin: 0px auto; padding: 1rem 2.5rem; overflow: auto; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"></footer>
+<div class="page-nav" style="max-width: 740px; margin: 0px auto; padding: 1rem 2.5rem 0px; color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+	<p class="inner" style="line-height: 1.7; min-height: 2rem; margin-top: 0px; border-top: 1px solid rgb(234, 236, 239); padding-top: 1rem; overflow: auto;">
+	<span class="prev" _msttexthash="30136548" _msthash="908">←&nbsp;<a class="prev" _istranslated="1" style="font-weight: 500; text-decoration: none; color: rgb(62, 175, 124);" href="https://docs.unity-ar-gps-location.com/map/">网页地图编辑器</a></span></div>
