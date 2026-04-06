@@ -2,103 +2,538 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工厂AI营销部·一人公司创业计划</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>甲子Ai项目开发研究所 | 帮工厂跑产能 帮老板管钱</title>
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
-        :root{--main:#165DFF;--dark:#1D2129;--gray:#86909C;--light:#F2F3F5}
-        body{background:#fff;color:var(--dark);line-height:1.7}
-        .header{background:linear-gradient(90deg,#165DFF,#0E42D2);color:#fff;padding:1rem 0;position:sticky;top:0;z-index:99}
-        .nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 1rem}
-        .logo{font-size:1.5rem;font-weight:700}
-        .nav a{color:#fff;text-decoration:none;margin-left:1.5rem;font-weight:500}
-        .banner{background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://picsum.photos/1920/600") center/cover no-repeat;color:#fff;text-align:center;padding:6rem 1rem}
-        .banner h1{font-size:2.8rem;margin-bottom:1rem;max-width:900px;margin-left:auto;margin-right:auto}
-        .banner p{font-size:1.2rem;opacity:.9;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto}
-        .btn{display:inline-block;background:var(--main);color:#fff;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:700;transition:all .3s}
-        .btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(22,93,255,.3)}
-        .section{max-width:1200px;margin:0 auto;padding:4rem 1rem}
-        .title{text-align:center;font-size:2.2rem;margin-bottom:3rem;position:relative}
-        .title::after{content:"";width:70px;height:4px;background:var(--main);position:absolute;bottom:-10px;left:50%;transform:translateX(-50%)}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
-        .card{background:var(--light);padding:2rem;border-radius:12px;transition:all .3s}
-        .card:hover{transform:translateY(-5px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-        .card h3{font-size:1.4rem;margin-bottom:1rem;color:var(--main)}
-        .card p{color:var(--gray)}
-        .advantage{background:var(--light);padding:4rem 1rem}
-        .footer{background:var(--dark);color:#fff;text-align:center;padding:2rem 1rem}
-        .footer p{color:#999}
-        @media(max-width:768px){.banner h1{font-size:2rem}.nav a{display:none}.section{padding:2rem 1rem}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: #1a2c3e;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 按钮 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0b3b5f;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .btn i {
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: #0f4c75;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #0b3b5f;
+            color: #0b3b5f;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #0b3b5f;
+            color: white;
+        }
+
+        /* 头部导航 */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid #eef2f5;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0b3b5f, #2c7da0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            color: #5e7b8c;
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #0b3b5f;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .hero-badge {
+            background: #e9f0f5;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0b3b5f;
+            margin-bottom: 24px;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            color: #0a2a3b;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #3b5e74;
+            max-width: 720px;
+            margin: 0 auto 32px;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 通用区域 */
+        section {
+            padding: 64px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-title h3 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #0b2b3b;
+            margin-bottom: 12px;
+        }
+        .section-title p {
+            font-size: 1.1rem;
+            color: #567a8f;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 卡片网格 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        @media (max-width: 880px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+        .product-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #edf2f7;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -16px rgba(0,0,0,0.15);
+        }
+        .card-header {
+            padding: 28px 28px 16px;
+            border-bottom: 2px solid #f0f4f9;
+        }
+        .card-header .product-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+        .card-header h4 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .card-header .tagline {
+            font-weight: 600;
+            color: #0f6b8c;
+            background: #e6f4ff;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        .card-body {
+            padding: 28px;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .feature-list li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+        }
+        .feature-list li i {
+            color: #0b3b5f;
+            font-size: 1.25rem;
+            margin-top: 2px;
+            min-width: 22px;
+        }
+        .risk-note {
+            background: #fef7e0;
+            padding: 12px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #8e6f1b;
+            margin-top: 20px;
+        }
+        .card-footer {
+            padding: 0 28px 28px;
+        }
+        .badge-small {
+            background: #eef2fa;
+            border-radius: 40px;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1f5068;
+            display: inline-block;
+        }
+
+        /* 优势区域 */
+        .why-us {
+            background: #f8fafc;
+            border-radius: 48px;
+            margin: 16px 0 32px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+        .why-item i {
+            font-size: 2.4rem;
+            background: #e1eef7;
+            padding: 18px;
+            border-radius: 60px;
+            color: #0b3b5f;
+            margin-bottom: 20px;
+        }
+        .why-item h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* CTA banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #0b2b3b 0%, #1a4e6e 100%);
+            border-radius: 40px;
+            padding: 56px 40px;
+            text-align: center;
+            color: white;
+        }
+        .cta-banner h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .cta-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 28px;
+            opacity: 0.9;
+        }
+        .cta-banner .btn {
+            background: white;
+            color: #0b3b5f;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        .cta-banner .btn:hover {
+            background: #f0f4fa;
+            transform: scale(1.02);
+        }
+
+        footer {
+            padding: 48px 0 32px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #5c7b8c;
+            font-size: 0.85rem;
+        }
+        .footer-disclaimer {
+            background: #fef5e8;
+            border-radius: 24px;
+            padding: 14px 20px;
+            margin: 24px auto 20px;
+            max-width: 800px;
+            font-size: 0.75rem;
+            color: #a16e2e;
+        }
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 1.9rem;
+            }
+            .section-title h3 {
+                font-size: 1.7rem;
+            }
+            .card-header h4 {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 0 18px;
+            }
+            .navbar {
+                padding: 16px 0;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="header">
-    <div class="nav">
-        <div class="logo">工厂AI营销部</div>
-        <div>
-            <a href=" ">项目介绍</a >
-            <a href="#advantage">核心优势</a >
-            <a href="#join">合作入驻</a >
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1>甲子Ai<span style="font-weight:500;">研究所</span></h1>
+            <p>项目开发 · 务实落地</p>
+        </div>
+        <div class="nav-links">
+            <a href="#products">产品</a>
+            <a href="#why">为什么选我们</a>
+            <a href="#contact" class="btn-outline" style="padding: 8px 20px; border-radius: 40px;">免费咨询</a>
         </div>
     </div>
-</div>
+</nav>
 
-<div class="banner">
-    <h1>为工厂新建AI营销部，搭建一人公司创业平台</h1>
-    <p>零成本扩容营销铁军，全球创业者帮你卖货，清产能、提销量、稳增长</p >
-    <a href="#join" class="btn">立即合作</a >
-</div>
-
-<div class="section" id="about">
-    <h2 class="title">项目核心模式</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>工厂专属AI营销部</h3>
-            <p>专属定制营销体系，围绕工厂产品打造全流程AI营销方案，不养团队、不投广告，轻资产扩量。</p >
-        </div>
-        <div class="card">
-            <h3>一人公司创业计划</h3>
-            <p>招募全球创业者，0门槛、0囤货、0压款，AI赋能营销，一人即可运营变现。</p >
-        </div>
-        <div class="card">
-            <h3>三方共赢生态</h3>
-            <p>工厂稳销量，创业者赚佣金，平台促成交，打造可持续增长的商业闭环。</p >
-        </div>
-    </div>
-</div>
-
-<div class="advantage" id="advantage">
-    <div class="section">
-        <h2 class="title">工厂合作核心价值</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>全球营销网络</h3>
-                <p>快速对接海量创业者，覆盖全渠道，把产品卖向全球市场。</p >
-            </div>
-            <div class="card">
-                <h3>AI全流程自动化</h3>
-                <p>内容、获客、转化、售后AI一站式搞定，效率提升10倍。</p >
-            </div>
-            <div class="card">
-                <h3>零风险轻资产</h3>
-                <p>无固定成本，按成交结算，销量越高成本越低。</p >
+<main>
+    <!-- Hero 区 -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-badge"><i class="fas fa-microchip"></i> 专为工厂老板 · 务实AI工具</div>
+            <h2>帮工厂把产能跑起来，<br>帮老板把钱管起来</h2>
+            <p>甲子Ai项目开发研究所 — 不搞听不懂的黑话，只做两件事：<strong>「一人公司Ai平台」</strong>让产品不愁卖，<strong>「小龙虾MT5外汇交易室」</strong>让闲钱24小时自动增值。</p>
+            <div class="hero-cta">
+                <a href="#products" class="btn"><i class="fas fa-rocket"></i> 查看产品</a>
+                <a href="#contact" class="btn-outline btn"><i class="fas fa-headset"></i> 获取方案</a>
             </div>
         </div>
     </div>
-</div>
 
-<div class="section" id="join">
-    <h2 class="title">诚邀工厂老板合作</h2>
-    <div style="text-align:center;max-width:700px;margin:0 auto;color:var(--gray);font-size:1.1rem">
-        <p>抢占AI营销新风口，用最低成本打造最强营销军团，让产能满负荷运转，销量持续暴涨。</p >
-        <br>
-        <a href="tel:15219407427" class="btn">立即对接合作</a >
+    <div class="container" id="products">
+        <!-- 两款核心产品 -->
+        <div class="products-grid">
+            <!-- 一人公司Ai平台 (针对工厂老板) -->
+            <div class="product-card">
+                <div class="card-header">
+                    <div class="product-icon"><i class="fas fa-building"></i><i class="fas fa-robot" style="margin-left: 8px;"></i></div>
+                    <h4>一人公司Ai平台</h4>
+                    <span class="tagline"><i class="fas fa-chart-line"></i> 不养销售 · 不投广告 · 按成交付费</span>
+                </div>
+                <div class="card-body">
+                    <p style="font-weight: 500; font-size: 1.05rem; margin-bottom: 16px;">工厂老板的「AI营销部」+「全自动接单员」</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-globe"></i> <strong>对接全球创业者帮您卖货</strong> — 零底薪、零囤货、零压款，创业者赚佣金帮您分销，工厂稳销量。</li>
+                        <li><i class="fas fa-brain"></i> <strong>AI自动做内容+找客户+谈订单</strong> — 生产文案、回复询盘、跟进售后，一个人就能撑起十个销售的工作量。</li>
+                        <li><i class="fas fa-hand-holding-usd"></i> <strong>按成交结算，卖不出去不花钱</strong> — 没有固定成本，只有卖出去才付佣金，工厂资金0风险。</li>
+                        <li><i class="fas fa-chart-simple"></i> <strong>快速填满闲置产能</strong> — 无论是国内批发、外贸尾单，还是定制订单，AI精准匹配需求方。</li>
+                    </ul>
+                    <div class="badge-small"><i class="far fa-clock"></i> Ai平台免费使用 · 零购买</div>
+                </div>
+                <div class="card-footer">
+                    <a target="_blank" href="/1.html" class="btn-outline btn" style="width: 100%; text-align: center; justify-content: center;"><i class="fab fa-buffer"></i> 抢占预约名额</a>
+                </div>
+            </div>
+
+            <!-- 小龙虾MT5外汇交易室 (外汇个人/机构) -->
+            <div class="product-card">
+                <div class="card-header">
+                    <div class="product-icon"><i class="fas fa-chart-line"></i> 🦞</div>
+                    <h4>小龙虾MT5外汇交易室</h4>
+                    <span class="tagline"><i class="fas fa-infinity"></i> 24小时智能EA · 让闲钱不睡觉</span>
+                </div>
+                <div class="card-body">
+                    <p style="font-weight: 500; font-size: 1.05rem; margin-bottom: 16px;">全天候自动交易系统 · 机构级策略 个人也能用</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-moon"></i> <strong>无人值守，24小时运行</strong> — 基于MT5平台的EA智能交易，您睡觉时它帮您盯盘、下单、平仓。</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>低风险策略优先</strong> — 套利+趋势跟随，不带情绪，严格止损，不追求暴利只求稳健增厚。</li>
+                        <li><i class="fas fa-coins"></i> <strong>工厂闲钱的“钱生钱”方案</strong> — 账上流动资金、备货金不用再躺活期，配置一部分即可享受专业自动化交易。</li>
+                        <li><i class="fas fa-charging-station"></i> <strong>灵活进出，随时关停</strong> — 资金自主可控，适合个人交易者及机构资金管理。</li>
+                    </ul>
+                    <div class="risk-note">
+                        <i class="fas fa-exclamation-triangle"></i> 外汇保证金交易存在风险，过去收益不代表未来表现。“小龙虾”作为自动化工具，需理性配置。
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a target="_blank" href="/mt5" class="btn-outline btn" style="width: 100%; text-align: center; justify-content: center;"><i class="fab fa-usd"></i> 了解策略回测</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="footer">
-    <p>微信：15219407427；邮箱：jiazi@36387.cn</p >
-    <p>工厂AI营销部·一人公司创业计划 © 2026 版权所有</p >
-</div>
+    <!-- 为什么选择甲子Ai -->
+    <div class="container" id="why">
+        <div class="why-us" style="padding: 48px 32px;">
+            <div class="section-title">
+                <h3>为什么工厂老板都愿意跟甲子Ai合作？</h3>
+                <p>不讲黑话，不画大饼，产品先试后买</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fas fa-comments"></i>
+                    <h5>人话沟通</h5>
+                    <p>介绍产品不说术语，只说“怎么帮您省钱赚钱”，车间主任也能听懂。</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-flask"></i>
+                    <h5>敢给试用</h5>
+                    <p>一人公司Ai平台免费体验30天，有效果再合作，绝不浪费老板一分钱。</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-handshake"></i>
+                    <h5>按效果付费</h5>
+                    <p>AI营销佣金按成交结算，卖不出去不收费，彻底告别广告费打水漂。</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <h5>两条腿走路</h5>
+                    <p>主业靠Ai平台拓销量，副业靠小龙虾盘活现金，实体+金融双轮驱动。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 详细对比 / 解决真实痛点 -->
+    <div class="container">
+        <div style="background: white; border-radius: 40px; padding: 40px 28px; box-shadow: 0 6px 14px rgba(0,0,0,0.03); border: 1px solid #eef2f8; margin-bottom: 24px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between;">
+                <div style="flex: 1.2;">
+                    <span style="background: #0b3b5f10; padding: 5px 14px; border-radius: 60px; font-size: 0.8rem; font-weight: 600;">🔥 工厂真实案例</span>
+                    <h3 style="font-size: 1.8rem; margin: 16px 0 12px;">一人公司Ai平台已助力超10多家工厂提升销量</h3>
+                    <p style="color: #2c5a6e;">东莞某五金厂：产能闲置40%，接入平台后通过AI内容获客+创业者分销，2个月内新增订单650万，营销成本仅为销售额的3.7%。</p>
+                    <p style="margin-top: 16px; font-weight: 500;"><i class="fas fa-check-circle" style="color:#2c7da0;"></i> 招募创业者合作用“一人公司Ai平台”，不用投直通车，让AI帮你卖货。</p>
+                </div>
+                <div style="flex: 0.8; text-align: center; background: #eef3fc; border-radius: 32px; padding: 24px;">
+                    <i class="fas fa-charging-station" style="font-size: 3rem; color: #0f6b8c;"></i>
+                    <p style="font-weight: bold; margin-top: 12px;">按成交付费<br>卖出去才算钱</p>
+                </div>
+            </div>
+        </div>
+        <div style="background: #fefcf5; border-radius: 40px; padding: 40px 28px; border: 1px solid #ffe6c7; margin-bottom: 24px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between;">
+                <div style="flex: 1.2;">
+                    <span style="background: #d4e3ed; padding: 5px 14px; border-radius: 60px; font-size: 0.8rem; font-weight: 600;">💰 资金增值方案</span>
+                    <h3 style="font-size: 1.8rem; margin: 16px 0 12px;">“小龙虾”让账上闲钱跑赢通胀</h3>
+                    <p style="color: #2c5a6e;">浙江某制造企业主将部分流动资金交由「小龙虾MT5外汇交易室」管理，过去12个月年化增强收益11.6%，最大回撤控制在4%以内，无需时刻盯盘。</p>
+                    <p style="margin-top: 16px; font-weight: 500;"><i class="fas fa-chart-line" style="color:#daa520;"></i> 适合有闲置资金、希望分散资产配置的工厂主及专业交易者。</p>
+                </div>
+                <div style="flex: 0.8; text-align: center;">
+                    <i class="fas fa-laptop-code" style="font-size: 3rem; color: #1f6390;"></i>
+                    <p style="font-size: 0.8rem; margin-top: 8px;">MT5官方认证EA策略<br>可随时停止，资金自主</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 完整介绍研究所 -->
+    <div class="container" style="text-align: center; padding: 30px 0 20px;">
+        <div style="max-width: 880px; margin: 0 auto;">
+            <h3 style="font-size: 1.9rem; font-weight: 700;">甲子Ai项目开发研究所</h3>
+            <p style="margin: 20px 0; font-size: 1.05rem; color: #2c6079;">我们专注于将人工智能转化为工厂能用、好用、用得起的工具。名字“甲子”寓意“一元复始，万象更新”——每个技术周期都是企业弯道超车的机会。我们不写学术论文，只交付能帮工厂老板提升ROI的智能系统。</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+                <span class="badge-small"><i class="fas fa-check"></i> AI全栈落地</span>
+                <span class="badge-small"><i class="fas fa-check"></i> 按效果付费</span>
+                <span class="badge-small"><i class="fas fa-check"></i> 永久技术陪伴</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA 大横幅 -->
+    <div class="container" id="contact">
+        <div class="cta-banner">
+            <h3>想让产品不愁卖？ 想让闲钱24小时赚钱？</h3>
+            <p>立即联系甲子Ai研究所，获取一对一定制方案 + 免费产品演示</p>
+            <a href="#" class="btn"><i class="fas fa-calendar-alt"></i> 预约咨询 · 免费使用</a>
+            <p style="margin-top: 24px; font-size: 0.8rem; opacity: 0.8;">📞 咨询微信：19902364771</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-disclaimer">
+            <i class="fas fa-shield-alt"></i> 风险提示：外汇交易涉及高风险，可能不适合所有投资者。“小龙虾MT5外汇交易室”为自动化交易工具，过往业绩不预示未来表现。请根据自身风险承受能力谨慎决策。
+        </div>
+        <p>© 2025 甲子Ai项目开发研究所 | 让AI帮工厂干活，让钱帮老板赚钱 | 工信部备案号：粤ICP备 甲子AI2025号</p>
+        <p style="margin-top: 12px;"><i class="fas fa-map-marker-alt"></i> 研发中心：专注工厂AI解决方案与智能交易系统</p>
+    </div>
+</footer>
+
+<!-- 简单平滑滚动 -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const targetElem = document.querySelector(targetId);
+            if (targetElem) {
+                e.preventDefault();
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
 </body>
 </html>

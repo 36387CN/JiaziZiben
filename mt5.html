@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>小龙虾MT5外汇交易室 | 智能加密交易助手</title>
+    <!-- Google Font & 基础样式重置 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0B0E17;
+            color: #EFF1F5;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* 渐变 & 辅助元素 */
+        .gradient-bg {
+            background: radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.08), rgba(10, 20, 40, 0.95));
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* 头部导航 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #3BC9DB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            font-weight: 500;
+            background: none;
+            -webkit-background-clip: unset;
+            color: #3BC9DB;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #B0B8D0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #3BC9DB;
+        }
+
+        .btn-outline-light {
+            border: 1px solid #3BC9DB;
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: #3BC9DB;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(59, 201, 219, 0.12);
+            border-color: #6ed4e3;
+            color: #6ed4e3;
+        }
+
+        /* 按钮共用 */
+        .btn-primary {
+            background: linear-gradient(95deg, #0F5B6B, #3BC9DB);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0B0E17;
+            cursor: pointer;
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(59, 201, 219, 0.2);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(95deg, #147a8f, #50d3e8);
+            box-shadow: 0 15px 30px rgba(59, 201, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(59, 201, 219, 0.5);
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #EFF1F5;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 201, 219, 0.15);
+            border-color: #3BC9DB;
+        }
+
+        /* hero区 */
+        .hero {
+            padding: 80px 0 60px 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59, 201, 219, 0.12);
+            backdrop-filter: blur(4px);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #3BC9DB;
+            margin-bottom: 28px;
+            border: 1px solid rgba(59, 201, 219, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFFFFF, #A0E9F0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #B8C2DC;
+            line-height: 1.5;
+        }
+
+        .hero-actions {
+            margin-top: 42px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 特性网格 */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #8F9BB3;
+            max-width: 640px;
+            margin: 0 auto 56px auto;
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: rgba(18, 22, 36, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 32px 24px;
+            border: 1px solid rgba(59, 201, 219, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #3BC9DB;
+            transform: translateY(-6px);
+            background: rgba(25, 32, 52, 0.8);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.6rem;
+            color: #3BC9DB;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #B0B8D0;
+            line-height: 1.5;
+        }
+
+        /* 双栏功能区 */
+        .split-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: linear-gradient(120deg, #0D111C, #0A0E18);
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(59, 201, 219, 0.2);
+            align-items: center;
+        }
+
+        .split-text {
+            flex: 1.2;
+        }
+
+        .split-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .split-text ul {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .split-text li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: #C8D0E8;
+        }
+
+        .split-text li i {
+            color: #3BC9DB;
+            font-size: 1.3rem;
+            width: 28px;
+        }
+
+        .split-visual {
+            flex: 0.9;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 32px;
+            padding: 28px;
+            text-align: center;
+            border: 1px dashed #3BC9DB;
+        }
+
+        .code-block {
+            font-family: 'Monaco', monospace;
+            background: #01050f;
+            padding: 20px;
+            border-radius: 24px;
+            text-align: left;
+            font-size: 0.8rem;
+            color: #A6E3E9;
+        }
+
+        /* 适用人群 */
+        .audience-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin: 50px 0 40px;
+        }
+        .audience-card {
+            background: #0F1420;
+            border-radius: 32px;
+            padding: 28px 32px;
+            text-align: center;
+            width: 220px;
+            border: 1px solid #222942;
+            transition: 0.2s;
+        }
+        .audience-card i {
+            font-size: 2.5rem;
+            color: #3BC9DB;
+            margin-bottom: 16px;
+        }
+        .audience-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .audience-card p {
+            font-size: 0.85rem;
+            color: #99A3C2;
+            margin-top: 10px;
+        }
+
+        /* CTA区域 */
+        .cta-section {
+            background: radial-gradient(ellipse at 70% 30%, #10212b, #070b12);
+            border-radius: 48px;
+            padding: 70px 40px;
+            text-align: center;
+            margin: 70px 0 50px;
+            border: 1px solid #2a4b55;
+        }
+
+        .cta-section h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 36px;
+            flex-wrap: wrap;
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 0 32px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6E7A96;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            .split-section {
+                padding: 32px 24px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gradient-bg">
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="navbar">
+            <div class="logo">小龙虾·MT5<span>外汇交易室</span></div>
+            <div class="nav-links">
+                <a href="#features">核心功能</a>
+                <a href="#howitworks">智能工作流</a>
+                <a href="#audience">适用人群</a>
+                <a href="#" class="btn-outline-light">文档中心</a>
+            </div>
+        </div>
+
+        <!-- Hero 主视觉 -->
+        <div class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-chart-line" style="margin-right: 6px;"></i> 专为 MT5 + 加密资产打造
+            </div>
+            <h1>让加密交易更智能 · 更高效</h1>
+            <p>小龙虾MT5外汇交易室 —— 无需编程，一键部署专业策略。实时风控、全自动跟单，将量化优势注入每一次交易决策。</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary"><i class="fab fa-telegram"></i> 即刻体验</a>
+                <a href="#features" class="btn-secondary"><i class="fas fa-robot"></i> 探索功能</a>
+            </div>
+        </div>
+
+        <!-- 核心特点网格 -->
+        <div id="features">
+            <h2 class="section-title">重塑交易效率 · 智能核心引擎</h2>
+            <div class="section-sub">专为加密货币与MT5平台优化，低延迟执行，风控与策略双轮驱动</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>一键部署策略</h3>
+                    <p>内置均线交叉、RSI超买超卖等多种经典策略，支持自定义参数。无需编写任何代码，可视化配置完成策略上架。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                    <h3>多资产覆盖</h3>
+                    <p>深度适配 BTC/ETH 等主流加密资产，同时兼容外汇、大宗商品及指数，全品种交易无界限。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>实时风控模块</h3>
+                    <p>动态计算仓位规模，自动设置止损止盈，监控保证金水平，极端行情下保护账户安全。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3>信号推送 + 自动跟单</h3>
+                    <p>支持 Telegram / 邮件实时信号提醒，可选半自动或全自动跟单，7x24小时捕捉市场机会。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>回测与参数优化</h3>
+                    <p>完整历史数据回测引擎，多维度参数寻优，用数据验证策略有效性，告别主观盲区。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>MT5原生集成</h3>
+                    <p>完全兼容 MetaTrader 5 环境，毫秒级执行，无迁移成本，一键安装即插即用。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 双栏区: 智能工作流 -->
+        <div id="howitworks" class="split-section">
+            <div class="split-text">
+                <h2><i class="fas fa-diagram-project" style="color: #3BC9DB; margin-right: 12px;"></i> 从策略到执行，无缝自动化</h2>
+                <p style="margin-bottom: 16px;">小龙虾MT5外汇交易室 将复杂的量化逻辑封装为直观模块，让普通交易者也能享受算法优势。</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 策略市场 & 自定义逻辑编辑器</li>
+                    <li><i class="fas fa-clock"></i> 多周期信号叠加过滤，降低噪音</li>
+                    <li><i class="fas fa-charging-station"></i> 动态仓位管理，复利式风险控制</li>
+                    <li><i class="fas fa-database"></i> 云端参数保存，多账户一键同步</li>
+                </ul>
+                <a href="#" class="btn-primary" style="margin-top: 28px; display: inline-flex;">查看完整文档 <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="split-visual">
+                <div class="code-block">
+                    <i class="fas fa-terminal" style="margin-bottom: 12px; display: inline-block;"></i> 策略示例 · 均线金叉<br>
+                    -----------------------<br>
+                    if (fastMA > slowMA) {<br>
+                    &nbsp;&nbsp; orderSend(BUY, riskPercent=2%);<br>
+                    &nbsp;&nbsp; setSL(1.5%); setTP(3.0%);<br>
+                    } else if (fastMA < slowMA) {<br>
+                    &nbsp;&nbsp; orderSend(SELL);<br>
+                    }<br>
+                    <span style="color:#3BC9DB">// 风险优先，动态调整</span>
+                </div>
+                <p style="margin-top: 18px; font-size: 0.8rem;">⬤ 支持 Python 式伪代码 & 原生MQL5桥接</p>
+            </div>
+        </div>
+
+        <!-- 适用人群 -->
+        <div id="audience">
+            <h2 class="section-title" style="margin-bottom: 20px;">为谁而生</h2>
+            <div class="section-sub">无论您是量化新手还是资深交易员，小龙虾MT5外汇交易室 都能为您节省时间、放大收益潜力。</div>
+            <div class="audience-wrap">
+                <div class="audience-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>加密交易者</h4>
+                    <p>自动盯盘，策略化捕捉波动，告别情绪化交易</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h4>中高频交易员</h4>
+                    <p>毫秒级执行，多策略并行，风控条件触发无延迟</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>MT5 平台用户</h4>
+                    <p>无需迁移，原生集成，将MT5升级为全自动交易站</p>
+                </div>
+                <div class="audience-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>非编程投资者</h4>
+                    <p>可视化配置+策略模板，人人都可建立量化体系</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能亮点额外补充 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; margin: 60px 0 20px;">
+            <div style="flex:1; min-width: 200px; background: #0C1020; border-radius: 28px; padding: 28px; text-align: center;">
+                <i class="fas fa-tachometer-alt" style="font-size: 2rem; color: #3BC9DB;"></i>
+                <h3 style="margin: 16px 0 8px;">极速执行</h3>
+                <p style="color: #A6B1D0;">＜30ms 订单响应，适应高频场景</p>
+            </div>
+            <div style="flex:1; min-width: 200px; background: #0C1020; border-radius: 28px; padding: 28px; text-align: center;">
+                <i class="fas fa-chart-line" style="font-size: 2rem; color: #3BC9DB;"></i>
+                <h3 style="margin: 16px 0 8px;">实盘回测一致性</h3>
+                <p style="color: #A6B1D0;">Tick级模拟，避免未来函数</p>
+            </div>
+            <div style="flex:1; min-width: 200px; background: #0C1020; border-radius: 28px; padding: 28px; text-align: center;">
+                <i class="fas fa-phone-alt" style="font-size: 2rem; color: #3BC9DB;"></i>
+                <h3 style="margin: 16px 0 8px;">全时信号推送</h3>
+                <p style="color: #A6B1D0;">Telegram/Bot/邮件双向交互</p>
+            </div>
+        </div>
+
+        <!-- CTA 区域 -->
+        <div class="cta-section">
+            <h2>开启智能交易新时代</h2>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #C8D2F0;">释放时间，专注策略迭代，让小龙虾MT5外汇交易室 成为您的24小时交易伙伴。</p>
+            <div class="cta-buttons">
+                <a href="#" target="_blank" class="btn-primary" style="background: linear-gradient(95deg, #1C6A7A, #3BC9DB);"><i class="fas fa-external-link-alt"></i> 访问官网了解更多</a>
+                <a href="#" class="btn-secondary"><i class="fab fa-youtube"></i> 观看演示视频</a>
+            </div>
+            <p style="margin-top: 40px; font-size: 0.8rem;"><i class="fas fa-check-circle" style="color:#3BC9DB;"></i> 兼容 MetaTrader 5  build 4100+   |  支持 Windows & macOS 环境</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px;">
+                <a href="#" style="color: #7C88B0; text-decoration: none;">隐私条款</a>
+                <a href="#" style="color: #7C88B0; text-decoration: none;">服务协议</a>
+                <a href="#" style="color: #7C88B0; text-decoration: none;">技术文档</a>
+                <a href="#" style="color: #7C88B0; text-decoration: none;">帮助中心</a>
+            </div>
+            <div>© 2025 小龙虾MT5外汇交易室 — 革新加密量化体验 · 由 36387.cn 提供技术支持</div>
+            <div style="margin-top: 14px; font-size: 0.7rem;">*加密货币交易存在市场风险，请理性使用自动化工具。</div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
+```
