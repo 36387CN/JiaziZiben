@@ -1,591 +1,481 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025年度江边一经济合作社收支明细</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>江边一经济合作社 | 2025年度收支明细报表</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', 'Arial', sans-serif;
         }
-        
+
         body {
-            background-color: #f8f9fa;
-            padding: 20px;
-            line-height: 1.6;
+            background: #f0f2f5;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            padding: 30px 24px 60px;
+            color: #1e293b;
         }
-        
-        .container {
-            max-width: 1200px;
+
+        .dashboard-container {
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
         }
-        
-        .header {
-            background-color: #343a40;
+
+        /* 头部卡片 */
+        .header-card {
+            background: linear-gradient(135deg, #1e3c2c 0%, #2a5a3a 100%);
+            border-radius: 32px;
+            padding: 24px 32px;
+            margin-bottom: 28px;
             color: white;
-            padding: 20px;
-            text-align: center;
+            box-shadow: 0 12px 25px -10px rgba(0, 0, 0, 0.2);
         }
-        
-        .header h1 {
+
+        .header-card h1 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
-        
-        .header p {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .header-card h1 small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
         }
-        
-        .table-container {
+
+        .subhead {
+            margin-top: 12px;
+            opacity: 0.85;
+            font-size: 0.95rem;
+            border-left: 3px solid #ffd966;
+            padding-left: 14px;
+        }
+
+        /* 表格公用 */
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            padding-left: 12px;
+            border-left: 5px solid #2a5a3a;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 14px;
+        }
+        .export-btn {
+            background: white;
+            border: 1px solid #cad2db;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .export-btn:hover {
+            background: #f8fafc;
+            border-color: #9aaebf;
+        }
+        .table-wrapper {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #edf2f7;
             overflow-x: auto;
-            padding: 20px;
+            margin-bottom: 30px;
         }
-        
-        table {
+        .data-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
+            font-size: 0.85rem;
+            min-width: 780px;
         }
-        
-        /* 核心修改1：将th和td的text-align改为center（原先是left） */
-        th, td {
-            padding: 12px 15px;
-            text-align: center; /* 全局居中核心样式 */
-            border-bottom: 1px solid #dee2e6;
+        .data-table th {
+            background: #f8fafd;
+            padding: 18px 16px;
+            font-weight: 600;
+            color: #1e2f44;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: right;
         }
-        
-        th {
-            background-color: #495057;
-            color: white;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
+        .data-table th:first-child { text-align: center; width: 55px; }
+        .data-table th:nth-child(2) { text-align: left; }
+        .data-table th:nth-child(3) { text-align: left; }
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f0f2f6;
+            text-align: right;
+            vertical-align: middle;
         }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
+        .data-table td:first-child { text-align: center; font-weight: 500; color: #5b6e8c;}
+        .data-table td:nth-child(2) { text-align: left; font-weight: 500; color: #1f2a3e;}
+        .data-table td:nth-child(3) { text-align: left; color: #2c3e50; word-break: break-word; max-width: 280px;}
+        .data-table td:nth-child(4), .data-table td:nth-child(5), .data-table td:nth-child(6) { font-family: monospace; font-weight: 500; }
+        .income-cell { color: #15803d; font-weight: 600; }
+        .expense-cell { color: #b91c1c; font-weight: 500; }
+        .balance-cell { font-weight: 600; color: #0c4a6e; }
+        .highlight-balance {
+            background-color: #ffe5e5 !important;
+            color: #a51b1b !important;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 1px #ffb3b3;
         }
-        
-        tr:hover {
-            background-color: #e9ecef;
-            transition: background-color 0.3s ease;
+        .badge-info {
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: normal;
+            color: #1e3a8a;
         }
-        
-        .amount {
-            /* 移除原有的右对齐，继承全局居中 */
-            font-family: 'Courier New', monospace;
-        }
-        
-        .summary {
-            max-width: 300px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            /* 补充：确保摘要文本也居中 */
+        /* 底部版权 */
+        .footer-copyright {
             text-align: center;
+            margin-top: 40px;
+            padding: 20px 24px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #5b6e8c;
+            background: transparent;
         }
-        
-        .summary:hover {
-            white-space: normal;
-            overflow: visible;
-            background-color: #fff8e1;
-            z-index: 10;
-            position: relative;
+        .footer-copyright a {
+            color: #2a5a3a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        
-        .total-row {
-            background-color: #e6f7ff !important;
-            font-weight: bold;
-            border-top: 2px solid #2196f3;
+        .footer-copyright a:hover {
+            color: #1e3c2c;
+            text-decoration: underline;
         }
-        
-        .empty-date {
-            color: #6c757d;
-            font-style: italic;
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.5rem;
-            }
-            
-            th, td {
-                padding: 10px 8px;
-                font-size: 0.9rem;
-                /* 响应式下保持居中 */
-                text-align: center;
-            }
-            
-            .summary {
-                max-width: 150px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.2rem;
-            }
-            
-            th, td {
-                padding: 8px 5px;
-                font-size: 0.85rem;
-                /* 小屏下保持居中 */
-                text-align: center;
-            }
-            
-            .amount {
-                font-size: 0.8rem;
-            }
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #f1f1f1;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #ddd;
-        }
-        
-        .stats {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-        }
-        
-        .stat-card {
-            background-color: white;
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            min-width: 150px;
-            text-align: center;
-        }
-        
-        .stat-card h3 {
-            color: #343a40;
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-        
-        .stat-card .value {
-            color: #28a745;
-            font-size: 1.5rem;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .stat-card .expense {
-            color: #dc3545;
-        }
-        
-        .stat-card .balance {
-            color: #007bff;
+        @media (max-width: 680px) {
+            body { padding: 16px; }
+            .data-table th, .data-table td { padding: 10px 8px; }
+            .footer-copyright { margin-top: 30px; padding: 16px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>2025年度江边一经济合作社收支明细</h1>
-        </div>
-        
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>日期</th>
-                        <th>摘要</th>
-                        <th>收入 (¥)</th>
-                        <th>支出 (¥)</th>
-                        <th>余额 (¥)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="">
-                        <td>2025年02月18日</td>
-                        <td class="summary">2024年银行结余</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">90,161.17</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年02月24日</td>
-                        <td class="summary">现金存入含李亦新、林进城、林志峰租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">17,110.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年03月06日</td>
-                        <td class="summary">现金存入租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">732.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年03月10日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">7.66</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年03月20日</td>
-                        <td class="summary">结存款息</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">32.79</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年04月10日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">63.96</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年04月21日</td>
-                        <td class="summary">肇庆市恒电电力工程有限公司</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">7,515.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年05月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">36.74</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年06月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">42.30</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年06月20日</td>
-                        <td class="summary">结存款息</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">25.18</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年07月10日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">15.42</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年08月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">31.10</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年09月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">45.49</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年09月20日</td>
-                        <td class="summary">结存款息</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">14.74</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年10月10日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">20.85</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年11月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">9.98</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年12月20日</td>
-                        <td class="summary">结存款息</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">14.58</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2025年12月25日</td>
-                        <td class="summary">农委红珠坳44.5亩租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">6,710.20</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年01月05日</td>
-                        <td class="summary">海风公司租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">23,496.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年01月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">6.53</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年01月10日</td>
-                        <td class="summary">吕仲平租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">23,472.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年02月09日</td>
-                        <td class="summary">电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">8.45</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年02月11日</td>
-                        <td class="summary">现金存入林志峰2025剩余租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">9,230.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年03月10日</td>
-                        <td class="summary">购买5张支票</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">3.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td>2026年03月24日</td>
-                        <td class="summary">段海兵租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">27,379.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">三队土地租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">38.50</font</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林进国2024年度分红少支付金额</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">200.00</font</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">2025年度财务队长服务费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">1,600.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李锡基上交的电费</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">288.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">农委学塔租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">300.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李亦新租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">300.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李炽光租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">2,280.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林水洲租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">1,740.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">吴明福租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">4,000.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">刘耀荣租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">10,800.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">雷亦文租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">2,650.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林进城租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">944.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林观水租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">736.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林新华租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">2,080.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林福全租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">243.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林志军租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">1,502.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李锡基租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">509.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李深友租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">409.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李三租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">8.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李国华租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">8.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">李国辉租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">24.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">林森玉租金</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">18.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">分红金1</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">26,997.50</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">分红金2</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">100,000.00</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">分红剩余款</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">12,997.50</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                    </tr>
-                    <tr class="">
-                        <td><span class="empty-date">无日期</span></td>
-                        <td class="summary">2025年度结余</td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">-</font></td>
-                        <td class="amount"><font color="#000000" style="font-size: 13pt">118,601.68</font></td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>数据来源：江边一经济合作社 | 网页制作：李振芳</p>
-            <p class="text-ar_light/50 text-sm mb-4 md:mb-0"><a href="/">© 2025 甲子·Ai项目开发研究所 版权所有</a></p>
-        </div>
+<div class="dashboard-container">
+    <div class="header-card">
+        <h1>
+            🌾 江边一经济合作社 · 2025年度财务收支明细
+            <small>2025年2月 — 2026年4月</small>
+        </h1>
+        <div class="subhead">📋 主表为有日期流水（逐笔计算余额）；无日期备查收支单独列示，不参与主表余额。</div>
     </div>
+
+    <!-- 主表工具条 + 表格 -->
+    <div class="section-title">
+        <span>📆 有日期收支明细 · 逐笔余额</span>
+        <button class="export-btn" id="exportFullBtn">📎 导出完整报表 (主表+备查)</button>
+    </div>
+    <div class="table-wrapper">
+        <table class="data-table" id="mainTable">
+            <thead>
+                <tr><th>#</th><th>日期</th><th>摘要</th><th>收入 (¥)</th><th>支出 (¥)</th><th>余额 (¥)</th></tr>
+            </thead>
+            <tbody id="mainTableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- 无日期备查表区域（仅收支，无余额，无合计） -->
+    <div class="section-title">
+        <span>📋 备查事项 · 无日期收支明细 <span class="badge-info">不参与主表余额</span></span>
+    </div>
+    <div class="table-wrapper">
+        <table class="data-table" id="extraTable">
+            <thead>
+                <tr><th>#</th><th>日期</th><th>摘要 / 说明</th><th>收入 (¥)</th><th>支出 (¥)</th><th>余额</th></tr>
+            </thead>
+            <tbody id="extraTableBody">
+                <tr><td colspan="6" style="text-align:center;">加载中...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 底部版权信息（居中加入链接） -->
+<div class="footer-copyright">
+    数据来源：江边一经济合作社 | 网页制作：李振芳<br>
+    © 2025 <a href="https://36387.cn" target="_blank" rel="noopener noreferrer">甲子·Ai项目开发研究所</a> 版权所有
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // 1. 有日期流水（主表）
+    // --------------------------------------------------------------
+    const OPENING_BALANCE = 90161.17;   // 2024年银行结余
+
+    const datedTransactions = [
+        { date: "2025-02-24", desc: "村小组租金收入", amount: 17110 },
+        { date: "2025-03-06", desc: "现金存入租金", amount: 732 },
+        { date: "2025-03-10", desc: "电费", amount: -7.66 },
+        { date: "2025-03-20", desc: "结存款息", amount: 32.79 },
+        { date: "2025-04-10", desc: "电费", amount: -63.96 },
+        { date: "2025-04-21", desc: "肇庆市恒电电力工程有限公司", amount: 7515 },
+        { date: "2025-05-09", desc: "电费", amount: -36.74 },
+        { date: "2025-06-09", desc: "电费", amount: -42.30 },
+        { date: "2025-06-20", desc: "结存款息", amount: 25.18 },
+        { date: "2025-07-10", desc: "电费", amount: -15.42 },
+        { date: "2025-08-09", desc: "电费", amount: -31.10 },
+        { date: "2025-09-09", desc: "电费", amount: -45.49 },
+        { date: "2025-09-20", desc: "结存款息", amount: 14.74 },
+        { date: "2025-10-10", desc: "电费", amount: -20.85 },
+        { date: "2025-11-09", desc: "电费", amount: -9.98 },
+        { date: "2025-12-20", desc: "结存款息", amount: 14.58 },
+        { date: "2025-12-25", desc: "农委红珠坳44.5亩租金", amount: 6710.20 },
+        { date: "2026-01-05", desc: "海风公司租金", amount: 23496 },
+        { date: "2026-01-09", desc: "电费", amount: -6.53 },
+        { date: "2026-01-10", desc: "吕仲平租金", amount: 23472 },
+        { date: "2026-02-09", desc: "电费", amount: -8.45 },
+        { date: "2026-02-11", desc: "现金存入林志峰2025剩余租金", amount: 9230 },
+        { date: "2026-03-10", desc: "电费", amount: -19.29 },
+        { date: "2026-03-10", desc: "结算业务手续费", amount: -3 },
+        { date: "2026-03-10", desc: "备用金", amount: -100000 },
+        { date: "2026-03-20", desc: "结存款息", amount: 18.91 },
+        { date: "2026-03-24", desc: "段海兵租金", amount: 27379 },
+        { date: "2026-04-07", desc: "备用金", amount: 12297.5 },
+        { date: "2026-04-08", desc: "备用金", amount: 700 }
+    ];
+
+    // 无日期原始数据（不含新增的“笔”）
+    const originalUndated = [
+        { desc: "笔", amount: -3 },
+        { desc: "三队土地租金", amount: -38.5 },
+        { desc: "林进国2024年度分红少支付金额", amount: -200 },
+        { desc: "2025财务队长服务费", amount: -1600 },
+        { desc: "李锡基上交的电费", amount: 288 },
+        { desc: "农委学塔租金", amount: 300 },
+        { desc: "李亦新", amount: 300 },
+        { desc: "李炽光租金", amount: 2280 },
+        { desc: "林水洲租金", amount: 1740 },
+        { desc: "吴明福租金", amount: 4000 },
+        { desc: "刘耀荣租金", amount: 10800 },
+        { desc: "雷亦文租金", amount: 2650 },
+        { desc: "林进城租金", amount: 944 },
+        { desc: "林观水租金", amount: 736 },
+        { desc: "林新华租金", amount: 2080 },
+        { desc: "林福全租金", amount: 243 },
+        { desc: "林志军租金", amount: 1502 },
+        { desc: "李锡基租金", amount: 509 },
+        { desc: "李深友租金", amount: 409 },
+        { desc: "李三租金", amount: 8 },
+        { desc: "李国华租金", amount: 8 },
+        { desc: "李国辉租金", amount: 24 },
+        { desc: "林森玉租金", amount: 18 },
+        { desc: "分红", amount: -114000 }
+    ];
+
+        let undatedItems = [
+        ...originalUndated
+    ];
+
+    // 2. 构建主表数据（逐笔余额）
+    let mainRows = [];
+    let currentBalance = OPENING_BALANCE;
+
+    // 期初行
+    mainRows.push({
+        dateStr: "2025-02-18",
+        desc: "🏁 期初余额 (2024年银行结余)",
+        income: 0,
+        expense: 0,
+        balance: OPENING_BALANCE,
+        isOpening: true
+    });
+
+    for (let t of datedTransactions) {
+        const amount = t.amount;
+        let inc = 0, exp = 0;
+        if (amount > 0) inc = amount;
+        else if (amount < 0) exp = -amount;
+        currentBalance += amount;
+        currentBalance = Math.round(currentBalance * 100) / 100;
+        mainRows.push({
+            dateStr: t.date,
+            desc: t.desc,
+            income: inc,
+            expense: exp,
+            balance: currentBalance,
+            isOpening: false
+        });
+    }
+    const mainFinalBalance = currentBalance; // 118598.30
+
+    // 渲染主表，高亮最终余额
+    function renderMainTable() {
+        const tbody = document.getElementById('mainTableBody');
+        tbody.innerHTML = '';
+        mainRows.forEach((row, idx) => {
+            const tr = document.createElement('tr');
+            // 序号
+            const tdSerial = document.createElement('td');
+            tdSerial.innerText = idx === 0 ? '期初' : idx;
+            tr.appendChild(tdSerial);
+            // 日期
+            const tdDate = document.createElement('td');
+            tdDate.innerText = row.dateStr;
+            tr.appendChild(tdDate);
+            // 摘要
+            const tdDesc = document.createElement('td');
+            tdDesc.innerText = row.desc;
+            tr.appendChild(tdDesc);
+            // 收入
+            const tdInc = document.createElement('td');
+            if (row.income > 0) {
+                tdInc.innerText = `¥ ${row.income.toFixed(2)}`;
+                tdInc.classList.add('income-cell');
+            } else tdInc.innerText = '—';
+            tr.appendChild(tdInc);
+            // 支出
+            const tdExp = document.createElement('td');
+            if (row.expense > 0) {
+                tdExp.innerText = `¥ ${row.expense.toFixed(2)}`;
+                tdExp.classList.add('expense-cell');
+            } else tdExp.innerText = '—';
+            tr.appendChild(tdExp);
+            // 余额
+            const tdBal = document.createElement('td');
+            const balValue = row.balance;
+            tdBal.innerText = `¥ ${balValue.toFixed(2)}`;
+            tdBal.classList.add('balance-cell');
+            if (Math.abs(balValue - mainFinalBalance) < 0.01 && !row.isOpening) {
+                tdBal.classList.add('highlight-balance');
+            }
+            tr.appendChild(tdBal);
+            tbody.appendChild(tr);
+        });
+    }
+    renderMainTable();
+
+    // 3. 备查表（无日期，无余额，无合计行，首行新增“笔”支出3元）
+    const extraRows = [];
+    for (let i = 0; i < undatedItems.length; i++) {
+        const item = undatedItems[i];
+        const amount = item.amount;
+        let inc = 0, exp = 0;
+        if (amount > 0) inc = amount;
+        else if (amount < 0) exp = -amount;
+        extraRows.push({
+            serial: i + 1,
+            desc: item.desc,
+            income: inc,
+            expense: exp
+        });
+    }
+
+    function renderExtraTable() {
+        const tbody = document.getElementById('extraTableBody');
+        tbody.innerHTML = '';
+        if (extraRows.length === 0) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td colspan="6" style="text-align:center;">暂无备查收支</td>';
+            tbody.appendChild(tr);
+            return;
+        }
+        for (let row of extraRows) {
+            const tr = document.createElement('tr');
+            const tdSerial = document.createElement('td');
+            tdSerial.innerText = row.serial;
+            tr.appendChild(tdSerial);
+            const tdDate = document.createElement('td');
+            tdDate.innerText = '—';
+            tdDate.style.color = '#8b9ab0';
+            tr.appendChild(tdDate);
+            const tdDesc = document.createElement('td');
+            tdDesc.innerText = row.desc;
+            tr.appendChild(tdDesc);
+            const tdInc = document.createElement('td');
+            if (row.income > 0) {
+                tdInc.innerText = `¥ ${row.income.toFixed(2)}`;
+                tdInc.classList.add('income-cell');
+            } else tdInc.innerText = '—';
+            tr.appendChild(tdInc);
+            const tdExp = document.createElement('td');
+            if (row.expense > 0) {
+                tdExp.innerText = `¥ ${row.expense.toFixed(2)}`;
+                tdExp.classList.add('expense-cell');
+            } else tdExp.innerText = '—';
+            tr.appendChild(tdExp);
+            const tdBal = document.createElement('td');
+            tdBal.innerText = '—';
+            tdBal.style.color = '#9aa9bf';
+            tr.appendChild(tdBal);
+            tbody.appendChild(tr);
+        }
+        // 无合计行
+    }
+    renderExtraTable();
+
+    // 导出CSV功能（主表+备查）
+    function exportFullCSV() {
+        const csvRows = [];
+        // 主表
+        csvRows.push(['"===== 主表：有日期收支明细（含余额） ======"']);
+        csvRows.push(['序号', '日期', '摘要', '收入(¥)', '支出(¥)', '余额(¥)']);
+        mainRows.forEach((row, idx) => {
+            const serial = idx === 0 ? '期初' : idx;
+            const dateVal = row.dateStr;
+            const descVal = row.desc;
+            const incomeVal = row.income > 0 ? row.income.toFixed(2) : '';
+            const expenseVal = row.expense > 0 ? row.expense.toFixed(2) : '';
+            const balanceVal = row.balance.toFixed(2);
+            csvRows.push([serial, dateVal, descVal, incomeVal, expenseVal, balanceVal]);
+        });
+        csvRows.push([]);
+        // 备查表（无余额列，无合计，首行已包含“笔”）
+        csvRows.push(['"===== 备查事项：无日期收支（无余额列） ======"']);
+        csvRows.push(['序号', '日期', '摘要', '收入(¥)', '支出(¥)', '余额']);
+        extraRows.forEach((row) => {
+            const incomeVal = row.income > 0 ? row.income.toFixed(2) : '';
+            const expenseVal = row.expense > 0 ? row.expense.toFixed(2) : '';
+            csvRows.push([row.serial, '—', row.desc, incomeVal, expenseVal, '—']);
+        });
+
+        const csvContent = csvRows.map(row => 
+            row.map(cell => {
+                if (typeof cell === 'string' && (cell.includes(',') || cell.includes('"'))) {
+                    return `"${cell.replace(/"/g, '""')}"`;
+                }
+                return cell;
+            }).join(',')
+        ).join('\n');
+        
+        const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.setAttribute('download', '江边一合作社_主表备查全报表.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    const exportBtn = document.getElementById('exportFullBtn');
+    exportBtn.addEventListener('click', exportFullCSV);
+</script>
 </body>
 </html>
-
